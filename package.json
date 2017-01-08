@@ -1,6 +1,6 @@
 {
   "name": "donate-clan",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Donate clan is a website for a clan in clash royale called Donate (#YQQRQQR).",
   "scripts": {
     "lite": "lite-server --port 9090",
