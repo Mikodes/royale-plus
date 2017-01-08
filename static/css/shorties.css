@@ -1,0 +1,30 @@
+/* Spaces */
+
+.s-pad-no {
+    padding: 0;
+}
+
+.s-mar-no {
+    margin: 0;
+}
+
+
+/* Backgrounds */
+
+.bg-no {
+    background: none;
+}
+
+
+/* Disqus */
+
+.bg-dark {
+    background: rgba(30, 30, 30, 0.5);
+}
+
+
+/* Texts */
+
+.t-larger {
+    font-size: larger;
+}
