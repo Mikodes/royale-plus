@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <meta name="description" content="Website for Clash Royale clan called Donate. Keeping members static and clan info here.">
+  <meta name="keywords" content="Clash, Royale, Clan, Donate, Website, Join">
+  <meta name="author" content="Amir Mehdi Savand">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Donate Clan - Clash Royale</title>
+  <link rel="icon" type="image/png" href="static/img/favicon.png" />
+
+  <link href="static/css/bootstrap.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="static/css/animate.css" type="text/css" rel="stylesheet" />
+  <link href="static/css/font-awesome.css" type="text/css" rel="stylesheet" />
+  <link href="static/css/shorties.css" type="text/css" rel="stylesheet" />
+  <link href="static/css/donate.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body onload="initialize()" class="loaded">
+  <!-- Navbar -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href=" ">Donate Clan</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a data-placement="bottom" title="Github" href="http://github.com/amirm3hdi/donate-clan" target="_blank">
+              <i class="fa fa-fw fa-github"></i>
+            </a>
+          </li>
+          <li data-placement="bottom" title="Feedback">
+            <a href="mailto:amir@savandbros.com?Subject=Donate - Clan Website (Feedback)" target="_blank">
+              <i class="fa fa-fw fa-paper-plane"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-placement="bottom" title="Setting" data-toggle="modal" data-target="#settingModal">
+              <i class="fa fa-fw fa-cog"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Cover -->
+  <div class="container-fluid cover">
+    <div class="container">
+      <h2>Donate <small>#YQQRQQR</small><br></h2>
+      <br>
+      <h4>Welcome to the Donate clan website!</h4>
+      <h4>We got a list of awesome/loyal donators below.</h4>
+      <h4>Feel free to join out clan and whatsapp group.</h4>
+      <h4>But only if you are an awesome donator <i class="fa fa-smile-o"></i></h4>
+    </div>
+  </div>
+
+  <!-- Main view -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Members -->
+      <div class="col-md-6">
+        <div class="panel panel-primary bg-no animated fadeIn" style="display: none">
+          <div class="panel-heading">
+            <h3 class="panel-title">Members <i class="fa fa-users"></i></h3>
+          </div>
+          <div class="panel-body s-pad-no" id="members"></div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <!-- Random deck -->
+        <div class="panel panel-primary bg-dark animated fadeIn" style="display: none">
+          <div class="panel-heading">
+            <h3 class="panel-title">Random Deck <i class="fa fa-th-large"></i></h3>
+          </div>
+          <div class="panel-body" id="cards"></div>
+          <div class="panel-footer bg-dark">
+            <button class="btn btn-block btn-warning btn-lg" onclick="Decks.random()">
+              <i class="fa fa-fw fa-refresh"></i> <b>NEXT RANDOM DECK</b>
+            </button>
+          </div>
+        </div>
+
+        <!-- Discussion -->
+        <div class="panel panel-primary bg-dark">
+          <div class="panel-heading">
+            <h3 class="panel-title">Discussion <i class="fa fa-comments"></i></h3>
+          </div>
+          <div class="panel-body text-center" style="min-height: 80px">
+            <button class="btn btn-lg btn-warning" id="joinDiscussionButton" onclick="joinDiscussion(this)">
+              <b><i class="fa fa-fw fa-sign-in"></i> Join Discussion</b>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      &copy; <span id="currentYear">2017</span>
+      <a href="http://amir.savandbros.com" target="_blank">Amir Mehdi Savand</a> all rights reserved
+    </div>
+  </footer>
+
+  <!-- Member modal -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="memberModal">
+    <div class="modal-dialog" role="document">
+      <h1>Loading...</h1>
+    </div>
+  </div>
+
+  <!-- Setting modal -->
+  <div class="modal fade" id="settingModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="settingModalLabel">Settings</h4>
+        </div>
+        <div class="modal-body t-larger">
+          <!-- Auto join -->
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="autoJoinDiscussion" onchange="updateSettings(this)"> Auto join discussion
+            </label>
+          </div>
+          <br>
+          <b class="t-larger">Wallpaper:<b>
+          <!-- Wallpaper -->
+          <div class="radio"> 
+            <label>
+              <input type="radio" name="wallpaper" onchange="updateSettings(this)" value="pattern" checked> Pattern
+            </label>
+          </div>
+          <div class="radio"> 
+            <label>
+              <input type="radio" name="wallpaper" onchange="updateSettings(this)" value="crysis"> Crysis
+            </label>
+          </div>
+          <div class="radio"> 
+            <label>
+              <input type="radio" name="wallpaper" onchange="updateSettings(this)" value="blur"> BLUR
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="static/js/jquery.js"></script>
+  <script src="static/js/bootstrap.js"></script>
+  <script src="static/js/donate.js"></script>
+</body>
+
+</html>
