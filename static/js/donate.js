@@ -108,6 +108,7 @@ var Members = {
       type: "get",
       url: "static/data/members.json",
       success: function (data) {
+        Members.instances = [];
         for (var i in data) {
           new Member(data[i].name, data[i].role, data[i].rarity, data[i].donation, data[i].tags);
         }
@@ -150,6 +151,8 @@ var Members = {
     Members.instances = Members.instances.sort(function (a, b) {
       return b.score - a.score;
     });
+
+    $("#members").html(" ");
 
     $.each(Members.instances, function (i, member) {
       $("#members").append(member.getElement());
