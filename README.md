@@ -23,7 +23,7 @@ Donate clan is a website for a clan in clash royale called Donate (#YQQRQQR)
 
 ## Note
 
-There's no API avilable from Supercell which means there's not way to get members or clan information live yet.
+There's no API avilable from Supercell which means there's no way to get members or clan information live yet.
 As soon as the official API is avilable, it'll be implemented.
 
 ## Request clan website
