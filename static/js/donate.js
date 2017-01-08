@@ -260,8 +260,9 @@ function initialize() {
     log("Auto joining discussion");
   }
 
-  // Current year
+  // Current vars into html
   $("#currentYear").text(new Date().getFullYear());
+  $("#currentVersion").text("v0.1.1");
 }
 
 /**

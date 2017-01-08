@@ -30,6 +30,12 @@ input {
     top: 5px;
 }
 
+.navbar-brand small{
+    font-size: 0.5em;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
 
 /* Cover */
 
