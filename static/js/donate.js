@@ -231,6 +231,10 @@ function log(string) {
  * @private
  */
 function initialize() {
+  // Initial local storage
+  localStorage.wallpaper = localStorage.wallpaper || "pattern";
+  localStorage.autoJoinDiscussion = localStorage.autoJoinDiscussion || false;
+
   // Getting members
   Members.load();
 
