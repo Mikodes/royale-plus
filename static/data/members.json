@@ -12,9 +12,9 @@
   "tags": ["creator", "clan chest master", "whatsapp"]
 }, {
   "name": "Dante",
-  "role": "member",
+  "role": "elder",
   "rarity": "rare",
-  "donation": "d",
+  "donation": "b",
   "tags": ["whatsapp"]
 }, {
   "name": "FARA(CR7)",
@@ -80,11 +80,6 @@
   "donation": "d",
   "tags": ["whatsapp"]
 }, {
-  "name": "torpedo vegas",
-  "role": "member",
-  "rarity": "common",
-  "donation": "d"
-}, {
   "name": "R31HRN",
   "role": "elder",
   "rarity": "rare",
@@ -95,18 +90,20 @@
   "rarity": "rare",
   "donation": "b"
 }, {
-  "name": "Jump",
-  "role": "member",
-  "rarity": "common",
-  "donation": "d"
-}, {
   "name": "Cherry",
   "role": "elder",
   "rarity": "epic",
   "donation": "s"
 }, {
-  "name": "Dragon Slayer",
+  "name": "Dendy",
+  "role": "member",
+  "rarity": "common",
+  "donation": "c",
+  "tags": ["whatsapp"]
+}, {
+  "name": "Edwd88",
   "role": "member",
   "rarity": "rare",
-  "donation": "c"
+  "donation": "b",
+  "tags": ["whatsapp"]
 }]
