@@ -30,7 +30,7 @@ input {
     top: 5px;
 }
 
-.navbar-brand small{
+.navbar-brand small {
     font-size: 0.5em;
     margin-left: 4px;
     font-weight: bold;
@@ -297,6 +297,13 @@ input {
 .modal-header .close {
     margin-top: 7px;
 }
+
+.modal .tooltip {
+    display: none !important;
+}
+
+
+/* Footer */
 
 footer {
     transition: all 0.3s ease-in-out;
