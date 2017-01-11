@@ -315,5 +315,5 @@ function updateSettings(element) {
  * @private
  */
 $("body").on("DOMNodeInserted", "*", function () {
-  $("tag[title]").tooltip();
+  $("[title]").tooltip();
 });
