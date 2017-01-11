@@ -262,7 +262,7 @@ function initialize() {
 
   // Current vars into html
   $("#currentYear").text(new Date().getFullYear());
-  $("#currentVersion").text("v0.1.1");
+  $("#currentVersion").text("v0.1.2");
 }
 
 /**
