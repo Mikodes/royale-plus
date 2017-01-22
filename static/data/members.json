@@ -20,7 +20,7 @@
   "name": "FARA(CR7)",
   "role": "elder",
   "rarity": "rare",
-  "donation": "b",
+  "donation": "a",
   "tags": ["clan chest master"]
 }, {
   "name": "Osk",
@@ -46,7 +46,7 @@
   "name": "Miftahul Amirin",
   "role": "elder",
   "rarity": "rare",
-  "donation": "c",
+  "donation": "b",
   "tags": ["whatsapp"]
 }, {
   "name": "CREW_GALAU",
@@ -55,19 +55,14 @@
   "donation": "b"
 }, {
   "name": "zakki",
-  "role": "elder",
-  "rarity": "epic",
-  "donation": "a"
-}, {
-  "name": "Osk",
-  "role": "elder",
-  "rarity": "epic",
-  "donation": "a"
+  "role": "member",
+  "rarity": "rare",
+  "donation": "c"
 }, {
   "name": "CREW_GIRLY",
-  "role": "elder",
+  "role": "member",
   "rarity": "rare",
-  "donation": "b"
+  "donation": "c"
 }, {
   "name": "CREW_SANCONG-Jr",
   "role": "elder",
@@ -77,13 +72,13 @@
   "name": "T2",
   "role": "elder",
   "rarity": "rare",
-  "donation": "d",
+  "donation": "c",
   "tags": ["whatsapp"]
 }, {
   "name": "R31HRN",
   "role": "elder",
   "rarity": "rare",
-  "donation": "b"
+  "donation": "c"
 }, {
   "name": "jimmy",
   "role": "elder",
@@ -92,18 +87,44 @@
 }, {
   "name": "Cherry",
   "role": "elder",
-  "rarity": "epic",
+  "rarity": "rare",
   "donation": "s"
 }, {
   "name": "Dendy",
   "role": "member",
-  "rarity": "common",
+  "rarity": "rare",
   "donation": "c",
   "tags": ["whatsapp"]
 }, {
-  "name": "Edwd88",
-  "role": "member",
+  "name": "edwd88",
+  "role": "elder",
+  "rarity": "epic",
+  "donation": "b",
+  "tags": ["whatsapp", "clan chest master"]
+}, {
+  "name": "Julio",
+  "role": "elder",
   "rarity": "rare",
+  "donation": "a"
+}, {
+  "name": "Julio",
+  "role": "elder",
+  "rarity": "rare",
+  "donation": "a"
+}, {
+  "name": "Dr.Awesomeballz",
+  "role": "elder",
+  "rarity": "rare",
+  "donation": "a"
+}, {
+  "name": "MAS PRAM",
+  "role": "member",
+  "rarity": "common",
+  "donation": "c"
+}, {
+  "name": "mehdi",
+  "role": "member",
+  "rarity": "common",
   "donation": "b",
   "tags": ["whatsapp"]
 }]
