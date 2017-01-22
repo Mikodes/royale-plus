@@ -1,4 +1,9 @@
 /**
+ * @desc App version
+ */
+var version = "0.1.3";
+
+/**
  * @desc Member class
  * 
  * @param {string} name
@@ -106,7 +111,7 @@ var Members = {
   load: function () {
     $.ajax({
       type: "get",
-      url: "static/data/members.json",
+      url: "static/data/members.json?v=" + version,
       success: function (data) {
         Members.instances = [];
         for (var i in data) {
@@ -262,7 +267,7 @@ function initialize() {
 
   // Current vars into html
   $("#currentYear").text(new Date().getFullYear());
-  $("#currentVersion").text("v0.1.2");
+  $("#currentVersion").text("v" + version);
 }
 
 /**
