@@ -31,7 +31,8 @@
   "name": "Fijin",
   "role": "co-leader",
   "rarity": "epic",
-  "donation": "a"
+  "donation": "a",
+  "tags": ["clan chest master"]
 }, {
   "name": "[MizukageChel]",
   "role": "elder",
@@ -85,11 +86,6 @@
   "rarity": "rare",
   "donation": "b"
 }, {
-  "name": "Cherry",
-  "role": "elder",
-  "rarity": "rare",
-  "donation": "s"
-}, {
   "name": "Dendy",
   "role": "member",
   "rarity": "rare",
@@ -101,11 +97,6 @@
   "rarity": "epic",
   "donation": "b",
   "tags": ["whatsapp", "clan chest master"]
-}, {
-  "name": "Julio",
-  "role": "elder",
-  "rarity": "rare",
-  "donation": "a"
 }, {
   "name": "Julio",
   "role": "elder",
