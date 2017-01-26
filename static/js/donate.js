@@ -1,7 +1,7 @@
 /**
  * @desc App version
  */
-var version = "0.1.3";
+var version = "0.1.4";
 
 /**
  * @desc Member class
