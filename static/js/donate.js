@@ -18,7 +18,7 @@ var Member = function (name, role, rarity, donation, tags) {
   this.rarity = rarity;
   this.donation = donation;
   this.tags = tags;
-  this.score = this.tags ? (25 * this.tags.length) : 0;
+  this.score = this.tags ? (50 * this.tags.length) : 0;
   this.tagElements = "";
 
   /**
@@ -125,21 +125,21 @@ var Members = {
 
   scores: {
     role: {
-      leader: 175,
-      "co-leader": 50,
+      leader: 225,
+      "co-leader": 100,
       elder: 25,
       member: 0
     },
     donation: {
-      s: 100,
-      a: 75,
+      s: 150,
+      a: 100,
       b: 50,
       c: 25,
       d: 0
     },
     rarity: {
-      legendary: 100,
-      epic: 50,
+      legendary: 150,
+      epic: 75,
       rare: 25,
       common: 0
     },
