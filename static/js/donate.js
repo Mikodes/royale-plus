@@ -81,10 +81,6 @@ var Card = function (id, idName, name, rarity, type, description, arena, elixirC
   this.elixirCost = elixirCost;
   this.imageUrl = Decks.baseUrl + "images/cards/" + this.idName + ".png";
 
-  if (this.idName === "graveyard") {
-    this.imageUrl = "http://clashroyale.news/img/cards/g/55.png";
-  }
-
   /**
    * @returns {element}
    */
