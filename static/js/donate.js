@@ -121,7 +121,7 @@ var Members = {
 
   scores: {
     role: {
-      leader: 225,
+      leader: 325,
       "co-leader": 100,
       elder: 25,
       member: 0
@@ -166,7 +166,7 @@ var Members = {
    * @param {element} element
    */
   show: function (element) {
-    var member = select(Members.list, "name", $(element).attr("member"));
+    var member = select(Members.instances, "name", $(element).attr("member"));
     $("#memberModal").modal();
     $("#memberModal .modal-dialog").html($(element).clone());
     $("#memberModal [member]").attr("onclick", "");
