@@ -41,7 +41,7 @@ var Member = function (name, role, rarity, donation, tags) {
     );
   };
 
-  this.score = (
+  this.score += (
     Members.scores.role[this.role] +
     Members.scores.donation[this.donation] +
     Members.scores.rarity[this.rarity]
