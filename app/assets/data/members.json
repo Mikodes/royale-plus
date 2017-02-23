@@ -117,12 +117,12 @@
 }, {
   "name": "Mikaelg9",
   "role": "elder",
-  "rarity": "member",
+  "rarity": "rare",
   "donation": "d",
   "tags": ["clan chest master"]
 }, {
   "name": "SF",
   "role": "elder",
-  "rarity": "member",
+  "rarity": "common",
   "donation": "c"
 }]

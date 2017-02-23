@@ -189,7 +189,7 @@ module.exports = function (grunt) {
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
       html: ['<%= yeoman.dist %>/**/*.html'],
-      js: ['<%= yeoman.dist %>/scripts/index.html'], // For custom dests
+      js: ['<%= yeoman.dist %>/index.html'], // For custom dests
       css: ['<%= yeoman.dist %>/assets/styles/**/*.css'],
       options: {
         assetsDirs: [
