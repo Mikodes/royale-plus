@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("HomeController", function (Member, Deck, Card, $scope, $http) {
+app.controller("HomeController", function (Member, Deck, Card, Dest, $scope, $http) {
 
   function constructor() {
 
@@ -11,7 +11,7 @@ app.controller("HomeController", function (Member, Deck, Card, $scope, $http) {
     $scope.deck = new Deck("Generated Deck", []);
 
     // Get members
-    $http.get("assets/data/members.json").then(function (data) {
+    $http.get(Dest.members).then(function (data) {
       angular.forEach(data.data, function (data) {
         var member = new Member(data.name, data.role, data.rarity, data.donation, data.tags);
         $scope.members.push(member);

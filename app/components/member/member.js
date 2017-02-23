@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("MemberController", function (Member, $scope, $http, $window, $state, $stateParams) {
+app.controller("MemberController", function (Member, Dest, $scope, $http, $window, $state, $stateParams) {
 
   $scope.id = "damn";
   function constructor() {
@@ -9,7 +9,7 @@ app.controller("MemberController", function (Member, $scope, $http, $window, $st
 
     // Get member (if not given)
     if (!$scope.member) {
-      $http.get("assets/data/members.json").then(function (data) {
+      $http.get(Dest.members).then(function (data) {
         angular.forEach(data.data, function (data) {
           if (data.name === $stateParams.name) {
             $scope.member = new Member(data.name, data.role, data.rarity, data.donation, data.tags);
