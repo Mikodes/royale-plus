@@ -20,13 +20,13 @@
   "name": "FARA(CR7)",
   "role": "elder",
   "rarity": "epic",
-  "donation": "a",
+  "donation": "b",
   "tags": ["clan chest master"]
 }, {
   "name": "Osk",
   "role": "elder",
   "rarity": "epic",
-  "donation": "a"
+  "donation": "b"
 }, {
   "name": "Fijin",
   "role": "coleader",
@@ -114,4 +114,15 @@
   "role": "member",
   "rarity": "common",
   "donation": "b"
+}, {
+  "name": "Mikaelg9",
+  "role": "elder",
+  "rarity": "member",
+  "donation": "d",
+  "tags": ["clan chest master"]
+}, {
+  "name": "SF",
+  "role": "elder",
+  "rarity": "member",
+  "donation": "c"
 }]
