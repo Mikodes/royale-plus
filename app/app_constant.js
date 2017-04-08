@@ -36,6 +36,10 @@ app.constant("Tags", {
     font: "trophy",
     sentence: "won the Clan Chest Master (1st)."
   },
+  "clan battle master": {
+    font: "shield",
+    sentence: "won the Clan Battle Master (1st)."
+  },
   "whatsapp": {
     font: "whatsapp",
     sentence: "has joined the clan's WhatsApp group."
