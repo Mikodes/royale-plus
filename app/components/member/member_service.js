@@ -12,8 +12,7 @@ app.service("Member", function (Scores, Tag) {
     this.score = (
       Scores.role[this.role] +
       Scores.donation[this.donation] +
-      Scores.rarity[this.rarity] +
-      Scores.tag * this.tags.length
+      Scores.rarity[this.rarity]
     );
 
     this.hasTag = function (tag) {
@@ -23,6 +22,7 @@ app.service("Member", function (Scores, Tag) {
     function constructor() {
       angular.forEach(tags, function (tag) {
         self.tags.push(new Tag(tag));
+        self.score += Scores.tag;
       });
     }
 
