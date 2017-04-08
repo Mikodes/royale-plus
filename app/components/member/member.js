@@ -2,9 +2,7 @@
 
 app.controller("MemberController", function (Member, Dest, $scope, $http, $window, $state, $stateParams) {
 
-  $scope.id = "damn";
   function constructor() {
-
     $scope.member = $stateParams.member;
 
     // Get member (if not given)
