@@ -1,21 +1,15 @@
 [{
-  "name": "boxman_94",
+  "name": "PureAwesomeness",
   "role": "leader",
   "rarity": "legendary",
-  "donation": "c",
-  "tags": ["godlike"]
-}, {
-  "name": "PureAwesomeness",
-  "role": "coleader",
-  "rarity": "legendary",
   "donation": "s",
-  "tags": ["creator", "clan chest master", "clan chest master", "whatsapp", "clan chest master", "clan battle master"]
+  "tags": ["godlike", "whatsapp", "clan chest master", "clan battle master"]
 }, {
   "name": "Dante",
   "role": "elder",
   "rarity": "epic",
-  "donation": "a",
-  "tags": ["whatsapp", "clan chest master"]
+  "donation": "b",
+  "tags": ["whatsapp"]
 }, {
   "name": "FARA(CR7)",
   "role": "elder",
@@ -23,84 +17,42 @@
   "donation": "b",
   "tags": ["clan chest master"]
 }, {
-  "name": "Osk",
-  "role": "elder",
-  "rarity": "epic",
-  "donation": "c"
-}, {
-  "name": "Fijin",
-  "role": "coleader",
-  "rarity": "epic",
-  "donation": "a",
-  "tags": ["clan chest master", "clan chest master"]
-}, {
-  "name": "MizukageChel",
-  "role": "elder",
-  "rarity": "epic",
-  "donation": "b"
-}, {
-  "name": "John",
-  "role": "elder",
-  "rarity": "epic",
-  "donation": "s"
-}, {
   "name": "Miftahul_Amirin",
-  "role": "elder",
+  "role": "member",
   "rarity": "rare",
-  "donation": "c",
+  "donation": "d",
   "tags": ["whatsapp"]
 }, {
   "name": "CREW",
-  "role": "elder",
+  "role": "coleader",
   "rarity": "epic",
-  "donation": "b"
-}, {
-  "name": "T2",
-  "role": "elder",
-  "rarity": "rare",
-  "donation": "b",
-  "tags": ["whatsapp"]
-}, {
-  "name": "R31HRN",
-  "role": "member",
-  "rarity": "rare",
-  "donation": "b"
+  "donation": "a"
 }, {
   "name": "edwd88",
-  "role": "elder",
-  "rarity": "rare",
-  "donation": "c",
-  "tags": ["whatsapp", "clan chest master"]
-}, {
-  "name": "Julio",
-  "role": "elder",
-  "rarity": "rare",
-  "donation": "c"
-}, {
-  "name": "mehdi",
-  "role": "elder",
+  "role": "member",
   "rarity": "rare",
   "donation": "b",
   "tags": ["whatsapp"]
 }, {
-  "name": "Apricote",
+  "name": "jakob",
   "role": "elder",
-  "rarity": "rare",
-  "donation": "c",
-  "tags": ["clan chest master"]
-}, {
-  "name": "Mikaelg9",
-  "role": "elder",
-  "rarity": "rare",
-  "donation": "d",
-  "tags": ["clan chest master", "clan chest master", "clan chest master"]
-}, {
-  "name": "Owenh11",
-  "role": "member",
   "rarity": "common",
-  "donation": "c"
+  "donation": "a",
+  "tags": ["clan battle master"]
 }, {
-  "name": "Harits9",
+  "name": "DD",
+  "role": "elder",
+  "rarity": "common",
+  "donation": "c",
+  "tags": ["clan battle master"]
+}, {
+  "name": "dd2",
+  "role": "elder",
+  "rarity": "common",
+  "donation": "d",
+  "tags": ["clan battle master"]
+}, {
+  "name": "ahrari",
   "role": "elder",
   "rarity": "common",
   "donation": "b"
