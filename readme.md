@@ -1,6 +1,6 @@
 # [Donate Clan](http://donate.kloud51.com/)
 
-Donate clan is a website for a clan in clash royale called Donate (#YQQRQQR)
+Donate clan is a website for a clan in clash royale called Donate (#2Y2C9RCJ)
 
 ## Featues
 
