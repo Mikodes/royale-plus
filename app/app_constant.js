@@ -28,10 +28,6 @@ app.constant("Tags", {
     font: "user-secret",
     sentence: "is the creator of clan."
   },
-  "creator": {
-    font: "cube",
-    sentence: "is the creator of clan website."
-  },
   "clan chest master": {
     font: "trophy",
     sentence: "won the Clan Chest Master (1st)."
