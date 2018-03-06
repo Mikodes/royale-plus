@@ -77,6 +77,13 @@
   <script src="{% static 'components/account/auth/auth_interceptor.js' %}"></script>
   <script src="{% static 'components/account/signup/signup_controller.js' %}"></script>
   <script src="{% static 'components/account/settings/settings_controller.js' %}"></script>
+
+  <script>
+    app.constant("ENV", {
+      ROYALE_PLUS: "//{{ request.get_host }}/",
+      CLASH_API: "http://www.clashapi.xyz/api/"
+    });
+  </script>
 </body>
 
 </html>

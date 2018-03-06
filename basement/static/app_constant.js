@@ -1,14 +1,6 @@
 "use strict";
 
 /**
- * Environment constant
- */
-app.constant("ENV", {
-  ROYALE_PLUS: "http://127.0.0.1:8000/",
-  CLASH_API: "http://www.clashapi.xyz/api/"
-});
-
-/**
  * Main constant
  */
 app.constant("Main", {
