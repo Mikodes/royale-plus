@@ -1,0 +1,95 @@
+<div class="container py-3">
+  <div class="row">
+
+    <!-- Left side -->
+    <div class="col-md-4">
+
+      <!-- Profile -->
+      <div class="card my-4">
+        <div class="card-body bg-dark text-white text-center">
+
+          <!-- Picture -->
+          <div class="user-picture-wrapper">
+            <div class="user-picture" style="background-image: url('{{ user.picture || 'static/assets/img/avatar.png' }}')"></div>
+          </div>
+
+          <!-- User name and icon -->
+          <h1>
+            <small ng-if="user.is_admin">
+              <i class="fas fa-user-secret text-warning" title="{{ user.username }} is an admin"></i>
+            </small>
+            {{ user.username }}
+          </h1>
+
+          <!-- About -->
+          <p class="o-fade-soft t-ws">{{ user.about || "Nothing to say..." }}</p>
+        </div>
+
+        <!-- Info -->
+        <div class="list-group list-group-flush">
+        
+          <!-- Membership -->
+          <div class="list-group-item" ng-if="user.member">
+            <span class="text-secondary">
+              <i class="fas fa-fw o-fade fa-chess"></i> Membership:
+            </span>
+            <a ui-sref="app.member({tag: user.member})" class="float-right">
+              #{{ user.member }}
+            </a>
+          </div>
+
+          <!-- Decks count -->
+          <div class="list-group-item" ng-if="user.date_joined">
+            <span class="text-secondary">
+              <i class="fas fa-fw o-fade fa-cube"></i> Decks:
+            </span>
+            <span class="float-right" title="Click to see {{ user.username }}'s decks">
+              <a ui-sref="app.deck-list({username: user.username})">{{ user.decks_count }} decks</a>
+            </span>
+          </div>
+        
+          <!-- Website link -->
+          <div class="list-group-item" ng-if="user.link">
+            <span class="text-secondary">
+              <i class="fas fa-fw o-fade fa-link"></i> Link:
+            </span>
+            <a ng-href="{{ user.link }}" target="_blank" class="float-right" title="{{ user.link }}">
+              {{ user.username }}'s Link
+            </a>
+          </div>
+
+          <!-- Nationality -->
+          <div class="list-group-item">
+            <span class="text-secondary">
+              <i class="fas fa-fw o-fade fa-globe"></i> Nationality:
+            </span>
+            <span class="float-right">{{ user.nationality || "Planet" }}</span>
+          </div>
+
+          <!-- Date Joined -->
+          <div class="list-group-item" ng-if="user.date_joined">
+            <span class="text-secondary">
+              <i class="fas fa-fw o-fade fa-calendar-alt"></i> Date Joined:
+            </span>
+            <span class="float-right">{{ user.date_joined | date:'dd MMM yyyy' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side -->
+    <div class="col-md-8">
+
+      <!-- Comments -->
+      <div class="card bg-dark text-white my-4">
+        <div class="card-header py-4">
+          {{ user.username }}'s Wall
+          <i class="fas fa-comments float-right"></i>
+        </div>
+        <div class="card-body bg-white">
+          <div disqus="'user-' + user.username"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" ng-app="royalePlus">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Royale Plus is a social website for clash royale players.">
+  <meta name="keywords" content="clash, royale, decks, edit, build, cards, share">
+  <meta name="author" content="Amir Savand">
+
+  <title>Royale Plus</title>
+  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}" />
+
+  <link rel="stylesheet" href="{% static 'lib/bootstrap/bootstrap.css' %}" />
+  <link rel="stylesheet" href="{% static 'lib/fontawesome/fontawesome.css' %}" />
+  <link rel="stylesheet" href="{% static 'lib/animate/animate.css' %}" />
+  <link rel="stylesheet" href="{% static 'lib/angular-toaster/toaster.css' %}" />
+
+  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/shorties.css' %}">
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+    <p class="browsehappy">
+      You are using an <strong>outdated</strong> browser.
+      Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+    </p>
+  <![endif]-->
+
+  <ng-include src="'{% static 'components/main/main.html' %}'" ng-controller="MainController"></ng-include>
+
+  <ui-view></ui-view>
+
+  <ng-include src="'{% static 'components/main/footer.html' %}'"></ng-include>
+
+  <script src="{% static 'lib/jquery/jquery.js' %}"></script>
+  <script src="{% static 'lib/popper/popper.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/bootstrap.js' %}"></script>
+  <script src="{% static 'lib/tether/tether.js' %}"></script>
+  <script src="{% static 'lib/fontawesome/fontawesome.js' %}"></script>
+  <script src="{% static 'lib/angular/angular.js' %}"></script>
+  <script src="{% static 'lib/angular-toaster/toaster.js' %}"></script>
+  <script src="{% static 'lib/angular-resource/angular-resource.js' %}"></script>
+  <script src="{% static 'lib/angular-disqus/angular-disqus.js' %}"></script>
+  <script src="{% static 'lib/angular-modal-service/angular-modal-service.js' %}"></script>
+  <script src="{% static 'lib/angular-ui-router/angular-ui-router.js' %}"></script>
+
+  <script src="{% static 'app.js' %}"></script>
+  <script src="{% static 'app_directives.js' %}"></script>
+  <script src="{% static 'app_filters.js' %}"></script>
+  <script src="{% static 'app_constant.js' %}"></script>
+  <script src="{% static 'app_routes.js' %}"></script>
+
+  <script src="{% static 'components/api/api.js' %}"></script>
+
+  <script src="{% static 'components/common/common.js' %}"></script>
+
+  <script src="{% static 'components/main/main_controller.js' %}"></script>
+
+  <script src="{% static 'components/home/home_controller.js' %}"></script>
+
+  <script src="{% static 'components/user/user_controller.js' %}"></script>
+
+  <script src="{% static 'components/card/card.js' %}"></script>
+
+  <script src="{% static 'components/member/member.js' %}"></script>
+  <script src="{% static 'components/member/member_controller.js' %}"></script>
+
+  <script src="{% static 'components/deck/deck.js' %}"></script>
+  <script src="{% static 'components/deck/deck_controller.js' %}"></script>
+  <script src="{% static 'components/deck/deck_new/deck_new_controller.js' %}"></script>
+  <script src="{% static 'components/deck/deck_list/deck_list_controller.js' %}"></script>
+
+  <script src="{% static 'components/account/auth/auth.js' %}"></script>
+  <script src="{% static 'components/account/auth/auth_interceptor.js' %}"></script>
+  <script src="{% static 'components/account/signup/signup_controller.js' %}"></script>
+  <script src="{% static 'components/account/settings/settings_controller.js' %}"></script>
+</body>
+
+</html>

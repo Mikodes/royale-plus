@@ -1,0 +1,118 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" ng-app="royalePlus">
+<head>
+  {# Meta data #}
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Facebook for Clash Royale players.">
+  <meta name="keywords" content="Clash, Royale, Decks, Generate, Save, Build, Create, Clan, Donate, Website, Join">
+  <meta name="author" content="Amir Savand">
+
+  {# Title and favicon #}
+  <title>Royale Plus</title>
+  <link rel="icon" type="image/jpg" href="{% static '/assets/img/favicon' %}"/>
+
+  {# Styles #}
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static "css/app.css" %}">
+</head>
+<body>
+{# Header #}
+<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+  <div class="container">
+    {# Brand #}
+    <a bold class="navbar-brand" href="{% url 'basement:home' %}">GGA</a>
+    {# Toggle button #}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    {# Navs #}
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav mr-auto">
+        {# Home #}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'basement:home' %}">Home</a>
+        </li>
+        {% if not user.is_authenticated %}
+          {# Login #}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'basement:shop' %}">Shop</a>
+          </li>
+          <li class="nav-item dropdown">
+            {# Username (dropdown) #}
+            <a class="nav-link" data-target="#" data-toggle="dropdown">
+              {{ user.username }} <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{ user.get_absolute_url }}">Profile</a></li>
+              <li class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          </li>
+        {% endif %}
+      </ul>
+      {% if user.is_authenticated %}
+        {# Money #}
+        <div class="navbar-text">
+          <i class="fa fa-dollar text-success"></i> {{ user.money | intcomma | intword }}
+          <i class="fa fa-level-up text-danger"></i> {{ user.get_level }}
+          <i class="fa fa-star-half-o text-info"></i> {{ user.xp | intcomma }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+{# Page content #}
+{% block content %}{% endblock %}
+
+{# Message modal #}
+<div class="modal fade" id="message">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Message</h5>
+        <button class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+      </div>
+      <div class="modal-body"><span class="message">Message body</span></div>
+    </div>
+  </div>
+</div>
+
+{# Scripts #}
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
+{# Data #}
+<script>
+    var csrf = "{{ csrf_token }}";
+
+    var url = {
+        send: "{% url "basement:send" %}",
+        add: "{% url "basement:add" %}",
+        buy: "{% url "basement:buy" %}",
+    };
+
+    {% if user.is_authenticated %}
+        var user = {
+            username: "{{ user.username }}",
+            money: {{ user.money }},
+        };
+    {% endif %}
+</script>
+
+{# Page footer #}
+{% block footer %}{% endblock %}
+
+{# App script #}
+<script src="{% static "js/app.js" %}"></script>
+</body>
+</html>
