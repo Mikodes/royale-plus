@@ -3,5 +3,6 @@ db.sqlite3
 *.log
 *.pot
 *.pyc
+/.vscode/settings.json
 
 .idea/
