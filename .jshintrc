@@ -1,0 +1,9 @@
+{
+  "node": true,
+  "strict": true,
+  "globals": {
+    "angular": false,
+    "app": false,
+    "confirm": false
+  }
+}
