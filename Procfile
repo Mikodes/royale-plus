@@ -1,1 +1,1 @@
-web: gunicorn gga.wsgi --log-file -
+web: gunicorn royale_plus.wsgi --log-file -
