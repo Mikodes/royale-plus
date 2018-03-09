@@ -7,6 +7,7 @@ var app = angular.module("royalePlus", [
   "ngResource",
   "ngDisqus",
   "ui.router",
+  "angular-google-analytics",
   "angularModalService",
   "toaster"
 ]);
@@ -14,12 +15,18 @@ var app = angular.module("royalePlus", [
 /**
  * App config
  */
-app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProvider, $disqusProvider) {
+app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProvider, $disqusProvider,
+  AnalyticsProvider, ENV) {
   $qProvider.errorOnUnhandledRejections(false);
   $resourceProvider.defaults.stripTrailingSlashes = false;
   $httpProvider.interceptors.push("AuthInterceptor");
   $locationProvider.hashPrefix("!");
   $disqusProvider.setShortname("royale-plus");
+
+  AnalyticsProvider.setAccount(ENV.GOOGLE_ANALYTICS_ID);
+  AnalyticsProvider.trackPages(true);
+  AnalyticsProvider.trackUrlParams(true);
+  AnalyticsProvider.setPageEvent("$stateChangeSuccess");
 });
 
 /**
