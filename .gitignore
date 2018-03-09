@@ -1,7 +1,8 @@
-/node_modules
-/dist
-/.tmp
-/.sass-cache
-/bower_components
-/dist
+db.sqlite3
+
+*.log
+*.pot
+*.pyc
 /.vscode/settings.json
+
+.idea/

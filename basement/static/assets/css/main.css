@@ -1,0 +1,438 @@
+/* Import */
+
+@import "https://fonts.googleapis.com/css?family=Righteous";
+
+/* Global */
+
+body {
+    font-family: "Righteous", sans-serif;
+    background: #eef;
+    padding-top: 56px;
+}
+
+a,
+button,
+[ui-sref],
+[ng-click] {
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar {
+    background: #EAEDF1;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #343a40;
+}
+
+
+/* A */
+
+a.on-dark:hover {
+    color: #6cb3ff !important;
+}
+
+
+/* Button */
+
+.btn-block {
+    letter-spacing: 1px;
+}
+
+
+/* Navbar */
+
+.navbar-brand {
+    margin-right: 2rem;
+}
+
+
+/* Cover */
+
+.cover {
+    padding: 60px 0;
+    color: #fff;
+    background: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.cover p {
+    color: #eee;
+}
+
+.cover-bg {
+    padding: 100px 0;
+    box-shadow: inset 0 0 0 10000px rgba(0, 0, 0, 0.25);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.9);
+}
+
+.cover-bg:not(.cover-bg-pattern) {
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset 0 0 0 10000px rgba(0, 0, 0, 0.75);
+}
+
+
+/* Backgrounds */
+
+.bg-arena {
+    background-image: url("../img/arena.jpg");
+}
+
+.bg-pattern {
+    background-image: url("../img/pattern.jpg");
+}
+
+
+/* Member */
+
+member {
+    padding: 12px 25px;
+    cursor: pointer;
+    display: block;
+}
+
+member:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+member:first-child {
+    border-top: none;
+}
+
+member:last-child {
+    border-bottom: none;
+}
+
+member name {
+    font-size: 1.4em;
+}
+
+member.legendary name,
+.rarity-legendary {
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+    background-image: gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+member.epic name,
+.rarity-epic {
+    color: #ce02ff;
+}
+
+member.rare name,
+.rarity-rare {
+    color: #ef761d;
+}
+
+member.common name {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+member score {
+    float: right;
+    font-size: 1.4em;
+    padding-top: 4px;
+}
+
+member role {
+    text-transform: uppercase;
+    opacity: 0.8;
+    font-size: 0.9em;
+}
+
+
+/* Card */
+
+card {
+    text-align: center;
+    display: inline-block;
+    color: #eee;
+    max-width: 180px;
+}
+
+card:hover {
+    z-index: 1;
+    position: relative;
+}
+
+card:not(.init) {
+    width: 100%;
+}
+
+card:not(.auto) {
+    width: 25%;
+}
+
+card cover {
+    background-position: 50%;
+    background-size: 170px;
+    background-repeat: no-repeat;
+    display: block;
+    height: 180px;
+    margin: 6px;
+    border: 4px solid #666;
+    border-radius: 2px;
+    box-shadow: inset 0 -50px 20px -15px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+}
+
+card cover,
+card name,
+card cost {
+    transition: all 0.1s ease-in-out;
+}
+
+card:not(.no-cover-hover) cover:hover {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    background-size: 180px;
+    box-shadow: none;
+}
+
+card:not(.no-cover-hover) cover:hover name,
+card:not(.no-cover-hover) cover:hover cost {
+    opacity: 0;
+}
+
+card cover.epic {
+    border-color: magenta;
+}
+
+card cover.rare {
+    border-color: orange;
+}
+
+card cover.legendary {
+    border-color: #00ff7e;
+}
+
+card name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    padding-top: 125px;
+    width: 100%;
+    font-size: 0.8em;
+}
+
+card cost {
+    background: #e22ee3;
+    box-shadow: inset 0 -10px 8px rgba(0, 0, 0, 0.5);
+    float: left;
+    margin-top: -12px;
+    margin-left: -12px;
+    width: 30px;
+    height: 35px;
+    border-radius: 100% 4px 100% 100%;
+    color: #fea1ff;
+    font-size: 1.3em;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+}
+
+card.no-cost cost,
+card.no-name name {
+    display: none;
+}
+
+card.no-name cover {
+    box-shadow: none;
+}
+
+
+/* Modal */
+
+.modal-content {
+    margin-top: 100px;
+}
+
+.modal-header button {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    border-radius: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.modal-header {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.modal-header h3 {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+
+/* Card header */
+
+.card-header .fas {
+    float: right;
+    margin-top: 5px;
+}
+
+
+/* Toaster */
+
+#toast-container>div {
+    box-shadow: 0 0 !important;
+    transition: opacity 0.2s ease-in-out;
+}
+
+#toast-container .toast-title {
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+#toast-container .toast-message {
+    font-size: 0.8em;
+}
+
+
+/* Member detail */
+
+.card-detail {
+    background: #292b2c;
+    color: #fff;
+    padding: 40px 0;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    border-top: 4px solid;
+    text-align: center;
+}
+
+.card-detail .fa {
+    border-color: #222;
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.2em;
+    font-size: 4em;
+    transition: all 0.15s ease-in-out;
+}
+
+.card-detail:hover .fa {
+    text-shadow: 0 0 10px;
+}
+
+.card-detail h5 {
+    opacity: 0.5;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.card-detail h2 {
+    margin-bottom: -38px;
+    margin-top: 20px;
+    padding: 15px 0;
+    background: rgba(0, 0, 0, 0.2);
+    text-transform: capitalize;
+}
+
+
+/* User picture */
+
+.user-picture-wrapper {
+    text-align: center;
+}
+
+.user-picture {
+    background-size: cover;
+    background-position: center;
+    background-color: #111;
+    max-width: 100%;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    box-sizing: content-box;
+    border-radius: 100%;
+    border: 6px solid rgba(0, 0, 0, 0.5);
+}
+
+
+/* Slots */
+
+.slots {
+    position: absolute;
+}
+
+.slots cost {
+    display: none;
+}
+
+.slots cover {
+    border-color: saddlebrown;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: none;
+}
+
+.slots-wrapper {
+    min-height: 414px;
+}
+
+
+/* Inline Cards */
+
+.inline-cards-item {
+    display: inline-block;
+    width: 35%;
+    margin: 0;
+    margin-right: -13%;
+}
+
+.inline-cards-item img {
+    max-width: 100%;
+}
+
+
+/* Media */
+
+@media screen and (max-width: 767px) {
+    .slots-wrapper {
+        min-height: 798px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    body:not(.pattern),
+    .cover {
+        background-size: cover;
+        background-position: center;
+        height: auto;
+    }
+}
+
+
+/* Tooltip */
+
+[uib-tooltip] {
+    cursor: pointer;
+}
+
+.tooltip.in {
+    opacity: 1;
+}
+
+.tooltip .tooltip-inner {
+    font-weight: bold;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+
+/* Footer */
+
+.footer {
+    box-shadow: 0 1000px 0 1000px #f8f9fa;
+}

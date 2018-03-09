@@ -1,0 +1,77 @@
+<div class="container py-4">
+
+  <!-- Header -->
+  <h1 class="text-dark my-2">
+
+    <!-- Title -->
+    <span>Latest decks</span>
+
+    <!-- By user -->
+    <span ng-if="params.username">
+      by <a ui-sref="app.user({username: params.username})" class="text-primary">{{ params.username }}</a>
+    </span>
+  </h1>
+
+  <hr>
+
+  <!-- Decks -->
+  <div class="row">
+    <div class="col-lg-4 col-md-6" ng-repeat="deck in decks | reverse">
+      <div class="card my-3">
+
+        <!-- Header -->
+        <div class="card-header bg-dark text-white py-3">
+
+          <!-- AEC -->
+          <span class="o-fade-soft"><i class="fas fa-tint"></i> {{ deck.getAvgElixir() || 0 }}</span>
+
+          <!-- Name (link) -->
+          <a ui-sref="app.deck({id: deck.id, deck: deck})" class="text-white on-dark">{{ deck.name }}</a>
+
+          <!-- Options -->
+          <button class="btn btn-warning btn-sm float-right" style="margin: -4px" data-toggle="dropdown">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+
+          <!-- Options menu -->
+          <div class="dropdown-menu">
+            <!-- Links -->
+            <a class="dropdown-item" ui-sref="app.deck({id: deck.id, deck: deck})">View Deck</a>
+            <a class="dropdown-item" ui-sref="app.deck-list({username: deck.user})">View {{ deck.user }}'s Decks</a>
+            <a class="dropdown-item" ui-sref="app.deck-new({deck: deck})">Copy and Edit</a>
+            <!-- Owner options -->
+            <span ng-if="deck.isOwner()">
+              <hr>
+              <h6 class="dropdown-header">Owner Options</h6>
+              <a class="dropdown-item text-success" ui-sref="app.deck-new({id: deck.id, deck: deck})">Update Deck</a>
+              <a class="dropdown-item text-success" ng-click="deck.delete()">Delete Deck</a>
+            </span>
+          </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="card-body bg-pattern vertilize p-2">
+          <div class="inline-cards">
+            <card class="inline-cards-item auto init no-name no-cost no-cover-hover"
+              ng-repeat="card in deck.cards"
+              ng-include="'static/components/card/card_include.html'"
+              ng-click="card.view()">
+            </card>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="card-footer">
+
+          <!-- Type -->
+          <span ng-if="deck.type > 0">{{ deck.getType() }} deck &bull;</span>
+
+          <!-- User -->
+          <a ui-sref="app.user({username: deck.user })">
+            By {{ deck.user }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
