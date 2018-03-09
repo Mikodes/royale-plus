@@ -63,7 +63,12 @@ app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll
    * Page loaded completely
    */
   $rootScope.$on("$viewContentLoaded", function () {
+    
+    // Scroll up
     $anchorScroll();
+
+    // Close navbar
+    angular.element("#navbar").collapse("hide");
   });
 
   /**
