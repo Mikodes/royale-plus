@@ -15,7 +15,7 @@ app.service("Card", function (Main, Common) {
     this.type = type;
 
     function constructor() {
-      self.image = "http://www.clashapi.xyz/images/cards/" + self.idName + ".png";
+      self.image = "//www.clashapi.xyz/images/cards/" + self.idName + ".png";
       self.typeSort = Main.sorts.type[self.type];
       self.raritySort = Main.sorts.rarity[self.rarity];
     }
