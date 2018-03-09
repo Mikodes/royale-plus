@@ -29,6 +29,7 @@ After creating the virtual env with python3, run the commands below.
 
 ```bash
 > pip install -r requirements.txt
+> python manage.py migrate
 > python manage.py runserver
 ```
 
