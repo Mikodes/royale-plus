@@ -77,5 +77,5 @@ class User(AbstractBaseUser):
     class Meta:
         verbose_name = _('User')
         verbose_name_plural = _('Users')
-        get_latest_by = "date_joined"
+        get_latest_by = 'date_joined'
         ordering = ['-date_joined', ]
