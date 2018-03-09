@@ -21,6 +21,11 @@ app.controller("SettingsController", function (Auth, API, toaster, $scope, $stat
   $scope.update = function (form) {
     form.loading = true;
 
+    // Remove hash from player tag
+    if (form.data.member.indexOf("#") !== -1) {
+      form.data.member = form.data.member.replace("#", "");
+    }
+
     API.Settings.put({}, form.data,
       function (data) {
         form.loading = false;
