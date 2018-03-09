@@ -21,7 +21,7 @@ app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProv
   $resourceProvider.defaults.stripTrailingSlashes = false;
   $httpProvider.interceptors.push("AuthInterceptor");
   $locationProvider.hashPrefix("!");
-  $disqusProvider.setShortname("royale-plus");
+  $disqusProvider.setShortname(ENV.DISQUS_SHORTNAME);
 
   AnalyticsProvider.setAccount(ENV.GOOGLE_ANALYTICS_ID);
   AnalyticsProvider.trackPages(true);
@@ -32,17 +32,17 @@ app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProv
 /**
  * App run
  */
-app.run(function (Auth, toaster, $state, $window, $rootScope, $anchorScroll) {
+app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll) {
 
   /**
    * @type {string}
    */
-  $rootScope.version = "1.0.0";
+  $rootScope.version = ENV.VERSION;
 
   /**
    * @type {string}
    */
-  $rootScope.tag = "#2Y2C9RCJ";
+  $rootScope.tag = ENV.CLAN_TAG;
 
   /**
    * @type {string}
@@ -52,7 +52,7 @@ app.run(function (Auth, toaster, $state, $window, $rootScope, $anchorScroll) {
   /**
    * @type {string}
    */
-  $rootScope.github = "https://github.com/AmirSavand/royale-plus";
+  $rootScope.github = ENV.GITHUB;
 
   /**
    * @type {Date}
