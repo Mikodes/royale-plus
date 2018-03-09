@@ -1,5 +1,3 @@
-from typing import Optional
-
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser
 from django.utils.translation import ugettext_lazy as _
@@ -9,15 +7,15 @@ from django.utils import six, timezone
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username: str, password: Optional[str] = None, email=None):
+    def create_user(self, username: str, password: str, email: str):
         user = self.model(username=username, email=email)
         user.set_password(password)
         user.save()
 
         return user
 
-    def create_superuser(self, username: str, password: str):
-        user = self.create_user(username=username, password=password)
+    def create_superuser(self, username: str, password: str, email: str):
+        user = self.create_user(username=username, password=password, email=email)
         user.is_staff = True
         user.is_active = True
         user.save()
@@ -53,6 +51,10 @@ class User(AbstractBaseUser):
 
     USERNAME_FIELD = 'username'
     EMAIL_FIELD = 'email'
+
+    REQUIRED_FIELDS = [
+        'email',
+    ]
 
     def get_full_name(self):
         return self.username
