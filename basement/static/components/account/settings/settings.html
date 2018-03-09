@@ -15,42 +15,42 @@
           <div class="form-group" ng-class="{'has-danger': form.error.about}">
             <label class="text-secondary">About:</label>
             <textarea type="text" class="form-control" ng-model="form.data.about"></textarea>
-            <div class="form-control-feedback" ng-if="form.error.about">{{ form.error.about[0] }}</div>
+            <div class="form-control-feedback text-danger" ng-if="form.error.about">{{ form.error.about[0] }}</div>
           </div>
 
           <!-- Picture -->
           <div class="form-group" ng-class="{'has-danger': form.error.picture}">
             <label class="text-secondary">Picture URL:</label>
             <input type="text" class="form-control" ng-model="form.data.picture">
-            <div class="form-control-feedback" ng-if="form.error.picture">{{ form.error.picture[0] }}</div>
+            <div class="form-control-feedback text-danger" ng-if="form.error.picture">{{ form.error.picture[0] }}</div>
           </div>
 
           <!-- Member -->
           <div class="form-group" ng-class="{'has-danger': form.error.member}">
             <label class="text-secondary">Member Tag:</label>
             <input type="text" class="form-control" ng-model="form.data.member">
-            <div class="form-control-feedback" ng-if="form.error.member">{{ form.error.member[0] }}</div>
+            <div class="form-control-feedback text-danger" ng-if="form.error.member">{{ form.error.member[0] }}</div>
           </div>
 
           <!-- Email -->
           <div class="form-group" ng-class="{'has-danger': form.error.email}">
             <label class="text-secondary">Email:</label>
             <input type="email" class="form-control" ng-model="form.data.email">
-            <div class="form-control-feedback" ng-if="form.error.email">{{ form.error.email[0] }}</div>
+            <div class="form-control-feedback text-danger" ng-if="form.error.email">{{ form.error.email[0] }}</div>
           </div>
 
           <!-- Link -->
           <div class="form-group" ng-class="{'has-danger': form.error.link}">
             <label class="text-secondary">Link:</label>
             <input type="text" class="form-control" ng-model="form.data.link">
-            <div class="form-control-feedback" ng-if="form.error.link">{{ form.error.link[0] }}</div>
+            <div class="form-control-feedback text-danger" ng-if="form.error.link">{{ form.error.link[0] }}</div>
           </div>
 
           <!-- Nationality -->
           <div class="form-group" ng-class="{'has-danger': form.error.nationality}">
             <label class="text-secondary">Nationality:</label>
             <input type="text" class="form-control" ng-model="form.data.nationality">
-            <div class="form-control-feedback" ng-if="form.error.nationality">{{ form.error.nationality[0] }}</div>
+            <div class="form-control-feedback text-danger" ng-if="form.error.nationality">{{ form.error.nationality[0] }}</div>
           </div>
 
           <!-- Submit -->
