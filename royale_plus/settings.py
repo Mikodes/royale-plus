@@ -12,14 +12,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import datetime
 import os
 
+import dj_database_url
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'XXXX')
-DEBUG = os.environ.get('DJANGO_DEBUG', True)
-
-ALLOWED_HOSTS = [
-    os.environ.get('DJANGO_ALLOWED_HOST', '127.0.0.1')
-]
 
 # Application definition
 
@@ -76,15 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'royale_plus.wsgi.application'
 
-# Database
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # Password validation
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -137,3 +123,27 @@ JWT_AUTH = {
 AUTH_USER_MODEL = 'account.User'
 
 CORS_ORIGIN_WHITELIST = []
+
+ALLOWED_HOSTS = []
+
+# Base settings with dev as default
+
+PRODUCTION = os.environ.get('PRODUCTION', False)
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'XXXX')
+DEBUG = os.environ.get('DJANGO_DEBUG', True)
+ALLOWED_HOSTS.append(os.environ.get('DJANGO_ALLOWED_HOST', '127.0.0.1'))
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+# Production override settings
+
+if PRODUCTION:
+    MIDDLEWARE.append("whitenoise.middleware.WhiteNoiseMiddleware")
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600)
+    }
