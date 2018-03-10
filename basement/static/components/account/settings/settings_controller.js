@@ -22,7 +22,7 @@ app.controller("SettingsController", function (Auth, API, toaster, $scope, $stat
     form.loading = true;
 
     // Remove hash from player tag
-    if (form.data.member.indexOf("#") !== -1) {
+    if (form.data.member && form.data.member.indexOf("#") !== -1) {
       form.data.member = form.data.member.replace("#", "");
     }
 
