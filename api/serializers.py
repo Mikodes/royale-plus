@@ -73,7 +73,12 @@ class ActivitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Activity
-        fields = '__all__'
+        fields = [
+            'issuer',
+            'kind',
+            'content',
+            'created_since'
+        ]
 
 
 def jwt_response_payload_handler(token, user=None, request=None):
