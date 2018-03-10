@@ -38,6 +38,20 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
   };
 
   /**
+   * @name updateAuth
+   * @type {function}
+   *
+   * @param {object} user
+   */
+  this.updateAuth = function (user) {
+    localStorage.setItem("user", JSON.stringify(user));
+    if (token) {
+      localStorage.setItem("JWT", token);
+    }
+    $rootScope.$broadcast("royaleClan.Auth:updateAuth");
+  };
+
+  /**
    * @name unAuth
    */
   this.unAuth = function () {
