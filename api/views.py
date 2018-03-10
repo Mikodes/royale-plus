@@ -53,4 +53,18 @@ class DeckViewSet(viewsets.ModelViewSet):
         if user is not None:
             queryset = queryset.filter(user=User.objects.get(username=user))
 
+
+class ActivityViewSet(viewsets.ModelViewSet):
+    queryset = Activity.objects.all()
+    serializer_class = ActivitySerializer
+    filter_fields = ('issuer', 'kind',)
+    http_method_names = ('get',)
+
+    def get_queryset(self):
+        queryset = super(ActivityViewSet, self).get_queryset()
+        issuer = self.request.query_params.get('issuer', None)
+
+        if issuer is not None:
+            queryset = queryset.filter(issuer__username=issuer)
+
         return queryset.order_by('id')
