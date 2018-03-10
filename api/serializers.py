@@ -16,7 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'decks_count',
             'last_login',
-            'date_joined',
+            'joined',
             'is_active',
             'is_admin',
             'is_whatsapp',
