@@ -6,15 +6,13 @@ app.controller("MainController", function (ENV, Auth, API, $scope, $rootScope, $
    * Get user data
    */
   function getUserData() {
-
-    // Store data
-    $scope.auth = Auth;
-    $scope.user = Auth.getAuth();
-
-    // Update auth
     if (Auth.isAuth()) {
       API.Users.get({ username: Auth.getAuth().username }, function (data) {
-        Auth.updateAuth(data);
+        // Update data
+        Auth.updateAuth(data, false);
+        // Store data
+        $scope.auth = Auth;
+        $scope.user = Auth.getAuth();
       });
     }
   }
