@@ -12,8 +12,8 @@ ACTIVITY_KIND_CHOICES = (
 
 
 class Activity(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     kind = models.IntegerField(choices=ACTIVITY_KIND_CHOICES)
+    issuer = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.CharField(max_length=500)
     created = models.DateTimeField(auto_now=True, editable=False, db_index=True)
 
