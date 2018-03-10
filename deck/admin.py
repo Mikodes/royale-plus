@@ -11,12 +11,12 @@ class DeckAdmin(admin.ModelAdmin):
         'type',
         'cards',
         'avg_elixir',
-        'date_created',
+        'created',
     )
     list_filter = [
         'user',
         'type',
-        'date_created',
+        'created',
     ]
     search_fields = [
         'name',

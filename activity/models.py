@@ -15,7 +15,7 @@ class Activity(models.Model):
     type = models.IntegerField(choices=ACTIVITY_TYPE_CHOICES)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.CharField(max_length=500)
-    date_created = models.DateTimeField(default=timezone.now)
+    created = models.DateTimeField(auto_now=True, editable=False, db_index=True)
 
     class Meta:
         verbose_name = 'Activity'

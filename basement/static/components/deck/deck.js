@@ -165,7 +165,7 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
       this.name = data.name;
       this.cards = [];
       this.type = data.type;
-      this.date = new Date(data.date_created);
+      this.date = new Date(data.created);
 
       // Import cards
       var cards = data.cards.split(" ");

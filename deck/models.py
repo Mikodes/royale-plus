@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 from account.models import User
 
@@ -21,7 +20,7 @@ class Deck(models.Model):
     cards = models.CharField(max_length=200, blank=False, null=False)
     type = models.IntegerField(choices=DECK_TYPE_CHOICES)
     avg_elixir = models.FloatField(blank=False, null=False)
-    date_created = models.DateTimeField(default=timezone.now)
+    created = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __str__(self):
         return f"{self.name} ({DECK_TYPE_CHOICES[self.type][1]} - {self.avg_elixir})"

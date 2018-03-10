@@ -33,7 +33,7 @@ class User(AbstractBaseUser):
         error_messages={'unique': _("A user with that username already exists.")},
     )
 
-    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+    joined = models.DateTimeField(auto_now=True, editable=False)
     email = models.EmailField(max_length=254, unique=True)
     member = models.CharField(max_length=50, default=None, null=True, blank=True)
 
