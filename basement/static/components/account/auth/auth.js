@@ -9,6 +9,7 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
 
   /**
    * @name getAuth
+   * @type {function}
    * @returns {object|boolean}
    */
   this.getAuth = function () {
@@ -23,6 +24,7 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
 
   /**
    * @name setAuth
+   * @type {function}
    *
    * @param {object} user
    * @param {string} token
@@ -49,6 +51,7 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
 
   /**
    * @name isAuth
+   * @type {function}
    * @returns {boolean}
    */
   this.isAuth = function () {
@@ -60,6 +63,7 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
 
   /**
    * @name signIn
+   * @type {function}
    *
    * @param {string} username
    * @param {string} password
