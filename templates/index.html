@@ -46,7 +46,6 @@
   <script src="{% static 'lib/angular-disqus/angular-disqus.js' %}"></script>
   <script src="{% static 'lib/angular-modal-service/angular-modal-service.js' %}"></script>
   <script src="{% static 'lib/angular-ui-router/angular-ui-router.js' %}"></script>
-  <script src="{% static 'lib/angular-google-analytics/angular-google-analytics.js' %}"></script>
 
   <script src="{% static 'app.js' %}?v={{ version }}"></script>
   <script src="{% static 'app_directives.js' %}?v={{ version }}"></script>
@@ -81,6 +80,7 @@
 
   <script>
     app.constant("ENV", {
+      PRODUCTION: "{{ production }}" === "True",
       ROYALE_PLUS: "//{{ request.get_host }}/",
       CLASH_API: "//www.clashapi.xyz/api/",
       DISQUS_SHORTNAME: "royale-plus",
