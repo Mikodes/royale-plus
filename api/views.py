@@ -4,8 +4,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from api.serializers import UserSerializer, UserUpdateSerializer, DeckSerializer
 from account.models import User
+from activity.models import Activity
+from api.serializers import UserSerializer, UserUpdateSerializer, DeckSerializer, ActivitySerializer
 from deck.models import Deck
 
 
@@ -43,15 +44,17 @@ class UserUpdateView(generics.UpdateAPIView):
 class DeckViewSet(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
-    filter_fields = ('user', 'type',)
+    filter_fields = ('user', 'kind',)
     order_fields = ('avg_elixir',)
 
     def get_queryset(self):
-        queryset = Deck.objects.all()
+        queryset = super(DeckViewSet, self).get_queryset()
         user = self.request.query_params.get('user', None)
 
         if user is not None:
-            queryset = queryset.filter(user=User.objects.get(username=user))
+            queryset = queryset.filter(user__username=user)
+
+        return queryset.order_by('id')
 
 
 class ActivityViewSet(viewsets.ModelViewSet):
