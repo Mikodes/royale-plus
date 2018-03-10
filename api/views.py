@@ -1,5 +1,6 @@
 from rest_framework import viewsets, generics
 from rest_framework.exceptions import ValidationError
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -8,6 +9,10 @@ from account.models import User
 from activity.models import Activity
 from api.serializers import UserSerializer, UserUpdateSerializer, DeckSerializer, ActivitySerializer
 from deck.models import Deck
+
+
+class StandardPagination(PageNumberPagination):
+    page_size_query_param = 'limit'
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -62,6 +67,7 @@ class ActivityViewSet(viewsets.ModelViewSet):
     serializer_class = ActivitySerializer
     filter_fields = ('issuer', 'kind',)
     http_method_names = ('get',)
+    pagination_class = StandardPagination
 
     def get_queryset(self):
         queryset = super(ActivityViewSet, self).get_queryset()
