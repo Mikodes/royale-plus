@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timesince import timesince
 
 from account.models import User
 
@@ -19,3 +20,7 @@ class Activity(models.Model):
     class Meta:
         verbose_name = 'Activity'
         verbose_name_plural = 'Activities'
+
+    @property
+    def created_since(self):
+        return timesince(self.created)
