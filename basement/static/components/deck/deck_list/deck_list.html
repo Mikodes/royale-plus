@@ -64,7 +64,7 @@
         <div class="card-footer">
 
           <!-- Type -->
-          <span ng-if="deck.type > 0">{{ deck.getType() }} deck &bull;</span>
+          <span ng-if="deck.kind > 0">{{ deck.getKind() }} deck &bull;</span>
 
           <!-- User -->
           <a ui-sref="app.user({username: deck.user })">

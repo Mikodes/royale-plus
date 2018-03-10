@@ -24,7 +24,7 @@ app.constant("Main", {
     }
   },
   deck: {
-    type: [
+    kind: [
       "None",
       "Cycle",
       "Spell Bait",
