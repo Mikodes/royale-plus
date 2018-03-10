@@ -101,6 +101,7 @@ app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll
    * Changed state successfully
    */
   $rootScope.$on("$stateChangeStart", function () {
+
     // Analytics
     if (ENV.PRODUCTION) {
       $window.ga("send", "pageview", {
