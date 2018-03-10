@@ -28,5 +28,3 @@ class Deck(models.Model):
     class Meta:
         verbose_name = 'Deck'
         verbose_name_plural = 'Decks'
-        get_latest_by = 'date_created'
-        ordering = ['-date_created', ]

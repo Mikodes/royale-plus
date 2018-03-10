@@ -1,9 +1,8 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser
-from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator
 from django.db import models
-from django.utils import six, timezone
+from django.utils import six
 
 
 class UserManager(BaseUserManager):
@@ -30,7 +29,7 @@ class User(AbstractBaseUser):
         max_length=150,
         unique=True,
         validators=[username_validator],
-        error_messages={'unique': _("A user with that username already exists.")},
+        error_messages={'unique': "A user with that username already exists."},
     )
 
     joined = models.DateTimeField(auto_now=True, editable=False)
@@ -75,7 +74,5 @@ class User(AbstractBaseUser):
         return self.username
 
     class Meta:
-        verbose_name = _('User')
-        verbose_name_plural = _('Users')
-        get_latest_by = 'date_joined'
-        ordering = ['-date_joined', ]
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'

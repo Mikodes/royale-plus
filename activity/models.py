@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 from account.models import User
 
@@ -20,5 +19,3 @@ class Activity(models.Model):
     class Meta:
         verbose_name = 'Activity'
         verbose_name_plural = 'Activities'
-        get_latest_by = 'date_created'
-        ordering = ['-date_created', ]
