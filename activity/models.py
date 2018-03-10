@@ -3,7 +3,7 @@ from django.utils import timezone
 
 from account.models import User
 
-ACTIVITY_TYPE_CHOICES = (
+ACTIVITY_KIND_CHOICES = (
     (0, 'None'),
     (1, 'Update'),
     (2, 'User'),
@@ -12,8 +12,8 @@ ACTIVITY_TYPE_CHOICES = (
 
 
 class Activity(models.Model):
-    type = models.IntegerField(choices=ACTIVITY_TYPE_CHOICES)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    kind = models.IntegerField(choices=ACTIVITY_KIND_CHOICES)
     content = models.CharField(max_length=500)
     created = models.DateTimeField(auto_now=True, editable=False, db_index=True)
 

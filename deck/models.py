@@ -2,7 +2,7 @@ from django.db import models
 
 from account.models import User
 
-DECK_TYPE_CHOICES = (
+DECK_KIND_CHOICES = (
     (0, 'None'),
     (1, 'Cycle'),
     (2, 'Spell Bait'),
@@ -18,12 +18,12 @@ class Deck(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=False, null=False)
     cards = models.CharField(max_length=200, blank=False, null=False)
-    type = models.IntegerField(choices=DECK_TYPE_CHOICES)
+    kind = models.IntegerField(choices=DECK_KIND_CHOICES)
     avg_elixir = models.FloatField(blank=False, null=False)
     created = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __str__(self):
-        return f"{self.name} ({DECK_TYPE_CHOICES[self.type][1]} - {self.avg_elixir})"
+        return f"{self.name} ({DECK_KIND_CHOICES[self.kind][1]} - {self.avg_elixir})"
 
     class Meta:
         verbose_name = 'Deck'
