@@ -63,7 +63,7 @@ class DeckSerializer(serializers.ModelSerializer):
             user=self.context['request'].user,
             name=validated_data['name'],
             cards=validated_data['cards'],
-            type=validated_data['kind'],
+            kind=validated_data['kind'],
             avg_elixir=validated_data['avg_elixir'],
         )
 
