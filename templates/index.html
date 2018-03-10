@@ -29,6 +29,17 @@
     </p>
   <![endif]-->
 
+  <!-- Google analytics -->
+  <script>
+    ! function(A, n, g, u, l, a, r) {
+      A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+          (A[l].q = A[l].q || []).push(arguments)
+        }, A[l].l = +new Date, a = n.createElement(g),
+        r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
+    ga("create", "UA-115461778-1");
+  </script>
+
   <ng-include src="'{% static 'components/main/main.html' %}'" ng-controller="MainController"></ng-include>
 
   <ui-view></ui-view>
@@ -46,7 +57,6 @@
   <script src="{% static 'lib/angular-disqus/angular-disqus.js' %}"></script>
   <script src="{% static 'lib/angular-modal-service/angular-modal-service.js' %}"></script>
   <script src="{% static 'lib/angular-ui-router/angular-ui-router.js' %}"></script>
-  <script src="{% static 'lib/angular-google-analytics/angular-google-analytics.js' %}"></script>
 
   <script src="{% static 'app.js' %}?v={{ version }}"></script>
   <script src="{% static 'app_directives.js' %}?v={{ version }}"></script>
@@ -81,6 +91,7 @@
 
   <script>
     app.constant("ENV", {
+      PRODUCTION: "{{ production }}" === "True",
       ROYALE_PLUS: "//{{ request.get_host }}/",
       CLASH_API: "//www.clashapi.xyz/api/",
       DISQUS_SHORTNAME: "royale-plus",

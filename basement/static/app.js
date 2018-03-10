@@ -7,7 +7,6 @@ var app = angular.module("royalePlus", [
   "ngResource",
   "ngDisqus",
   "ui.router",
-  "angular-google-analytics",
   "angularModalService",
   "toaster"
 ]);
@@ -15,18 +14,12 @@ var app = angular.module("royalePlus", [
 /**
  * App config
  */
-app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProvider, $disqusProvider,
-  AnalyticsProvider, ENV) {
+app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProvider, $disqusProvider, ENV) {
   $qProvider.errorOnUnhandledRejections(false);
   $resourceProvider.defaults.stripTrailingSlashes = false;
   $httpProvider.interceptors.push("AuthInterceptor");
   $locationProvider.hashPrefix("!");
-  $disqusProvider.setShortname(ENV.DISQUS_SHORTNAME);
-
-  AnalyticsProvider.setAccount(ENV.GOOGLE_ANALYTICS_ID);
-  AnalyticsProvider.trackPages(true);
-  AnalyticsProvider.trackUrlParams(true);
-  AnalyticsProvider.setPageEvent("$stateChangeSuccess");
+  $disqusProvider.setShortname(ENV.DISQUS_SHORTNAME)
 });
 
 /**
@@ -101,6 +94,19 @@ app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll
           toaster.error("Opps!", "You can not access that page.");
         }
       }
+    }
+  });
+
+  /**
+   * Changed state successfully
+   */
+  $rootScope.$on("$stateChangeStart", function () {
+
+    // Analytics
+    if (ENV.PRODUCTION) {
+      $window.ga("send", "pageview", {
+        page: $location.url()
+      });
     }
   });
 });
