@@ -23,7 +23,7 @@ class Deck(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __str__(self):
-        return f"{self.name} ({DECK_KIND_CHOICES[self.kind][1]} - {self.avg_elixir})"
+        return f"{self.name} ({DECK_KIND_CHOICES[self.type][1]} - {self.avg_elixir})"
 
     class Meta:
         verbose_name = 'Deck'
