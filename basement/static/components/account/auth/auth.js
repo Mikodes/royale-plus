@@ -43,12 +43,11 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
    *
    * @param {object} user
    */
-  this.updateAuth = function (user) {
+  this.updateAuth = function (user, broadcast) {
     localStorage.setItem("user", JSON.stringify(user));
-    if (token) {
-      localStorage.setItem("JWT", token);
+    if (broadcast) {
+      $rootScope.$broadcast("royaleClan.Auth:updateAuth");
     }
-    $rootScope.$broadcast("royaleClan.Auth:updateAuth");
   };
 
   /**
