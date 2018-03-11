@@ -24,7 +24,7 @@
       <div class="card bg-pattern text-white">
         <div class="card-body">
           <card ng-repeat="card in deck.cards"
-            ng-include="'static/components/card/card_include.html'"
+            ng-include="static('components/card/card_include.html')"
             ng-click="card.view()">
           </card>
         </div>
