@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("HomeController", function (Member, Deck, Card, API, $scope) {
+app.controller("HomeController", function (Account, Member, Deck, Card, API, $scope) {
 
   function constructor() {
 
@@ -8,6 +8,11 @@ app.controller("HomeController", function (Member, Deck, Card, API, $scope) {
      * @type {Deck}
      */
     $scope.deck = new Deck("Generated Deck", []);
+
+    /**
+     * @type {Array<Account>}
+     */
+    $scope.users = [];
 
     /**
      * @type {Array<Member>}
@@ -22,8 +27,10 @@ app.controller("HomeController", function (Member, Deck, Card, API, $scope) {
     });
 
     // Get users
-    API.Users.get({}, function (data) {
-      $scope.users = data.results;
+    API.Users.get({ limit: 10 }, function (data) {
+      angular.forEach(data.results, function (result) {
+        $scope.users.push(new Account(result));
+      });
     });
 
     // Get random deck
