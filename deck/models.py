@@ -28,3 +28,4 @@ class Deck(models.Model):
     class Meta:
         verbose_name = 'Deck'
         verbose_name_plural = 'Decks'
+        ordering = ['-id']

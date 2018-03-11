@@ -29,3 +29,4 @@ class Activity(models.Model):
     class Meta:
         verbose_name = 'Activity'
         verbose_name_plural = 'Activities'
+        ordering = ['-id']
