@@ -4,8 +4,8 @@ app.service("Activity", function (Main) {
   return function (data) {
 
     var activityKindIcon = [
-      "info-circle",
-      "upload",
+      "flag",
+      "info",
       "user-plus",
       "cube"
     ]
