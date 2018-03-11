@@ -17,6 +17,7 @@ class StandardPagination(PageNumberPagination):
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
+    pagination_class = StandardPagination
     serializer_class = UserSerializer
     lookup_field = 'username'
     http_method_names = ('get', 'post',)
@@ -29,6 +30,7 @@ class UserCreateView(generics.CreateAPIView):
 
 class UserUpdateView(generics.UpdateAPIView):
     serializer_class = UserUpdateSerializer
+    pagination_class = StandardPagination
     permission_classes = (IsAuthenticated,)
 
     def put(self, request: Request) -> Response:
