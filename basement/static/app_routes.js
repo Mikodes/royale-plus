@@ -10,7 +10,7 @@ app.config(function (ENV, $stateProvider, $urlRouterProvider) {
    * @type {function}
    */
   function comp(url) {
-    return "static/components/" + ENV.VERSION;
+    return "static/components/" + url + "?v=" + ENV.VERSION;
   }
 
   $stateProvider.state("app", {
