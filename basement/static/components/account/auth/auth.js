@@ -34,7 +34,7 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
     if (token) {
       localStorage.setItem("JWT", token);
     }
-    $rootScope.$broadcast("royaleClan.Auth:setAuth");
+    $rootScope.$broadcast("royalePlus.Auth:setAuth");
   };
 
   /**
@@ -46,7 +46,7 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
   this.updateAuth = function (user, broadcast) {
     localStorage.setItem("user", JSON.stringify(user));
     if (broadcast) {
-      $rootScope.$broadcast("royaleClan.Auth:updateAuth");
+      $rootScope.$broadcast("royalePlus.Auth:updateAuth");
     }
   };
 
@@ -59,7 +59,7 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
     }
     localStorage.removeItem("JWT");
     localStorage.removeItem("user");
-    $rootScope.$broadcast("royaleClan.Auth:unAuth");
+    $rootScope.$broadcast("royalePlus.Auth:unAuth");
   };
 
   /**

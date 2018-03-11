@@ -34,7 +34,7 @@ app.controller("SettingsController", function (Auth, API, toaster, $scope, $root
         toaster.info("Updated", "Your pofile settings are updated.");
 
         // Broadcast user update
-        $rootScope.$broadcast("royaleClan.Auth:updateAuth");
+        $rootScope.$broadcast("royalePlus.Auth:updateAuth");
       },
       function (data) {
         form.loading = false;

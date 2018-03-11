@@ -30,15 +30,15 @@ app.controller("MainController", function (ENV, Auth, API, $scope, $rootScope, $
       API.Cards.query({}, function (data) {
         localStorage.setItem("cards", JSON.stringify(data));
         localStorage.setItem("version", ENV.VERSION_STORAGE);
-        $rootScope.$broadcast("royaleClan.MainController:loadedCards", data);
+        $rootScope.$broadcast("royalePlus.MainController:loadedCards", data);
       });
     }
   }
 
   // Update user data
-  $scope.$on("royaleClan.Auth:setAuth", getUserData);
-  $scope.$on("royaleClan.Auth:updateAuth", getUserData);
-  $scope.$on("royaleClan.Auth:unAuth", getUserData);
+  $scope.$on("royalePlus.Auth:setAuth", getUserData);
+  $scope.$on("royalePlus.Auth:updateAuth", getUserData);
+  $scope.$on("royalePlus.Auth:unAuth", getUserData);
 
   constructor();
 });
