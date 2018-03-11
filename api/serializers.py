@@ -75,6 +75,7 @@ class ActivitySerializer(serializers.ModelSerializer):
         model = Activity
         fields = [
             'issuer',
+            'issued',
             'kind',
             'content',
             'created_since'

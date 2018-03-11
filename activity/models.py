@@ -12,15 +12,20 @@ ACTIVITY_KIND_CHOICES = (
 
 
 class Activity(models.Model):
+    """
+    Issuer is usually the user (cause of activity)
+    Issued is the primary key of the manipulated object
+    """
     kind = models.IntegerField(choices=ACTIVITY_KIND_CHOICES)
     issuer = models.ForeignKey(User, on_delete=models.CASCADE)
+    issued = models.CharField(max_length=100, default=None, blank=True, null=True)
     content = models.CharField(max_length=500)
     created = models.DateTimeField(auto_now=True, editable=False, db_index=True)
-
-    class Meta:
-        verbose_name = 'Activity'
-        verbose_name_plural = 'Activities'
 
     @property
     def created_since(self):
         return timesince(self.created)
+
+    class Meta:
+        verbose_name = 'Activity'
+        verbose_name_plural = 'Activities'

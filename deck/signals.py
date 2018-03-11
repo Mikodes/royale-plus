@@ -10,6 +10,7 @@ def create_user(sender, instance, created, **kwargs):
     if created:
         Activity.objects.create(
             issuer=instance.user,
+            issued=instance.id,
             content=f'built a {instance.avg_elixir} elixir deck',
             kind=3,
         )
