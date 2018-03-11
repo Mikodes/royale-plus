@@ -33,6 +33,11 @@ app.controller("HomeController", function (Account, Member, Deck, Card, API, $sc
       });
     });
 
+    // Get activities
+    API.Activities.get({ limit: 20 }, function (data) {
+      $scope.activities = data.results;
+    });
+
     // Get random deck
     $scope.generateDeck();
   }

@@ -12,7 +12,7 @@
     <!-- Left side -->
     <div class="col-lg-5">
 
-      <!-- Users -->
+      <!-- New Users -->
       <div class="card my-4 bg-dark text-white">
         <div class="card-header py-4">
           New Users <i class="fas fa-fw o-fade float-right fa-user-plus"></i>
@@ -99,6 +99,28 @@
               </button>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Recent Activities -->
+      <div class="card my-4 bg-dark text-white">
+        <div class="card-header py-4">
+          Recent Activities <i class="fas fa-fw o-fade float-right fa-flag"></i>
+        </div>
+        <div class="list-group list-group-flush text-dark">
+          <!-- Activity -->
+          <div class="list-group-item" ng-repeat="activity in activities">
+            <!-- Issuer -->
+            {{ activity.issuer }}
+            <!-- Content -->
+            {{ activity.content }}
+            <!-- Time since -->
+            <small class="text-secondary">{{ activity.created_since }} ago.</small>
+          </div>
+        </div>
+        <!-- Loading -->
+        <div class="card-body text-center bg-white py-5" ng-if="!users">
+          <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
         </div>
       </div>
 
