@@ -2,9 +2,10 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from api.urls import router
+from royale_plus.settings import ADMIN_URL
 
 urlpatterns = (
-    url(r'^admin/', admin.site.urls),
+    url(ADMIN_URL, admin.site.urls),
     url(r'^crapi/', include('crapi.urls')),
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls')),
