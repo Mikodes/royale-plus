@@ -10,7 +10,7 @@
   <meta name="author" content="Amir Savand">
 
   <title>Royale Plus</title>
-  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}" />
+  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}?v={{ version }}" />
 
   <link rel="stylesheet" href="{% static 'lib/bootstrap/bootstrap.css' %}" />
   <link rel="stylesheet" href="{% static 'lib/fontawesome/fontawesome.css' %}" />
@@ -29,11 +29,13 @@
     </p>
   <![endif]-->
 
-  <ng-include src="'{% static 'components/main/main.html' %}'" ng-controller="MainController"></ng-include>
+  <ng-include src="'{% static 'components/main/main.html' %}?v={{ version }}'"
+    ng-controller="MainController">
+  </ng-include>
 
   <ui-view></ui-view>
 
-  <ng-include src="'{% static 'components/main/footer.html' %}'"></ng-include>
+  <ng-include src="'{% static 'components/main/footer.html' %}?v={{ version }}'"></ng-include>
 
   <script src="{% static 'lib/jquery/jquery.js' %}"></script>
   <script src="{% static 'lib/popper/popper.js' %}"></script>
