@@ -34,5 +34,13 @@ app.constant("Main", {
       "Control",
       "Siege"
     ]
+  },
+  activity: {
+    kind: [
+      "None",
+      "Update",
+      "User",
+      "Deck"
+    ]
   }
 });

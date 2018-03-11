@@ -1,0 +1,23 @@
+<!-- Icon -->
+<span class="fa-circle">
+  <i class="fas fa-fw circle fa-{{ activity.getIcon() }}"></i>
+</span>
+
+<!-- Issuer -->
+<span ng-if="!activity.hasUser()">{{ activity.get.issuer }}</span>
+
+<!-- Issuer (user) -->
+<span ng-if="activity.hasUser()">
+  <a ui-sref="app.user({username: activity.get.issuer})">{{ activity.get.issuer }}</a>
+</span>
+
+<!-- Content -->
+{{ activity.get.content }}.
+
+<!-- Issued -->
+<a ng-if="activity.getKind() === 'Deck'" class="btn btn-sm btn-light text-primary"
+  ui-sref="app.deck({id: activity.get.issued})"> View
+</a>
+
+<!-- Time since -->
+<small class="text-secondary float-right mt-1">{{ activity.get.created_since }} ago</small>

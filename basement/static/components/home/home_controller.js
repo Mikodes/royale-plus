@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("HomeController", function (Account, Member, Deck, Card, API, $scope) {
+app.controller("HomeController", function (Account, Member, Activity, Deck, Card, API, $scope) {
 
   function constructor() {
 
@@ -19,6 +19,11 @@ app.controller("HomeController", function (Account, Member, Deck, Card, API, $sc
      */
     $scope.members = [];
 
+    /**
+     * @type {Array<Activity>}
+     */
+    $scope.activities = [];
+
     // Get members
     API.Clan.get({ keys: "members" }, function (data) {
       angular.forEach(data.members, function (member) {
@@ -35,7 +40,9 @@ app.controller("HomeController", function (Account, Member, Deck, Card, API, $sc
 
     // Get activities
     API.Activities.get({ limit: 20 }, function (data) {
-      $scope.activities = data.results;
+      angular.forEach(data.results, function (result) {
+        $scope.activities.push(new Activity(result));
+      });
     });
 
     // Get random deck

@@ -110,12 +110,7 @@
         <div class="list-group list-group-flush text-dark">
           <!-- Activity -->
           <div class="list-group-item" ng-repeat="activity in activities">
-            <!-- Issuer -->
-            {{ activity.issuer }}
-            <!-- Content -->
-            {{ activity.content }}
-            <!-- Time since -->
-            <small class="text-secondary">{{ activity.created_since }} ago.</small>
+            <ng-include src="'static/components/activity/activity_include.html'"></ng-include>
           </div>
         </div>
         <!-- Loading -->
