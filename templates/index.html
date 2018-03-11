@@ -48,7 +48,6 @@
   <script src="{% static 'lib/angular-disqus/angular-disqus.js' %}"></script>
   <script src="{% static 'lib/angular-modal-service/angular-modal-service.js' %}"></script>
   <script src="{% static 'lib/angular-ui-router/angular-ui-router.js' %}"></script>
-  <script src="{% static 'lib/angular-google-analytics/angular-google-analytics.js' %}"></script>
 
   <script src="{% static 'app.js' %}?v={{ version }}"></script>
   <script src="{% static 'app_directives.js' %}?v={{ version }}"></script>
@@ -86,6 +85,7 @@
 
   <script>
     app.constant("ENV", {
+      PRODUCTION: "{{ production }}" === "True",
       ROYALE_PLUS: "//{{ request.get_host }}/",
       CLASH_API: "//www.clashapi.xyz/api/",
       DISQUS_SHORTNAME: "royale-plus",
@@ -95,6 +95,15 @@
       CLAN_TAG: "#2Y2C9RCJ",
       GITHUB: "https://github.com/AmirSavand/royale-plus"
     });
+  </script>
+
+  <!-- Google analytics -->
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-115461778-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "UA-115461778-1");
   </script>
 </body>
 
