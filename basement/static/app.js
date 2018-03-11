@@ -105,7 +105,7 @@ app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll
     // Analytics
     if (ENV.PRODUCTION) {
       $window.ga("send", "pageview", {
-        page: $location.url()
+        page: $window.location.url()
       });
     }
   });
