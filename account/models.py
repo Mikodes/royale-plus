@@ -5,6 +5,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import six
+from django.utils.timesince import timesince
 
 
 class UserManager(BaseUserManager):
@@ -56,6 +57,10 @@ class User(AbstractBaseUser):
     REQUIRED_FIELDS = [
         'email',
     ]
+
+    @property
+    def joined_since(self):
+        return timesince(self.joined)
 
     def get_full_name(self):
         return self.username
