@@ -52,7 +52,6 @@ class DeckViewSet(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
     filter_fields = ('user', 'kind',)
-    order_fields = ('avg_elixir',)
 
     def get_queryset(self):
         queryset = super(DeckViewSet, self).get_queryset()
@@ -61,7 +60,7 @@ class DeckViewSet(viewsets.ModelViewSet):
         if user is not None:
             queryset = queryset.filter(user__username=user)
 
-        return queryset.order_by('id')
+        return queryset
 
 
 class ActivityViewSet(viewsets.ModelViewSet):
@@ -78,4 +77,4 @@ class ActivityViewSet(viewsets.ModelViewSet):
         if issuer is not None:
             queryset = queryset.filter(issuer__username=issuer)
 
-        return queryset.order_by('id')
+        return queryset
