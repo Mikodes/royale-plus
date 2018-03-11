@@ -9,6 +9,6 @@ app.service("Account", function (ENV) {
 
     this.username = this.get.username;
 
-    this.image = this.get.image || defaultImage;
+    this.picture = this.get.picture || defaultImage;
   };
 });

@@ -22,7 +22,7 @@
           <a class="list-group-item" ng-repeat="user in users"
             ui-sref="app.user({username: user.username, user: user.get})">
             <!-- User image -->
-            <img ng-src="{{ user.image }}" class="user-image" width="48px">
+            <img ng-src="{{ user.picture }}" class="user-image" width="48px">
             <!-- User name -->
             {{ user.username }}
             <!-- User joined since -->
