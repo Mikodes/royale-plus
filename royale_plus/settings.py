@@ -132,6 +132,7 @@ ALLOWED_HOSTS = []
 # Base settings with dev as default
 
 PRODUCTION = os.environ.get('PRODUCTION', False)
+ADMIN_URL = os.environ.get('ADMIN_URL', r'^admin/')
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'XXXX')
 DEBUG = os.environ.get('DJANGO_DEBUG', True)
 ALLOWED_HOSTS.append(os.environ.get('DJANGO_ALLOWED_HOST', '127.0.0.1'))
