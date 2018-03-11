@@ -24,7 +24,7 @@ app.constant("Main", {
     }
   },
   deck: {
-    type: [
+    kind: [
       "None",
       "Cycle",
       "Spell Bait",
@@ -33,6 +33,14 @@ app.constant("Main", {
       "Three Crowns",
       "Control",
       "Siege"
+    ]
+  },
+  activity: {
+    kind: [
+      "None",
+      "Update",
+      "User",
+      "Deck"
     ]
   }
 });

@@ -10,7 +10,7 @@
   <meta name="author" content="Amir Savand">
 
   <title>Royale Plus</title>
-  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}" />
+  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}?v={{ version }}" />
 
   <link rel="stylesheet" href="{% static 'lib/bootstrap/bootstrap.css' %}" />
   <link rel="stylesheet" href="{% static 'lib/fontawesome/fontawesome.css' %}" />
@@ -29,21 +29,13 @@
     </p>
   <![endif]-->
 
-  <!-- Google analytics -->
-  <script async src="//www.googletagmanager.com/gtag/js?id=UA-115461778-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag("js", new Date());
-    gtag("config", "UA-115461778-1");
-  </script>
-
-
-  <ng-include src="'{% static 'components/main/main.html' %}'" ng-controller="MainController"></ng-include>
+  <ng-include src="'{% static 'components/main/main.html' %}?v={{ version }}'"
+    ng-controller="MainController">
+  </ng-include>
 
   <ui-view></ui-view>
 
-  <ng-include src="'{% static 'components/main/footer.html' %}'"></ng-include>
+  <ng-include src="'{% static 'components/main/footer.html' %}?v={{ version }}'"></ng-include>
 
   <script src="{% static 'lib/jquery/jquery.js' %}"></script>
   <script src="{% static 'lib/popper/popper.js' %}"></script>
@@ -75,6 +67,8 @@
 
   <script src="{% static 'components/card/card.js' %}?v={{ version }}"></script>
 
+  <script src="{% static 'components/activity/activity.js' %}?v={{ version }}"></script>
+
   <script src="{% static 'components/member/member.js' %}?v={{ version }}"></script>
   <script src="{% static 'components/member/member_controller.js' %}?v={{ version }}"></script>
 
@@ -83,6 +77,7 @@
   <script src="{% static 'components/deck/deck_new/deck_new_controller.js' %}?v={{ version }}"></script>
   <script src="{% static 'components/deck/deck_list/deck_list_controller.js' %}?v={{ version }}"></script>
 
+  <script src="{% static 'components/account/account.js' %}?v={{ version }}"></script>
   <script src="{% static 'components/account/auth/auth.js' %}?v={{ version }}"></script>
   <script src="{% static 'components/account/auth/auth_interceptor.js' %}?v={{ version }}"></script>
   <script src="{% static 'components/account/signup/signup_controller.js' %}?v={{ version }}"></script>
@@ -100,6 +95,15 @@
       CLAN_TAG: "#2Y2C9RCJ",
       GITHUB: "https://github.com/AmirSavand/royale-plus"
     });
+  </script>
+
+  <!-- Google analytics -->
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-115461778-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "UA-115461778-1");
   </script>
 </body>
 

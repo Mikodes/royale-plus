@@ -9,6 +9,7 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
 
   /**
    * @name getAuth
+   * @type {function}
    * @returns {object|boolean}
    */
   this.getAuth = function () {
@@ -23,6 +24,7 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
 
   /**
    * @name setAuth
+   * @type {function}
    *
    * @param {object} user
    * @param {string} token
@@ -32,7 +34,20 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
     if (token) {
       localStorage.setItem("JWT", token);
     }
-    $rootScope.$broadcast("royaleClan.Auth:setAuth");
+    $rootScope.$broadcast("royalePlus.Auth:setAuth");
+  };
+
+  /**
+   * @name updateAuth
+   * @type {function}
+   *
+   * @param {object} user
+   */
+  this.updateAuth = function (user, broadcast) {
+    localStorage.setItem("user", JSON.stringify(user));
+    if (broadcast) {
+      $rootScope.$broadcast("royalePlus.Auth:updateAuth");
+    }
   };
 
   /**
@@ -44,11 +59,12 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
     }
     localStorage.removeItem("JWT");
     localStorage.removeItem("user");
-    $rootScope.$broadcast("royaleClan.Auth:unAuth");
+    $rootScope.$broadcast("royalePlus.Auth:unAuth");
   };
 
   /**
    * @name isAuth
+   * @type {function}
    * @returns {boolean}
    */
   this.isAuth = function () {
@@ -60,6 +76,7 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
 
   /**
    * @name signIn
+   * @type {function}
    *
    * @param {string} username
    * @param {string} password

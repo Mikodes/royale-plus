@@ -8,15 +8,15 @@ class DeckAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'user',
-        'type',
+        'kind',
         'cards',
         'avg_elixir',
-        'date_created',
+        'created',
     )
     list_filter = [
         'user',
-        'type',
-        'date_created',
+        'kind',
+        'created',
     ]
     search_fields = [
         'name',

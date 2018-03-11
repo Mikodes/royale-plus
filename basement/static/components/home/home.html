@@ -12,16 +12,21 @@
     <!-- Left side -->
     <div class="col-lg-5">
 
-      <!-- Users -->
+      <!-- New Users -->
       <div class="card my-4 bg-dark text-white">
         <div class="card-header py-4">
-          Users <i class="fas fa-fw o-fade float-right fa-users"></i>
+          New Users <i class="fas fa-fw o-fade float-right fa-user-plus"></i>
         </div>
         <div class="list-group list-group-flush">
-          <a class="list-group-item"
-            ui-sref="app.user({username: user.username, user: user})"
-            ng-repeat="user in users">
+          <!-- User link -->
+          <a class="list-group-item" ng-repeat="user in users"
+            ui-sref="app.user({username: user.username, user: user.get})">
+            <!-- User image -->
+            <img ng-src="{{ user.image }}" class="user-image" width="48px">
+            <!-- User name -->
             {{ user.username }}
+            <!-- User joined since -->
+            <small class="text-secondary float-right mt-2">{{ user.get.joined_since }} ago</small>
           </a>
         </div>
         <!-- Loading -->
@@ -94,6 +99,23 @@
               </button>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Recent Activities -->
+      <div class="card my-4 bg-dark text-white">
+        <div class="card-header py-4">
+          Recent Activities <i class="fas fa-fw o-fade float-right fa-flag"></i>
+        </div>
+        <div class="list-group list-group-flush text-dark">
+          <!-- Activity -->
+          <div class="list-group-item" ng-repeat="activity in activities">
+            <ng-include src="'static/components/activity/activity_include.html'"></ng-include>
+          </div>
+        </div>
+        <!-- Loading -->
+        <div class="card-body text-center bg-white py-5" ng-if="!users">
+          <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
         </div>
       </div>
 

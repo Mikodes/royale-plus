@@ -1,7 +1,7 @@
 "use strict";
 
 app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
-  return function (name, cards, type) {
+  return function (name, cards, kind) {
 
     /**
      * @type {number}
@@ -26,7 +26,7 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
     /**
      * @type {number}
      */
-    this.type = type || 0;
+    this.kind = kind || 0;
 
     /**
      * @type {Date}
@@ -39,8 +39,8 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
      * @type {function}
      * @returns {string}
      */
-    this.getType = function () {
-      return Main.deck.type[this.type];
+    this.getKind = function () {
+      return Main.deck.kind[this.kind];
     };
 
     /**
@@ -145,7 +145,7 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
       }
       return {
         name: this.name,
-        type: this.type,
+        kind: this.kind,
         avg_elixir: this.getAvgElixir(),
         cards: exportedCards.join(" "),
       };
@@ -164,8 +164,8 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
       this.user = data.user;
       this.name = data.name;
       this.cards = [];
-      this.type = data.type;
-      this.date = new Date(data.date_created);
+      this.kind = data.kind;
+      this.date = new Date(data.created);
 
       // Import cards
       var cards = data.cards.split(" ");

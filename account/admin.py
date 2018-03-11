@@ -12,7 +12,7 @@ class UserAdmin(admin.ModelAdmin):
         'is_active'
     )
     list_filter = [
-        'date_joined',
+        'joined',
         'is_admin',
         'is_whatsapp',
     ]

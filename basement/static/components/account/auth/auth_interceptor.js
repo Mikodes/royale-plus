@@ -30,7 +30,7 @@ app.factory("AuthInterceptor", function ($rootScope, $q, ENV) {
    */
   function responseError(response) {
     if (response.status === 403) {
-      $rootScope.$broadcast("royaleClan.Auth:unAuth");
+      $rootScope.$broadcast("royalePlus.Auth:unAuth");
     }
     return $q.reject(response);
   }

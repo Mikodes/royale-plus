@@ -17,6 +17,9 @@ app.service("API", function (ENV, $resource) {
     name: "Settings",
     endpoint: "api/settings/" // PUT
   }, {
+    name: "Activities",
+    endpoint: "api/activities/" // GET
+  }, {
     name: "Clan",
     endpoint: "crapi/clan/" // GET
   }, {

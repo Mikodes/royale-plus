@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("SettingsController", function (Auth, API, toaster, $scope, $state) {
+app.controller("SettingsController", function (Auth, API, toaster, $scope, $rootScope, $state) {
 
   var user = Auth.getAuth();
 
@@ -22,7 +22,7 @@ app.controller("SettingsController", function (Auth, API, toaster, $scope, $stat
     form.loading = true;
 
     // Remove hash from player tag
-    if (form.data.member.indexOf("#") !== -1) {
+    if (form.data.member && form.data.member.indexOf("#") !== -1) {
       form.data.member = form.data.member.replace("#", "");
     }
 
@@ -32,6 +32,9 @@ app.controller("SettingsController", function (Auth, API, toaster, $scope, $stat
         form.error = null;
         form.data = data;
         toaster.info("Updated", "Your pofile settings are updated.");
+
+        // Broadcast user update
+        $rootScope.$broadcast("royalePlus.Auth:updateAuth");
       },
       function (data) {
         form.loading = false;

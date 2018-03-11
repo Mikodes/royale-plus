@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from account.models import User
+from activity.models import Activity
 from deck.models import Deck
 
 
@@ -15,7 +16,8 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'decks_count',
             'last_login',
-            'date_joined',
+            'joined',
+            'joined_since',
             'is_active',
             'is_admin',
             'is_whatsapp',
@@ -62,9 +64,23 @@ class DeckSerializer(serializers.ModelSerializer):
             user=self.context['request'].user,
             name=validated_data['name'],
             cards=validated_data['cards'],
-            type=validated_data['type'],
+            kind=validated_data['kind'],
             avg_elixir=validated_data['avg_elixir'],
         )
+
+
+class ActivitySerializer(serializers.ModelSerializer):
+    issuer = serializers.StringRelatedField()
+
+    class Meta:
+        model = Activity
+        fields = [
+            'issuer',
+            'issued',
+            'kind',
+            'content',
+            'created_since'
+        ]
 
 
 def jwt_response_payload_handler(token, user=None, request=None):

@@ -1,7 +1,7 @@
 "use strict";
 
 app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toaster,
-  $scope, $state, $stateParams, $http, $window) {
+  $scope, $rootScope, $state, $stateParams, $http, $window) {
 
   /**
    * Set dynamic width of card slots
@@ -55,8 +55,8 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
       return false;
     }
     // Set default deck type if not set
-    if ($scope.deck.type === -1) {
-      $scope.deck.type = $scope.deckTypes.indexOf("None");
+    if ($scope.deck.kind === -1) {
+      $scope.deck.kind = $scope.deckTypes.indexOf("None");
     }
     return true;
   }
@@ -114,7 +114,7 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
      *
      * @type {Array<string>}
      */
-    $scope.deckTypes = Main.deck.type;
+    $scope.deckTypes = Main.deck.kind;
 
     /**
      * Filters for available cards
@@ -193,6 +193,9 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
     API.Decks.save($scope.deck.export(), function (data) {
       toaster.success("Awesome", $scope.deck.name + " is in your collection now.");
       $state.go("app.deck-list", { username: data.user });
+
+      // Increase user decks
+      $rootScope.$broadcast("royalePlus.Auth:updateAuth");
     });
   };
 
@@ -222,7 +225,7 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
   /**
    * Reload cards when they are updated after loading them
    */
-  $scope.$on("royaleClan.MainController:loadedCards", function (event, data) {
+  $scope.$on("royalePlus.MainController:loadedCards", function (event, data) {
     $scope.localCards = data;
     loadCardsLocally();
   });
