@@ -15,13 +15,18 @@
       <!-- Users -->
       <div class="card my-4 bg-dark text-white">
         <div class="card-header py-4">
-          Users <i class="fas fa-fw o-fade float-right fa-users"></i>
+          New Users <i class="fas fa-fw o-fade float-right fa-user-plus"></i>
         </div>
         <div class="list-group list-group-flush">
-          <a class="list-group-item"
-            ui-sref="app.user({username: user.username, user: user})"
-            ng-repeat="user in users">
+          <!-- User link -->
+          <a class="list-group-item" ng-repeat="user in users"
+            ui-sref="app.user({username: user.username, user: user.get})">
+            <!-- User image -->
+            <img ng-src="{{ user.image }}" class="user-image" width="48px">
+            <!-- User name -->
             {{ user.username }}
+            <!-- User joined since -->
+            <small class="text-secondary float-right mt-2">{{ user.get.joined_since }} ago</small>
           </a>
         </div>
         <!-- Loading -->
