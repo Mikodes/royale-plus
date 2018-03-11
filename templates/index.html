@@ -10,15 +10,15 @@
   <meta name="author" content="Amir Savand">
 
   <title>Royale Plus</title>
-  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}?v={{ version }}" />
+  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}{{ v }}" />
 
   <link rel="stylesheet" href="{% static 'lib/bootstrap/bootstrap.css' %}" />
   <link rel="stylesheet" href="{% static 'lib/fontawesome/fontawesome.css' %}" />
   <link rel="stylesheet" href="{% static 'lib/animate/animate.css' %}" />
   <link rel="stylesheet" href="{% static 'lib/angular-toaster/toaster.css' %}" />
 
-  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}?v={{ version }}">
-  <link rel="stylesheet" href="{% static 'assets/css/shorties.css' %}?v={{ version }}">
+  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}{{ v }}">
+  <link rel="stylesheet" href="{% static 'assets/css/shorties.css' %}{{ v }}">
 </head>
 
 <body>
@@ -29,13 +29,11 @@
     </p>
   <![endif]-->
 
-  <ng-include src="'{% static 'components/main/main.html' %}?v={{ version }}'"
-    ng-controller="MainController">
-  </ng-include>
+  <ng-include src="'{% static 'components/main/main.html' %}{{ v }}'" ng-controller="MainController"></ng-include>
 
   <ui-view></ui-view>
 
-  <ng-include src="'{% static 'components/main/footer.html' %}?v={{ version }}'"></ng-include>
+  <ng-include src="'{% static 'components/main/footer.html' %}{{ v }}'"></ng-include>
 
   <script src="{% static 'lib/jquery/jquery.js' %}"></script>
   <script src="{% static 'lib/popper/popper.js' %}"></script>
@@ -49,39 +47,39 @@
   <script src="{% static 'lib/angular-modal-service/angular-modal-service.js' %}"></script>
   <script src="{% static 'lib/angular-ui-router/angular-ui-router.js' %}"></script>
 
-  <script src="{% static 'app.js' %}?v={{ version }}"></script>
-  <script src="{% static 'app_directives.js' %}?v={{ version }}"></script>
-  <script src="{% static 'app_filters.js' %}?v={{ version }}"></script>
-  <script src="{% static 'app_constant.js' %}?v={{ version }}"></script>
-  <script src="{% static 'app_routes.js' %}?v={{ version }}"></script>
+  <script src="{% static 'app.js' %}{{ v }}"></script>
+  <script src="{% static 'app_directives.js' %}{{ v }}"></script>
+  <script src="{% static 'app_filters.js' %}{{ v }}"></script>
+  <script src="{% static 'app_constant.js' %}{{ v }}"></script>
+  <script src="{% static 'app_routes.js' %}{{ v }}"></script>
 
-  <script src="{% static 'components/api/api.js' %}?v={{ version }}"></script>
+  <script src="{% static 'components/api/api.js' %}{{ v }}"></script>
 
-  <script src="{% static 'components/common/common.js' %}?v={{ version }}"></script>
+  <script src="{% static 'components/common/common.js' %}{{ v }}"></script>
 
-  <script src="{% static 'components/main/main_controller.js' %}?v={{ version }}"></script>
+  <script src="{% static 'components/main/main_controller.js' %}{{ v }}"></script>
 
-  <script src="{% static 'components/home/home_controller.js' %}?v={{ version }}"></script>
+  <script src="{% static 'components/home/home_controller.js' %}{{ v }}"></script>
 
-  <script src="{% static 'components/user/user_controller.js' %}?v={{ version }}"></script>
+  <script src="{% static 'components/user/user_controller.js' %}{{ v }}"></script>
 
-  <script src="{% static 'components/card/card.js' %}?v={{ version }}"></script>
+  <script src="{% static 'components/card/card.js' %}{{ v }}"></script>
 
-  <script src="{% static 'components/activity/activity.js' %}?v={{ version }}"></script>
+  <script src="{% static 'components/activity/activity.js' %}{{ v }}"></script>
 
-  <script src="{% static 'components/member/member.js' %}?v={{ version }}"></script>
-  <script src="{% static 'components/member/member_controller.js' %}?v={{ version }}"></script>
+  <script src="{% static 'components/member/member.js' %}{{ v }}"></script>
+  <script src="{% static 'components/member/member_controller.js' %}{{ v }}"></script>
 
-  <script src="{% static 'components/deck/deck.js' %}?v={{ version }}"></script>
-  <script src="{% static 'components/deck/deck_controller.js' %}?v={{ version }}"></script>
-  <script src="{% static 'components/deck/deck_new/deck_new_controller.js' %}?v={{ version }}"></script>
-  <script src="{% static 'components/deck/deck_list/deck_list_controller.js' %}?v={{ version }}"></script>
+  <script src="{% static 'components/deck/deck.js' %}{{ v }}"></script>
+  <script src="{% static 'components/deck/deck_controller.js' %}{{ v }}"></script>
+  <script src="{% static 'components/deck/deck_new/deck_new_controller.js' %}{{ v }}"></script>
+  <script src="{% static 'components/deck/deck_list/deck_list_controller.js' %}{{ v }}"></script>
 
-  <script src="{% static 'components/account/account.js' %}?v={{ version }}"></script>
-  <script src="{% static 'components/account/auth/auth.js' %}?v={{ version }}"></script>
-  <script src="{% static 'components/account/auth/auth_interceptor.js' %}?v={{ version }}"></script>
-  <script src="{% static 'components/account/signup/signup_controller.js' %}?v={{ version }}"></script>
-  <script src="{% static 'components/account/settings/settings_controller.js' %}?v={{ version }}"></script>
+  <script src="{% static 'components/account/account.js' %}{{ v }}"></script>
+  <script src="{% static 'components/account/auth/auth.js' %}{{ v }}"></script>
+  <script src="{% static 'components/account/auth/auth_interceptor.js' %}{{ v }}"></script>
+  <script src="{% static 'components/account/signup/signup_controller.js' %}{{ v }}"></script>
+  <script src="{% static 'components/account/settings/settings_controller.js' %}{{ v }}"></script>
 
   <script>
     app.constant("ENV", {
@@ -93,7 +91,8 @@
       VERSION: "{{ version }}",
       VERSION_STORAGE: 1,
       CLAN_TAG: "#2Y2C9RCJ",
-      GITHUB: "https://github.com/AmirSavand/royale-plus"
+      GITHUB: "https://github.com/AmirSavand/royale-plus",
+      STATIC_URL: "{{ static_url }}"
     });
   </script>
 

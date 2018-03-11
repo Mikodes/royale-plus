@@ -28,6 +28,16 @@ app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProv
 app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll) {
 
   /**
+   * @type {function}
+   * @returns {string}
+   *
+   * @param {string} url
+   */
+  $rootScope.static = function (url) {
+    return ENV.STATIC_URL + url + "?v=" + ENV.VERSION;
+  };
+
+  /**
    * @type {string}
    */
   $rootScope.version = ENV.VERSION;
@@ -40,7 +50,7 @@ app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll
   /**
    * @type {string}
    */
-  $rootScope.feedback = "mailto:amir@savandbros.com?Subject=Royale Plus v" + $rootScope.version;
+  $rootScope.feedback = "mailto:amir@savandbros.com?Subject=Royale Plus v" + ENV.VERSION;
 
   /**
    * @type {string}
@@ -56,7 +66,7 @@ app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll
    * Page loaded completely
    */
   $rootScope.$on("$viewContentLoaded", function () {
-    
+
     // Scroll up
     $anchorScroll();
 
@@ -104,9 +114,8 @@ app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll
 
     // Analytics
     if (ENV.PRODUCTION) {
-      $window.ga("send", "pageview", {
-        page: $window.location.href.split("#!")[1]
-      });
+      var page = $window.location.href.split("#!")[1];
+      $window.ga("send", "pageview", { page: page });
     }
   });
 });

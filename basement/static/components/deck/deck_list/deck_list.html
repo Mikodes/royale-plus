@@ -54,7 +54,7 @@
           <div class="inline-cards">
             <card class="inline-cards-item auto init no-name no-cost no-cover-hover"
               ng-repeat="card in deck.cards"
-              ng-include="'static/components/card/card_include.html'"
+              ng-include="static('components/card/card_include.html')"
               ng-click="card.view()">
             </card>
           </div>

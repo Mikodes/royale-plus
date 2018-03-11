@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Royale Plus <small class="o-fade">v{{ version }}</small></h1>
     <br>
-    <ng-include src="'static/components/home/description.html'"></ng-include>
+    <ng-include src="static('components/home/description.html')"></ng-include>
   </div>
 </div>
 
@@ -76,7 +76,7 @@
 
           <!-- Cards -->
           <card ng-repeat="card in deck.cards"
-            ng-include="'static/components/card/card_include.html'"
+            ng-include="static('components/card/card_include.html')"
             ng-click="card.view()">
           </card>
 
@@ -110,7 +110,7 @@
         <div class="list-group list-group-flush text-dark">
           <!-- Activity -->
           <div class="list-group-item" ng-repeat="activity in activities">
-            <ng-include src="'static/components/activity/activity_include.html'"></ng-include>
+            <ng-include src="static('components/activity/activity_include.html')"></ng-include>
           </div>
         </div>
         <!-- Loading -->
