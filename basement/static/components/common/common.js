@@ -1,15 +1,15 @@
 "use strict";
 
-app.service("Common", function (ModalService) {
+app.service("Common", function (ENV, ModalService) {
 
   var self = this;
 
   this.component = function (componentUrl) {
-    return "static/components/" + componentUrl;
+    return ENV + "components/" + componentUrl;
   };
 
   this.image = function (imageUrl) {
-    return "static/assets/img/" + imageUrl;
+    return ENV + "assets/img/" + imageUrl;
   };
 
   this.modal = function (componentUrl, data) {
