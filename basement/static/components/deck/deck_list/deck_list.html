@@ -14,6 +14,11 @@
 
   <hr>
 
+  <!-- Loading -->
+  <div class="text-center py-5" ng-if="!decks.length">
+    <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
+  </div>
+
   <!-- Decks -->
   <div class="row">
     <div class="col-lg-4 col-md-6" ng-repeat="deck in decks">
