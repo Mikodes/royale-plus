@@ -6,7 +6,7 @@
 
 body {
     font-family: "Righteous", sans-serif;
-    background: #eef;
+    background: whitesmoke;
     padding-top: 56px;
 }
 
@@ -435,6 +435,7 @@ card.no-name cover {
 
 .footer {
     box-shadow: 0 1000px 0 1000px #f8f9fa;
+    background: #eee;
 }
 
 
