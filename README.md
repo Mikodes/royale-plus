@@ -10,29 +10,51 @@ Sign up, browse decks, create your own collection and share.
 
 - Profiles
 - Registration
-- Administration
+- Admin system
 
 ### Decks
 
-- Deck list with search (by user, type, etc)
-- Users can build and edit their decks
+- Browse user decks
+- Build decks
+- Edit random decks or copy from others
+
+### Activities
+
+- Recent activities at homepage or user profile
+- Activities for user registration, deck creation, updates, etc
 
 ### APIs
 
 - Current API for users, decks, etc...
-- External API for cards
-- External API for clan and members
+- [External API for card data and images](https://github.com/martincarrera/clash-royale-api)
+- [External API for realtime clan and member data](https://github.com/cr-api/cr-api)
 
 ## Development
 
-After creating the virtual env with python3, run the commands below.
+Create the virtual env with python3.
+
+### Install requirmenets
 
 ```bash
 > pip install -r requirements.txt
+```
+
+### Setup migrations
+
+```bash
 > python manage.py migrate
+```
+
+### Run server
+
+```bash
 > python manage.py runserver
 ```
 
 ## Feedback
 
-Create issues here or contact: amir@savandbros.com
+Any contribution will be highly appreciated
+
+### Report a bug or a suggesstion
+
+[Create an issue](https://github.com/AmirSavnad/royale-plus/issues) or send an email: amir@savandbros.com
