@@ -5,11 +5,11 @@ app.service("Common", function (ENV, ModalService) {
   var self = this;
 
   this.component = function (componentUrl) {
-    return ENV + "components/" + componentUrl;
+    return ENV.STATIC_URL + "components/" + componentUrl;
   };
 
   this.image = function (imageUrl) {
-    return ENV + "assets/img/" + imageUrl;
+    return ENV.STATIC_URL + "assets/img/" + imageUrl;
   };
 
   this.modal = function (componentUrl, data) {
