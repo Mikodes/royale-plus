@@ -31,7 +31,7 @@ class Deck(models.Model):
     cards = models.CharField(max_length=200, blank=False, null=False)
     kind = models.IntegerField(choices=DECK_KIND_CHOICES)
     avg_elixir = models.FloatField(blank=False, null=False)
-    created = models.DateTimeField(auto_now_add=True, editable=False)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.name} ({self.avg_elixir})'

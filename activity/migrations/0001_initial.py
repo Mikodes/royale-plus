@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('kind', models.IntegerField(choices=[(0, 'None'), (1, 'Update'), (2, 'User'), (3, 'Deck')])),
                 ('content', models.CharField(max_length=500)),
-                ('created', models.DateTimeField(auto_now=True, db_index=True)),
+                ('created', models.DateTimeField(auto_now=True)),
                 ('issuer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={

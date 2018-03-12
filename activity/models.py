@@ -27,7 +27,7 @@ class Activity(models.Model):
     issuer = models.CharField(max_length=100, default=None, blank=True, null=True)
     issued = models.CharField(max_length=100, default=None, blank=True, null=True)
     content = models.CharField(max_length=500)
-    created = models.DateTimeField(auto_now=True, editable=False, db_index=True)
+    created = models.DateTimeField(auto_now=True)
 
     @property
     def created_since(self):
