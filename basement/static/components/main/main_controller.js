@@ -11,7 +11,6 @@ app.controller("MainController", function (ENV, Auth, API, $scope, $rootScope, $
         // Update data
         Auth.updateAuth(data, false);
         // Store data
-        $scope.auth = Auth;
         $scope.user = Auth.getAuth();
       });
     }
@@ -20,6 +19,9 @@ app.controller("MainController", function (ENV, Auth, API, $scope, $rootScope, $
   function constructor() {
 
     // Get auth
+    $scope.auth = Auth;
+
+    // Refresh auth
     getUserData();
 
     // Get state
