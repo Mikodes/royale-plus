@@ -42,3 +42,7 @@ card cover {
 card name {
     opacity: 0;
 }
+
+.slots-wrapper {
+    min-height: 396px;
+}

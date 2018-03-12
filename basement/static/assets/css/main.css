@@ -6,7 +6,7 @@
 
 body {
     font-family: "Righteous", sans-serif;
-    background: ghostwhite;
+    background: ghostwhite url("../img/overlay.png");
     padding-top: 56px;
 }
 
@@ -20,7 +20,7 @@ button,
 
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar {
-    background: #EAEDF1;
+    background: ghostwhite;
 }
 
 ::-webkit-scrollbar {
@@ -387,7 +387,7 @@ card.no-name cover {
 }
 
 .slots-wrapper {
-    min-height: 396px;
+    min-height: 424px;
 }
 
 
