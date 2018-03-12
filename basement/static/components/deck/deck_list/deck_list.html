@@ -1,4 +1,4 @@
-<div class="container py-4">
+<div class="container py-4 mobile-same">
 
   <!-- Header -->
   <h1 class="text-dark my-2">
@@ -12,7 +12,11 @@
     </span>
   </h1>
 
-  <hr>
+  <!-- Line -->
+  <hr class="mobile-hide mb-0">
+</div>
+
+<div class="container">
 
   <!-- Loading -->
   <div class="text-center py-5" ng-if="!decks.length">
@@ -66,7 +70,7 @@
         </div>
 
         <!-- Footer -->
-        <div class="card-footer">
+        <div class="card-footer bg-white">
 
           <!-- Type -->
           <span ng-if="deck.kind > 0">{{ deck.getKind() }} deck &bull;</span>

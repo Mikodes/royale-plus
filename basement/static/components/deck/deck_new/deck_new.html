@@ -1,9 +1,9 @@
-<div class="container-fluid bg-pattern py-3">
-  <div class="container animated fadeIn">
+<div class="container-fluid bg-pattern">
+  <div class="container py-3">
     <div class="row">
 
       <!-- New Deck -->
-      <div class="col-md-8">
+      <div class="col-lg-8">
         <div class="card my-3 bg-asher text-white">
           <div class="card-header bg-info py-4">
 
@@ -19,11 +19,11 @@
           </div>
 
           <!-- Deck -->
-          <div class="card-body bg-asher slots-wrapper">
+          <div class="card-body bg-asher slots-wrapper mobile-card-body">
 
             <!-- Empty slots -->
             <div class="row center-block slots">
-              <div class="col-xs-6 col-md-3 col-sm-3 col-xs-6"
+              <div class="col-3"
                 ng-repeat="card in slots track by $index">
                 <card class="auto" ng-include="static('components/card/card_include.html')"></card>
               </div>
@@ -31,7 +31,7 @@
 
             <!-- Cards -->
             <div class="row center-block">
-              <card class="col-xs-6 col-md-3 col-sm-3 col-xs-6 init auto animated zoomInUp"
+              <card class="col-3 init auto animated zoomInUp"
                 ng-repeat="card in deck.cards track by $index"
                 ng-click="deck.removeCard(card)"
                 ng-include="static('components/card/card_include.html')">
@@ -42,7 +42,7 @@
       </div>
 
       <!-- Deck options -->
-      <div class="col-md-4">
+      <div class="col-lg-4">
         <div class="card bg-asher text-light my-3">
           <div class="card-header bg-info py-4">
             Options <i class="fas float-right fa-edit"></i>
@@ -101,24 +101,24 @@
 
         <!-- Filter buttons -->
         <div class="btn-group float-right">
-          <button class="btn btn-light mb-0" ng-repeat="filter in filters"
-            ng-model="$parent.orderBy" uib-btn-radio="filter.key">
+          <button class="btn btn-light mb-0"
+            ng-class="{active: orderBy == filter.key}"
+            ng-repeat="filter in filters"
+            ng-click="filterCards(filter)">
             {{ filter.label | uppercase }}
           </button>
         </div>
       </div>
 
       <!-- Card list -->
-      <div class="card-body">
+      <div class="card-body mobile-card-body">
         <div class="row center-block">
-          <div class="col-xs-6 col-sm-3 col-lg-2"
-            ng-repeat="card in cards | orderBy: orderBy track by $index">
-            <card class="auto animated bounceIn"
-              ng-class="{'zoomOutUp cur-no': card.isInDeck(deck)}"
-              ng-include="static('components/card/card_include.html')"
-              ng-click="deck.addCard(card)">
-            </card>
-          </div>
+          <card class="col-3 col-lg-2 init auto animated bounceIn"
+            ng-click="deck.addCard(card)"
+            ng-class="{'zoomOutUp cur-no': card.isInDeck(deck)}"
+            ng-repeat="card in cards | orderBy: orderBy track by $index"
+            ng-include="static('components/card/card_include.html')">
+          </card>
         </div>
       </div>
     </div>

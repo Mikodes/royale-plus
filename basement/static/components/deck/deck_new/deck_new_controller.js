@@ -218,6 +218,15 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
   };
 
   /**
+   * Filter available cards
+   *
+   * @param {object} filter
+   */
+  $scope.filterCards = function (filter) {
+    $scope.orderBy = filter.key;
+  }
+
+  /**
    * Update dynamic with of slots when window.resize
    */
   angular.element($window).bind("resize", updateSlotsElementWith);

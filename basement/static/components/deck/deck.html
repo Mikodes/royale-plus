@@ -1,6 +1,6 @@
 <!-- Cover -->
-<div class="container-fluid cover cover-bg cover-bg-pattern bg-pattern text-white">
-  <div class="container">
+<div class="container-fluid cover cover-bg cover-bg-pattern bg-pattern text-white mobile-same">
+  <div class="container mobile-same">
     <h1 class="text-dark my-2">
       <a class="text-white on-dark" ui-sref="app.deck({id: deck.id, deck: deck})">{{ deck.name }}</a>
     </h1>
@@ -22,7 +22,7 @@
 
       <!-- Cards -->
       <div class="card bg-pattern text-white">
-        <div class="card-body">
+        <div class="card-body mobile-card-body">
           <card ng-repeat="card in deck.cards"
             ng-include="static('components/card/card_include.html')"
             ng-click="card.view()">
@@ -31,15 +31,13 @@
       </div>
 
       <!-- Deck discussion -->
-      <div class="card my-4">
-        <div class="card bg-dark text-white">
-          <div class="card-header py-4">
-            Deck Discussion <i class="fas fa-comments float-right text-secondary"></i>
-          </div>
-          <div class="card-body bg-white text-center">
-            <!-- Widget -->
-            <div disqus="'deck-' + deck.id"></div>
-          </div>
+      <div class="card my-4 bg-dark text-white mobile-hide">
+        <div class="card-header py-4">
+          Deck Discussion <i class="fas fa-comments float-right text-secondary"></i>
+        </div>
+        <div class="card-body bg-white text-center">
+          <!-- Widget -->
+          <div disqus="'deck-' + deck.id"></div>
         </div>
       </div>
     </div>
@@ -90,7 +88,6 @@
 
         <!-- Normal options -->
         <div class="list-group list-group-flush">
-          <a class="list-group-item" ui-sref="app.deck({id: deck.id, deck: deck})">View Deck</a>
           <a class="list-group-item" ui-sref="app.deck-list({username: deck.user})">View {{ deck.user }}'s Decks</a>
           <a class="list-group-item" ui-sref="app.deck-new({deck: deck})">Copy and Edit</a>
         </div>

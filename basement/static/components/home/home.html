@@ -1,5 +1,5 @@
-<div class="container-fluid cover cover-bg bg-arena">
-  <div class="container">
+<div class="container-fluid cover cover-bg bg-arena mobile-same">
+  <div class="container mobile-same">
     <h1>Royale Plus <small class="o-fade">v{{ version }}</small></h1>
     <br>
     <ng-include src="static('components/home/description.html')"></ng-include>
@@ -13,8 +13,8 @@
     <div class="col-lg-5">
 
       <!-- New Users -->
-      <div class="card my-4 bg-dark text-white">
-        <div class="card-header py-4">
+      <div class="card my-4">
+        <div class="card-header bg-dark text-white py-4">
           New Users <i class="fas fa-fw o-fade float-right fa-user-plus"></i>
         </div>
         <div class="list-group list-group-flush">
@@ -30,14 +30,14 @@
           </a>
         </div>
         <!-- Loading -->
-        <div class="card-body text-center bg-white py-5" ng-if="!users">
+        <div class="card-body text-center bg-white py-5" ng-if="!users.length">
           <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
         </div>
       </div>
 
       <!-- Clan members -->
-      <div class="card my-4 bg-dark text-white">
-        <div class="card-header py-4">
+      <div class="card my-4">
+        <div class="card-header bg-dark text-white py-4">
           Clan Members <i class="fas fa-fw o-fade float-right fa-chess"></i>
         </div>
         <div class="list-group list-group-flush" ng-if="members.length">
@@ -60,14 +60,14 @@
     <div class="col-lg-7">
 
       <!-- Random Deck -->
-      <div class="card my-4 bg-dark text-white">
+      <div class="card my-4">
 
         <!-- Header -->
-        <div class="card-header py-4">
+        <div class="card-header bg-dark text-white py-4">
           Random Deck &bull; {{ deck.getAvgElixir() }}
           <i class="fas fa-fw float-right o-fade fa-random"></i>
         </div>
-        <div class="card-body bg-white">
+        <div class="card-body bg-white mobile-card-body">
 
           <!-- Loading -->
           <div class="card-body text-center bg-white py-5" ng-if="!deck.cards.length">
@@ -84,16 +84,16 @@
           <div class="row mt-3" ng-if="deck.cards.length">
 
             <!-- New random deck -->
-            <div class="col-lg-9 my-1">
-              <button class="btn btn-lg btn-block btn-info"
+            <div class="col-lg-9">
+              <button class="my-1 btn btn-lg btn-block btn-info"
                 ng-disabled="generating" ng-click="generateDeck()">
                 <i class="fas fa-fw fa-sync"></i> New Random Deck
               </button>
             </div>
 
             <!-- Edit deck -->
-            <div class="col-lg-3 my-1">
-              <button class="btn btn-lg btn-block btn-success" title="Edit this deck"
+            <div class="col-lg-3">
+              <button class="my-1 btn btn-lg btn-block btn-success" title="Edit this deck"
                 ng-disabled="generating" ui-sref="app.deck-new({deck: deck})">
                 <i class="fas fa-fw fa-edit"></i> <span class="d-lg-none">Edit Deck</span>
               </button>
@@ -103,8 +103,8 @@
       </div>
 
       <!-- Recent Activities -->
-      <div class="card my-4 bg-dark text-white">
-        <div class="card-header py-4">
+      <div class="card my-4">
+        <div class="card-header bg-dark text-white py-4">
           Recent Activities <i class="fas fa-fw o-fade float-right fa-flag"></i>
         </div>
         <div class="list-group list-group-flush text-dark">
@@ -114,27 +114,25 @@
           </div>
         </div>
         <!-- Loading -->
-        <div class="card-body text-center bg-white py-5" ng-if="!users">
+        <div class="card-body text-center bg-white py-5" ng-if="!activities.length">
           <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
         </div>
       </div>
 
       <!-- Discussion -->
       <div class="card my-4">
-        <div class="card bg-dark text-white">
-          <div class="card-header py-4">
-            Discussion <i class="fas fa-comments float-right text-secondary"></i>
-          </div>
-          <div class="card-body bg-white text-center">
+        <div class="card-header bg-dark text-white py-4">
+          Discussion <i class="fas fa-comments float-right text-secondary"></i>
+        </div>
+        <div class="card-body bg-white text-center">
 
-            <!-- Show button -->
-            <button class="btn btn-lg btn-info m-0" ng-click="joinDiscussion()" ng-if="showDiscussion != true">
-              <i class="fa fa-download"></i> Show Discussion
-            </button>
+          <!-- Show button -->
+          <button class="btn btn-lg btn-info m-0" ng-click="joinDiscussion()" ng-if="showDiscussion != true">
+            <i class="fa fa-download"></i> Show Discussion
+          </button>
 
-            <!-- Widget -->
-            <div disqus="'home'" ng-if="showDiscussion == true"></div>
-          </div>
+          <!-- Widget -->
+          <div disqus="'home'" ng-if="showDiscussion == true"></div>
         </div>
       </div>
     </div>
