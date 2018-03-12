@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("UserController", function (Member, API, $scope, $stateParams) {
+app.controller("UserController", function (Member, API, toaster, $scope, $state, $stateParams) {
 
   function constructor() {
 
@@ -9,9 +9,15 @@ app.controller("UserController", function (Member, API, $scope, $stateParams) {
 
     // Get user from API
     if (!$scope.user) {
-      API.Users.get({ username: $stateParams.username }, function (data) {
-        $scope.user = data;
-      });
+      API.Users.get({ username: $stateParams.username },
+        function (data) {
+          $scope.user = data;
+        },
+        function () {
+          $state.go("app.home");
+          toaster.error("User not found", "User '" + $stateParams.username + "' doesn't exist or deleted");
+        }
+      );
     }
   }
 
