@@ -1,0 +1,44 @@
+.mobile-hide {
+    display: none !important;
+}
+
+.container:not(.mobile-same),
+.row:not(.mobile-same),
+.card:not(.mobile-same),
+.row>div:not(.mobile-same) {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100%;
+    max-width: initial;
+}
+
+.container-fluid:not(.mobile-same),
+card {
+    padding: 0 !important;
+}
+
+.card,
+.card>div,
+.card-detail,
+.list-group-item {
+    border-radius: 0 !important;
+}
+
+.card {
+    border: none;
+}
+
+.mobile-card-body {
+    padding: 0.5rem;
+}
+
+card cover {
+    border-width: 2px;
+    border-radius: 0;
+    margin: 5px;
+    box-shadow: none;
+}
+
+card name {
+    opacity: 0;
+}

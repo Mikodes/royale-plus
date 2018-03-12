@@ -52,6 +52,17 @@ a.on-dark:hover {
     margin-right: 2rem;
 }
 
+@media (min-width: 992px) {
+    .navbar .nav-link {
+        padding: 16px 16px !important;
+        margin: -8px 0;
+    }
+    .navbar .active .nav-link,
+    .navbar .show .nav-link {
+        background: rgba(0, 0, 0, 0.25);
+    }
+}
+
 
 /* Cover */
 
@@ -305,9 +316,7 @@ card.no-name cover {
 
 .card-detail {
     background: #292b2c;
-    color: #fff;
-    padding: 40px 0;
-    margin-bottom: 30px;
+    padding-top: 40px;
     border-radius: 3px;
     border-top: 4px solid;
     text-align: center;
@@ -333,8 +342,8 @@ card.no-name cover {
 }
 
 .card-detail h2 {
-    margin-bottom: -38px;
-    margin-top: 20px;
+    margin-bottom: 0;
+    margin-top: 40px;
     padding: 15px 0;
     background: rgba(0, 0, 0, 0.2);
     text-transform: capitalize;
@@ -378,7 +387,7 @@ card.no-name cover {
 }
 
 .slots-wrapper {
-    min-height: 414px;
+    min-height: 396px;
 }
 
 
@@ -397,12 +406,6 @@ card.no-name cover {
 
 
 /* Media */
-
-@media screen and (max-width: 767px) {
-    .slots-wrapper {
-        min-height: 798px;
-    }
-}
 
 @media screen and (max-width: 992px) {
     body:not(.pattern),
@@ -462,4 +465,15 @@ card.no-name cover {
     padding-top: 6px;
     margin: -5px 0;
     margin-right: 2px;
+}
+
+
+/* List group */
+
+.list-group-item {
+    border-color: ghostwhite;
+}
+
+a.list-group-item:hover {
+    background-color: ghostwhite;
 }
