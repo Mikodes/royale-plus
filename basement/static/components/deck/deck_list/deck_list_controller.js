@@ -35,10 +35,12 @@ app.controller("DeckListController", function (API, Deck, toaster, $scope, $stat
         angular.forEach(data.results, function (result) {
           $scope.decks.push(new Deck().import(result));
         });
-      },
-      function () {
-        toaster.error("No Decks", payload.user + " doesn't have any decks.");
-        $state.go("app.deck-list", { username: null });
+
+        // No decks
+        if (data.count == 0) {
+          toaster.error("No Decks", payload.user + " doesn't have any decks.");
+          $state.go("app.deck-list", { username: null });
+        }
       }
     );
   }
