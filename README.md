@@ -1,4 +1,4 @@
-# [Royale Plus](https://rp.kloud51.com)
+# [Royale Plus](http://royplus.herokuapp.com)
 
 Facebook for Clash Royale players.
 
