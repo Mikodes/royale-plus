@@ -86,6 +86,29 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
     };
 
     /**
+     * @type {function}
+     * @returns {Array<string>}
+     */
+    this.getModes = function () {
+      // Mode list by string
+      var modes = [];
+      // Check deck modes
+      if (this.mode1v1) {
+        modes.push("1v1");
+      }
+      if (this.mode2v2) {
+        modes.push("2v2");
+      }
+      if (this.mode2x) {
+        modes.push("2x Elixir");
+      }
+      if (this.mode3x) {
+        modes.push("3x Elixir");
+      }
+      return modes;
+    }
+
+    /**
      * Calculate average elixir cost and update the variable then return it
      *
      * @type {function}
