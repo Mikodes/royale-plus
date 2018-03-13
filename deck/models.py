@@ -75,9 +75,7 @@ class Deck(models.Model):
 
     @property
     def all_modes(self):
-        if self.mode_1v1 and self.mode_2v2 and self.mode_2x and self.mode_3x:
-            return True
-        return False
+        return all([self.mode_1v1, self.mode_2v2, self.mode_2x, self.mode_3x])
 
     def __str__(self):
         return f'{self.name} ({self.avg_elixir})'
