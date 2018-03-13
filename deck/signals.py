@@ -1,17 +1,20 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from deck.models import Deck
+from deck.models import Deck, DeckArena
 from activity.models import Activity, ActivityKind
 
 
 @receiver(post_save, sender=Deck)
 def create_user(sender, instance, created, **kwargs):
     if created:
+        arena: str = dict(Deck.DECK_ARENA_CHOICES).get(instance.arena)
+        ave: float = instance.avg_elixir
+
         Activity.objects.create(
             issuer=instance.user.username,
             issued=instance.id,
-            content=f'built a {instance.avg_elixir} elixir deck for {instance.arena}',
+            content=f'built a {ave} elixir deck for {arena}',
             kind=ActivityKind.DECK,
         )
 
