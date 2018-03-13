@@ -1,7 +1,7 @@
 "use strict";
 
 app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
-  return function (name, cards, kind) {
+  return function (name, cards, kind, arena) {
 
     /**
      * @type {number}
@@ -37,6 +37,26 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
      * @type {Date}
      */
     this.date = new Date();
+
+    /**
+     * @type {boolean}
+     */
+    this.mode1v1 = true;
+
+    /**
+     * @type {boolean}
+     */
+    this.mode2v2 = true;
+
+    /**
+     * @type {boolean}
+     */
+    this.mode2x = true;
+
+    /**
+     * @type {boolean}
+     */
+    this.mode3x = true;
 
     /**
      * Get the type name by index
