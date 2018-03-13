@@ -29,6 +29,11 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
     this.kind = kind || 0;
 
     /**
+     * @type {number}
+     */
+    this.arena = arena || 0;
+
+    /**
      * @type {Date}
      */
     this.date = new Date();
@@ -146,6 +151,7 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
       return {
         name: this.name,
         kind: this.kind,
+        arena: this.arena,
         avg_elixir: this.getAvgElixir(),
         cards: exportedCards.join(" "),
       };
@@ -165,6 +171,7 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
       this.name = data.name;
       this.cards = [];
       this.kind = data.kind;
+      this.arena = data.arena;
       this.date = new Date(data.created);
 
       // Import cards
