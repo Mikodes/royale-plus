@@ -242,7 +242,7 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
       this.mode1v1 = data.mode_1v1;
       this.mode2v2 = data.mode_2v2;
       this.mode2x = data.mode_2x;
-      this.mode3x = data.mode3x;
+      this.mode3x = data.mode_3x;
 
       // Import cards
       var cards = data.cards.split(" ");
