@@ -233,9 +233,9 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
   }
 
   /**
-   * Update dynamic with of slots when window.resize
+   * Update dynamic with of slots
    */
-  angular.element($window).bind("resize", updateSlotsElementWith);
+  angular.element($window).bind("resize load", updateSlotsElementWith);
 
   /**
    * Reload cards when they are updated after loading them
