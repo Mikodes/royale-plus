@@ -33,6 +33,22 @@ app.constant("Main", {
       "Three Crowns",
       "Control",
       "Siege"
+    ],
+    arena: [
+      "All Arenas",
+      "Training Camp",
+      "Goblin Stadium",
+      "Bone Pit",
+      "Barbarian Bowl",
+      "P.E.K.K.A.'s Playhouse",
+      "Spell Valley",
+      "Builders Workshop",
+      "Royal Arena",
+      "Frozen Peak",
+      "Jungle Arena",
+      "Hog Mountain",
+      "Electro Valley",
+      "Legendary Arena",
     ]
   },
   activity: {
