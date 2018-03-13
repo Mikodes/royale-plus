@@ -42,6 +42,22 @@ class Deck(models.Model):
         (DeckKind.CONTROL, 'Control'),
         (DeckKind.SIEGE, 'Siege'),
     )
+    DECK_ARENA_CHOICES = (
+        (DeckArena.ALL, 'All Arenas'),
+        (DeckArena.TRAINING_CAMP, 'Training Camp'),
+        (DeckArena.GOBLIN_STADIUM, 'Goblin Stadium'),
+        (DeckArena.BONE_PIT, 'Bone Pit'),
+        (DeckArena.BARBARIAN_BOWL, 'Barbarian Bowl'),
+        (DeckArena.PEKKAS_PLAYHOUSE, 'P.E.K.K.A.\'s Playhouse'),
+        (DeckArena.SPELL_VALLEY, 'Spell Valley'),
+        (DeckArena.BUILDERS_WORKSHOP, 'Builders Workshop'),
+        (DeckArena.ROYAL_ARENA, 'Royal Arena'),
+        (DeckArena.FROZEN_PEAK, 'Frozen Peak'),
+        (DeckArena.JUNGLE_ARENA, 'Jungle Arena'),
+        (DeckArena.HOG_MOUNTAIN, 'Hog Mountain'),
+        (DeckArena.ELECTRO_VALLEY, 'Electro Valley'),
+        (DeckArena.LEGENDARY_ARENA, 'Legendary Arena'),
+    )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=False, null=False)
