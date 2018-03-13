@@ -56,7 +56,7 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
     }
     // Set default deck type if not set
     if ($scope.deck.kind === -1) {
-      $scope.deck.kind = $scope.deckTypes.indexOf("None");
+      $scope.deck.kind = $scope.deckKinds.indexOf("None");
     }
     return true;
   }
@@ -114,7 +114,7 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
      *
      * @type {Array<string>}
      */
-    $scope.deckTypes = Main.deck.kind;
+    $scope.deckKinds = Main.deck.kind;
 
     /**
      * Filters for available cards
