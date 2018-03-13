@@ -57,7 +57,21 @@ class DeckSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Deck
-        fields = '__all__'
+        fields = [
+            'id',
+            'user',
+            'name',
+            'cards',
+            'avg_elixir',
+            'kind',
+            'arena',
+            'all_modes',
+            'mode_1v1',
+            'mode_2v2',
+            'mode_2x',
+            'mode_3x',
+            'created',
+        ]
 
     def create(self, validated_data: dict):
         return Deck.objects.create(

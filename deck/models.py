@@ -73,6 +73,12 @@ class Deck(models.Model):
     mode_2x = models.BooleanField(default=True)
     mode_3x = models.BooleanField(default=True)
 
+    @property
+    def all_modes(self):
+        if self.mode_1v1 and self.mode_2v2 and self.mode_2x and self.mode_3x:
+            return True
+        return False
+
     def __str__(self):
         return f'{self.name} ({self.avg_elixir})'
 
