@@ -49,6 +49,16 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
     };
 
     /**
+     * Get the arena name by index
+     *
+     * @type {function}
+     * @returns {string}
+     */
+    this.getArena = function () {
+      return Main.deck.arena[this.arena];
+    };
+
+    /**
      * Calculate average elixir cost and update the variable then return it
      *
      * @type {function}
