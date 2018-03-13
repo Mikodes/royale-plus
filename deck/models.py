@@ -68,10 +68,10 @@ class Deck(models.Model):
     kind = models.IntegerField(choices=DECK_KIND_CHOICES)
     arena = models.IntegerField(choices=DECK_ARENA_CHOICES)
 
-    for_1v1 = models.BooleanField(default=True)
-    for_2v2 = models.BooleanField(default=True)
-    for_2x = models.BooleanField(default=True)
-    for_3x = models.BooleanField(default=True)
+    mode_1v1 = models.BooleanField(default=True)
+    mode_2v2 = models.BooleanField(default=True)
+    mode_2x = models.BooleanField(default=True)
+    mode_3x = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.name} ({self.avg_elixir})'
