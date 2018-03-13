@@ -18,7 +18,7 @@
   <div class="row">
 
     <!-- Left side -->
-    <div class="col-md-7 my-4">
+    <div class="col-lg-7 my-4">
 
       <!-- Cards -->
       <div class="card bg-pattern text-white">
@@ -43,7 +43,7 @@
     </div>
 
     <!-- Right side -->
-    <div class="col-md-4">
+    <div class="col-lg-4">
 
       <!-- Info -->
       <div class="card bg-dark my-4">
@@ -60,21 +60,40 @@
             <span class="float-right">{{ deck.getAvgElixir() }}</span>
           </li>
 
-          <!-- Type -->
+          <!-- Kind -->
           <li class="list-group-item">
             <span class="text-secondary">Deck type:</span>
             <span class="float-right">{{ deck.getKind() }}</span>
           </li>
 
-          <!-- Creator -->
+          <!-- Arena -->
           <li class="list-group-item">
-            <span class="text-secondary">Creator by:</span>
+            <span class="text-secondary">Deck arena:</span>
+            <span class="float-right">{{ deck.getArena() }}</span>
+          </li>
+
+          <!-- Modes -->
+          <li class="list-group-item">
+            <span class="text-secondary">Deck modes:</span>
+            <span class="float-right">
+              <!-- Repeat modes -->
+              <span ng-repeat="mode in deck.getModes()" ng-if="!deck.allModes">
+                {{ mode }} <span ng-if="!$last">&bull;</span>
+              </span>
+              <!-- All modes -->
+              <span ng-if="deck.allModes">All Modes</span>
+            </span>
+          </li>
+
+          <!-- User -->
+          <li class="list-group-item">
+            <span class="text-secondary">Created by:</span>
             <span class="float-right"><a ui-sref="app.user({username: deck.user})">{{ deck.user }}</a></span>
           </li>
 
-          <!-- Date -->
+          <!-- Created -->
           <li class="list-group-item">
-            <span class="text-secondary">Date created:</span>
+            <span class="text-secondary">Creation date:</span>
             <span class="float-right">{{ deck.date | date }}</span>
           </li>
         </ul>
