@@ -39,6 +39,13 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
     this.date = new Date();
 
     /**
+     * Is deck suitable for all modes
+     *
+     * @type {boolean}
+     */
+    this.allModes = true;
+
+    /**
      * @type {boolean}
      */
     this.mode1v1 = true;
@@ -208,6 +215,7 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
       this.arena = data.arena;
       this.date = new Date(data.created);
 
+      this.allModes = data.all_modes;
       this.mode1v1 = data.mode_1v1;
       this.mode2v2 = data.mode_2v2;
       this.mode2x = data.mode_2x;
