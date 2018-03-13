@@ -9,6 +9,7 @@ class DeckAdmin(admin.ModelAdmin):
         'name',
         'user',
         'kind',
+        'arena',
         'cards',
         'avg_elixir',
         'created',
@@ -16,8 +17,11 @@ class DeckAdmin(admin.ModelAdmin):
     list_filter = [
         'user',
         'kind',
+        'arena',
         'created',
     ]
     search_fields = [
         'name',
+        'kind',
+        'arena',
     ]

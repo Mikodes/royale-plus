@@ -11,7 +11,7 @@ def create_user(sender, instance, created, **kwargs):
         Activity.objects.create(
             issuer=instance.user.username,
             issued=instance.id,
-            content=f'built a {instance.avg_elixir} elixir deck',
+            content=f'built a {instance.avg_elixir} elixir deck for {instance.arena}',
             kind=ActivityKind.DECK,
         )
 

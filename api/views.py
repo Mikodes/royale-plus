@@ -51,7 +51,7 @@ class UserUpdateView(generics.UpdateAPIView):
 class DeckViewSet(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
-    filter_fields = ('user', 'kind',)
+    filter_fields = ('user', 'kind', 'arena',)
 
     def get_queryset(self):
         queryset = super(DeckViewSet, self).get_queryset()

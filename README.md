@@ -17,6 +17,7 @@ Sign up, browse decks, create your own collection and share.
 - Browse user decks
 - Build decks
 - Edit random decks or copy from others
+- Decks have arena, type, mode, avg elixir, etc...
 
 ### Activities
 

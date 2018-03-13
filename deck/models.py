@@ -14,6 +14,23 @@ class DeckKind:
     SIEGE = 7
 
 
+class DeckArena:
+    ALL = 0
+    TRAINING_CAMP = 1
+    GOBLIN_STADIUM = 2
+    BONE_PIT = 3
+    BARBARIAN_BOWL = 4
+    PEKKAS_PLAYHOUSE = 5
+    SPELL_VALLEY = 6
+    BUILDERS_WORKSHOP = 7
+    ROYAL_ARENA = 8
+    FROZEN_PEAK = 9
+    JUNGLE_ARENA = 10
+    HOG_MOUNTAIN = 11
+    ELECTRO_VALLEY = 12
+    LEGENDARY_ARENA = 13
+
+
 class Deck(models.Model):
     DECK_KIND_CHOICES = (
         (DeckKind.NONE, 'None'),
@@ -29,10 +46,11 @@ class Deck(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=False, null=False)
     cards = models.CharField(max_length=200, blank=False, null=False)
-    kind = models.IntegerField(choices=DECK_KIND_CHOICES)
     avg_elixir = models.FloatField(blank=False, null=False)
     created = models.DateTimeField(auto_now_add=True)
 
+    kind = models.IntegerField(choices=DECK_KIND_CHOICES)
+    arena = models.IntegerField(choices=DECK_ARENA_CHOICES)
     def __str__(self):
         return f'{self.name} ({self.avg_elixir})'
 
