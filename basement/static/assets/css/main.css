@@ -45,6 +45,11 @@ a.on-dark:hover {
     letter-spacing: 1px;
 }
 
+input.btn-outline-secondary:hover:not(.active) {
+    background: none;
+    color: #6c757d;
+}
+
 
 /* Navbar */
 
