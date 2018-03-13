@@ -55,6 +55,14 @@
                 class="form-control">
             </div>
 
+            <!-- Deck arena -->
+            <div class="form-group">
+              <select class="form-control" ng-model="deck.arena">
+                <option ng-value="-1">Deck arena</option>
+                <option ng-value="$index" ng-repeat="arena in deckArenas">{{ deckArenas[$index] }}</option>
+              </select>
+            </div>
+
             <!-- Deck type -->
             <div class="form-group">
               <select class="form-control" ng-model="deck.kind">

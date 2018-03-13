@@ -110,6 +110,13 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
     $scope.slots = new Array(8);
 
     /**
+     * All areans
+     *
+     * @type {Array<string>}
+     */
+    $scope.deckArenas = Main.deck.arena;
+
+    /**
      * All type of decks
      *
      * @type {Array<string>}
