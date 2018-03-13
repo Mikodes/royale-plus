@@ -216,7 +216,6 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
       return;
     }
 
-
     // Update the deck
     API.Decks.put({ id: $scope.deck.id }, $scope.deck.export(), function (data) {
       toaster.success("Done", $scope.deck.name + " updated.");
