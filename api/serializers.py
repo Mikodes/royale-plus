@@ -72,15 +72,13 @@ class DeckSerializer(serializers.ModelSerializer):
             'mode_3x',
             'created',
         ]
+        extra_kwargs = {
+            'user': {'read_only': True},
+        }
 
     def create(self, validated_data: dict):
-        return Deck.objects.create(
-            user=self.context['request'].user,
-            name=validated_data['name'],
-            cards=validated_data['cards'],
-            kind=validated_data['kind'],
-            avg_elixir=validated_data['avg_elixir'],
-        )
+        validated_data['user'] = self.context['request'].user
+        return super(DeckSerializer, self).create(validated_data)
 
 
 class ActivitySerializer(serializers.ModelSerializer):
