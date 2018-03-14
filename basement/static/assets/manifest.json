@@ -6,7 +6,7 @@
   "background_color": "#343a40",
   "display": "standalone",
   "orientation": "portrait",
-  "Scope": "/",
+  "scope": "/",
   "start_url": "/",
   "icons": [{
     "src": "img/icons/android-chrome-192x192.png",
