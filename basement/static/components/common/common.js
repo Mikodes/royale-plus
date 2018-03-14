@@ -15,7 +15,7 @@ app.service("Common", function (ENV, ModalService) {
   this.modal = function (componentUrl, data) {
     ModalService.showModal({
       bodyClass: "modal-open",
-      templateUrl: self.component("card/card.html"),
+      templateUrl: self.component(componentUrl),
       controller: function ($scope, $element, close) {
         $scope.data = data;
       }
