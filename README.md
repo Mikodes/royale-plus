@@ -58,4 +58,4 @@ Any contribution will be highly appreciated
 
 ### Report a bug or a suggesstion
 
-[Create an issue](https://github.com/AmirSavnad/royale-plus/issues) or send an email: amir@savandbros.com
+[Create an issue](https://github.com/AmirSavand/royale-plus/issues) or send an email: amir@savandbros.com
