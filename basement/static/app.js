@@ -113,4 +113,15 @@ app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll
       $window.ga("send", "pageview", { page: page });
     }
   });
+
+  /**
+   * On hash change (URL)
+   */
+  angular.element($window).on("hashchange", function () {
+
+    // Remove modal backdrop when there's no modal
+    if (angular.element(".modal").length < 1) {
+      angular.element(".modal-backdrop").fadeOut(this.remove);
+    }
+  });
 });
