@@ -38,6 +38,15 @@ app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll
   };
 
   /**
+   * Check if website is being accessed by home screen app
+   *
+   * @returns {boolean}
+   */
+  $rootScope.isStandalone = function () {
+    return $window.matchMedia('(display-mode: standalone)').matches;
+  };
+
+  /**
    * @type {string}
    */
   $rootScope.version = ENV.VERSION;

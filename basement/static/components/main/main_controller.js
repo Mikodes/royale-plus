@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("MainController", function (ENV, Auth, API, $scope, $rootScope, $state) {
+app.controller("MainController", function (ENV, Auth, API, Common, $scope, $rootScope, $state, $stateParams) {
 
   /**
    * Get user data
@@ -41,6 +41,12 @@ app.controller("MainController", function (ENV, Auth, API, $scope, $rootScope, $
   $scope.$on("royalePlus.Auth:setAuth", getUserData);
   $scope.$on("royalePlus.Auth:updateAuth", getUserData);
   $scope.$on("royalePlus.Auth:unAuth", getUserData);
+
+  $scope.$on("$stateChangeSuccess", function () {
+    if ($stateParams.launcher && $stateParams.launcher != ENV.VERSION_STANDALONE) {
+      Common.modal("help/launcher_outdated.html");
+    }
+  });
 
   constructor();
 });

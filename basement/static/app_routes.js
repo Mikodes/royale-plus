@@ -19,9 +19,14 @@ app.config(function (ENV, $stateProvider, $urlRouterProvider) {
   })
 
   .state("app.home", {
-    url: "/",
+    url: "/?launcher",
     controller: "HomeController",
     templateUrl: comp("home/home.html")
+  })
+
+  .state("app.help-launcher-update", {
+    url: "/help/launcher-update",
+    templateUrl: comp("help/launcher_update.html")
   })
 
   .state("app.signup", {
