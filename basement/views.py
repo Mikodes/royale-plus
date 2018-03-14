@@ -10,3 +10,9 @@ def index(request):
         'static_url': STATIC_URL,
         'production': PRODUCTION,
     })
+
+
+def appcache(request):
+    return render(request, 'manifest.appcache', {
+        'version': VERSION
+    })
