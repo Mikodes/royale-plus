@@ -69,15 +69,15 @@ app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll
 
     // Scroll up
     $anchorScroll();
-
-    // Close navbar
-    angular.element("#navbar").collapse("hide");
   });
 
   /**
    * Page is starting to change
    */
   $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
+
+    // Close navbar
+    angular.element("#navbar").collapse("hide");
 
     // Check authentication for state
     if (typeof toState.auth !== "undefined") {
