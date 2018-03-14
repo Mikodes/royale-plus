@@ -63,6 +63,7 @@ app.config(function (ENV, $stateProvider, $urlRouterProvider) {
     url: "/build/:id",
     controller: "DeckNewController",
     templateUrl: comp("deck/deck_new/deck_new.html"),
+    auth: true,
     params: {
       deck: null
     }
