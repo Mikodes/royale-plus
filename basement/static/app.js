@@ -110,7 +110,7 @@ app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll
   /**
    * Changed state successfully
    */
-  $rootScope.$on("$stateChangeStart", function () {
+  $rootScope.$on("$stateChangeSuccess", function () {
 
     // Analytics
     if (ENV.PRODUCTION) {
