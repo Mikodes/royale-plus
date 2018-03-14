@@ -1,5 +1,7 @@
 CACHE MANIFEST
 
+#Version: {{ version }}
+
 CACHE:
 //www.clashapi.xyz/images/cards/arrows.png
 //www.clashapi.xyz/images/cards/bomber.png
