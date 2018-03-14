@@ -6,7 +6,8 @@
 
 body {
     font-family: "Righteous", sans-serif;
-    background: ghostwhite url("../img/overlay.png");
+    background-image: ghostwhite url("../img/overlay.png");
+    background-size: 200 200;
     padding-top: 56px;
 }
 
