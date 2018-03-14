@@ -4,6 +4,7 @@
   "globals": {
     "angular": false,
     "app": false,
+    "localStorage": false,
     "confirm": false
   }
 }

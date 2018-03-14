@@ -110,13 +110,16 @@
       PRODUCTION: "{{ production }}" === "True",
       ROYALE_PLUS: "//{{ request.get_host }}/",
       CLASH_API: "//www.clashapi.xyz/api/",
-      DISQUS_SHORTNAME: "royale-plus",
-      GOOGLE_ANALYTICS_ID: "UA-115461778-1",
+
       VERSION: "{{ version }}",
       VERSION_STORAGE: 1,
+
       CLAN_TAG: "#2Y2C9RCJ",
+      DISQUS_SHORTNAME: "royale-plus",
+      GOOGLE_ANALYTICS_ID: "UA-115461778-1",
+
+      STATIC_URL: "{{ static_url }}",
       GITHUB: "https://github.com/AmirSavand/royale-plus",
-      STATIC_URL: "{{ static_url }}"
     });
   </script>
 

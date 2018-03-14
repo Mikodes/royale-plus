@@ -19,7 +19,7 @@ app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProv
   $resourceProvider.defaults.stripTrailingSlashes = false;
   $httpProvider.interceptors.push("AuthInterceptor");
   $locationProvider.hashPrefix("!");
-  $disqusProvider.setShortname(ENV.DISQUS_SHORTNAME)
+  $disqusProvider.setShortname(ENV.DISQUS_SHORTNAME);
 });
 
 /**
