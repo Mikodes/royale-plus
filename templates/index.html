@@ -3,23 +3,35 @@
 <html lang="en" ng-app="royalePlus" manifest="{% url 'appcache' %}">
 
 <head>
+  <!-- Meta data -->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Royale Plus is a social website for Clash Royale players.">
   <meta name="keywords" content="clash, royale, decks, edit, build, cards, share, social">
   <meta name="author" content="Amir Savand">
-  
+
+  <!-- Title -->
+  <title>Royale Plus &bullet; Best social site for Clash Royale</title>
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="512x512" href="{% static 'assets/img/favicon.png' %}{{ v }}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/img/icons/favicon-32x32.png' %}{{ v }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/img/icons/favicon-16x16.png' %}{{ v }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/img/icons/apple-touch-icon.png' %}{{ v }}">
+  <link rel="mask-icon" href="{% static 'assets/img/icons/safari-pinned-tab.svg' %}{{ v }}" color="#343a40">
+
+  <!-- Configs -->
+  <link rel="manifest" href="{% static 'assets/manifest.json' %}{{ v }}">
+  <meta name="msapplication-TileColor" content="#343a40">
   <meta name="theme-color" content="#343a40">
 
-  <title>Royale Plus</title>
-  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}{{ v }}" />
-  <link rel="manifest" href="{% static 'assets/manifest.json' %}{{ v }}">
-
+  <!-- Lib styles -->
   <link rel="stylesheet" href="{% static 'lib/bootstrap/bootstrap.css' %}" />
   <link rel="stylesheet" href="{% static 'lib/fontawesome/fontawesome.css' %}" />
   <link rel="stylesheet" href="{% static 'lib/animate/animate.css' %}" />
   <link rel="stylesheet" href="{% static 'lib/angular-toaster/toaster.css' %}" />
 
+  <!-- Styles -->
   <link rel="stylesheet" href="{% static 'assets/css/main.css' %}{{ v }}">
   <link rel="stylesheet" href="{% static 'assets/css/shorties.css' %}{{ v }}">
   <link rel="stylesheet" href="{% static 'assets/css/mobile.css' %}{{ v }}" media="(max-width: 767px)">
@@ -33,12 +45,16 @@
     </p>
   <![endif]-->
 
+  <!-- Navbar -->
   <ng-include src="'{% static 'components/main/main.html' %}{{ v }}'" ng-controller="MainController"></ng-include>
 
+  <!-- Main view -->
   <ui-view></ui-view>
 
+  <!-- Footer -->
   <ng-include src="'{% static 'components/main/footer.html' %}{{ v }}'"></ng-include>
 
+  <!-- Lib scripts -->
   <script src="{% static 'lib/jquery/jquery.js' %}"></script>
   <script src="{% static 'lib/popper/popper.js' %}"></script>
   <script src="{% static 'lib/bootstrap/bootstrap.js' %}"></script>
@@ -51,6 +67,7 @@
   <script src="{% static 'lib/angular-modal-service/angular-modal-service.js' %}"></script>
   <script src="{% static 'lib/angular-ui-router/angular-ui-router.js' %}"></script>
 
+  <!-- Scripts -->
   <script src="{% static 'app.js' %}{{ v }}"></script>
   <script src="{% static 'app_directives.js' %}{{ v }}"></script>
   <script src="{% static 'app_filters.js' %}{{ v }}"></script>
@@ -85,6 +102,7 @@
   <script src="{% static 'components/account/signup/signup_controller.js' %}{{ v }}"></script>
   <script src="{% static 'components/account/settings/settings_controller.js' %}{{ v }}"></script>
 
+  <!-- ENV constant -->
   <script>
     app.constant("ENV", {
       PRODUCTION: "{{ production }}" === "True",
