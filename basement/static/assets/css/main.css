@@ -287,7 +287,10 @@ card.no-name cover {
     padding-bottom: 1.5rem;
 }
 
-.modal-header h3 {
+.modal-header h1,
+.modal-header h2,
+.modal-header h3,
+.modal-header h4 {
     width: 100%;
     margin: 0;
     text-align: center;
