@@ -45,11 +45,6 @@ app.run(function (ENV, Auth, toaster, $state, $window, $rootScope, $anchorScroll
   /**
    * @type {string}
    */
-  $rootScope.tag = ENV.CLAN_TAG;
-
-  /**
-   * @type {string}
-   */
   $rootScope.feedback = "mailto:amir@savandbros.com?Subject=Royale Plus v" + ENV.VERSION;
 
   /**
