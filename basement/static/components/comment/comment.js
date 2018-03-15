@@ -4,6 +4,11 @@ app.service("Comment", function (Account, Main, API, toaster, $rootScope) {
   return function (data) {
 
     /**
+     * @private
+     */
+    var self = this;
+
+    /**
      * @type {object}
      */
     this.get = data;
@@ -33,25 +38,27 @@ app.service("Comment", function (Account, Main, API, toaster, $rootScope) {
      *
      * @type {boolean}
      */
-    this.loading = true;
+    this.loading = false;
 
     /**
      * @type {function}
      */
     this.create = function () {
+      this.loading = true;
       API.Comments.save({
           kind: this.kind,
           object: this.object,
           comment: this.comment
         },
         function (data) {
-          $rootScope("royalePlus.Comment:create", data);
-          toaster("Done", "Succesfully commented.");
-          this.loading = false;
+          toaster.success("Done", "Succesfully commented.");
+          $rootScope.$broadcast("royalePlus.Comment:create", data);
+          self.loading = false;
+          self.comment = "";
         },
         function () {
-          toaster("Ops", "Failed to comment, try again later.");
-          this.loading = false;
+          toaster.error("Ops", "Failed to comment, try again later.");
+          self.loading = false;
         }
       );
     };
