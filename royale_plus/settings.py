@@ -111,7 +111,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'basement/static/')
 # Rest framework
 
 REST_FRAMEWORK = {
-    'PAGE_SIZE': 100,
+    'PAGE_SIZE': 20,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
