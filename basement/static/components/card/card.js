@@ -6,6 +6,7 @@ app.service("Card", function (Main, Common) {
 
     this.id = id;
     this.idName = idName;
+    this.idCopy = Main.card.copyId[idName];
     this.name = name;
     this.arena = arena;
     this.description = description;
@@ -46,6 +47,7 @@ app.service("Card", function (Main, Common) {
         if (card.idName === idName) {
           this.id = card._id;
           this.idName = card.idName;
+          this.idCopy = Main.card.copyId[card.idName];
           this.name = card.name;
           this.arena = card.arena;
           this.description = card.description;
