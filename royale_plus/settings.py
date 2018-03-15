@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'crapi',
     'deck',
     'activity',
+    'comment',
 ]
 
 MIDDLEWARE = [
