@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("HomeController", function (Account, Member, Activity, Comment, Deck, Card, API, $scope) {
+app.controller("HomeController", function (Main, Account, Member, Activity, Comment, Deck, Card, API, $scope) {
 
   function constructor() {
 
@@ -8,6 +8,14 @@ app.controller("HomeController", function (Account, Member, Activity, Comment, D
      * @type {Deck}
      */
     $scope.deck = new Deck("Generated Deck", []);
+
+    /**
+     * @type {Comment}
+     */
+    $scope.comment = new Comment({
+      object: "Home", // For home page
+      kind: Main.comment.kind.indexOf("Page") // Page comment
+    });
 
     /**
      * @type {Array<Account>}
