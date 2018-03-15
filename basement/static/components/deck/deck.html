@@ -109,6 +109,7 @@
         <div class="list-group list-group-flush">
           <a class="list-group-item" ui-sref="app.deck-list({username: deck.user})">View {{ deck.user }}'s Decks</a>
           <a class="list-group-item" ui-sref="app.deck-new({deck: deck})">Copy and Edit</a>
+          <a class="list-group-item" ng-href="{{ deck.getCopyLink() }}">Copy to Game</a>
         </div>
 
         <!-- Owner options -->
