@@ -43,7 +43,7 @@
           <a class="list-group-item"
             ui-sref="app.member({ tag: member.get.tag, member: member })"
             ng-if="member.get.role != 'member'"
-            ng-repeat="member in members | orderBy:'-roleRank'">
+            ng-repeat="member in members | orderBy:'-roleRank' | limitTo:10">
             {{ member.get.name | underspace }}
             <small class="o-fade float-right">{{ member.get.role | uppercase }}</small>
           </a>
