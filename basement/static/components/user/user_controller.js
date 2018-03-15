@@ -25,7 +25,7 @@ app.controller("UserController", function (Member, API, toaster, Activity, $scop
       );
     }
 
-        // Get activities
+    // Get activities
     API.Activities.get({ limit: 20, issuer: $stateParams.username }, function (data) {
       angular.forEach(data.results, function (result) {
         $scope.activities.push(new Activity(result));
