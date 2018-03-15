@@ -30,7 +30,7 @@ class User(AbstractBaseUser):
         max_length=150,
         unique=True,
         validators=[username_validator],
-        error_messages={'unique': "A user with that username already exists."},
+        error_messages={'unique': 'A user with that username already exists.'},
     )
 
     joined = models.DateTimeField(auto_now=True)
