@@ -7,7 +7,8 @@ from rest_framework.response import Response
 
 from account.models import User
 from activity.models import Activity
-from api.serializers import UserSerializer, UserUpdateSerializer, DeckSerializer, ActivitySerializer
+from api.serializers import UserSerializer, UserUpdateSerializer, DeckSerializer, ActivitySerializer, CommentSerializer
+from comment.models import Comment
 from deck.models import Deck
 
 
@@ -76,5 +77,20 @@ class ActivityViewSet(viewsets.ModelViewSet):
 
         if issuer is not None:
             queryset = queryset.filter(issuer__username=issuer)
+
+        return queryset
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    pagination_class = StandardPagination
+
+    def get_queryset(self):
+        queryset = super(CommentViewSet, self).get_queryset()
+        user = self.request.query_params.get('user', None)
+
+        if user is not None:
+            queryset = queryset.filter(user__username=user)
 
         return queryset
