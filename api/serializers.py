@@ -63,7 +63,7 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 
 
 class DeckSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField()
+    user = UserMinimalSerializer(read_only=True, default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Deck
@@ -82,18 +82,9 @@ class DeckSerializer(serializers.ModelSerializer):
             'mode_3x',
             'created',
         ]
-        extra_kwargs = {
-            'user': {'read_only': True},
-        }
-
-    def create(self, validated_data: dict):
-        validated_data['user'] = self.context['request'].user
-        return super(DeckSerializer, self).create(validated_data)
 
 
 class ActivitySerializer(serializers.ModelSerializer):
-    issuer = serializers.StringRelatedField()
-
     class Meta:
         model = Activity
         fields = [
@@ -106,7 +97,7 @@ class ActivitySerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    user = UserMinimalSerializer()
+    user = UserMinimalSerializer(read_only=True, default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Comment
@@ -118,13 +109,6 @@ class CommentSerializer(serializers.ModelSerializer):
             'created',
             'created_since'
         ]
-        extra_kwargs = {
-            'user': {'read_only': True},
-        }
-
-    def create(self, validated_data: dict):
-        validated_data['user'] = self.context['request'].user
-        return super(CommentSerializer, self).create(validated_data)
 
 
 def jwt_response_payload_handler(token, user=None, request=None):
