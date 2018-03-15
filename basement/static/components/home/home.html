@@ -59,15 +59,15 @@
         <div class="card-header bg-dark text-white py-4">
           Discussion <i class="fas fa-comments float-right text-secondary"></i>
         </div>
+        <!-- Comment form -->
+        <div class="card-footer">
+          <ng-include src="static('components/comment/comment_form_include.html')"></ng-include>
+        </div>
         <!-- Comment list -->
         <div class="list-group listr-group-flush text-dark">
           <div class="list-group-item" ng-repeat="comment in comments">
             <ng-include src="static('components/comment/comment_include.html')"></ng-include>
           </div>
-        </div>
-        <!-- Comment form -->
-        <div class="card-footer">
-          <ng-include src="static('components/comment/comment_form_include.html')"></ng-include>
         </div>
       </div>
     </div>
