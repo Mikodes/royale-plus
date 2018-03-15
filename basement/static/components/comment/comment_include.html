@@ -1,18 +1,18 @@
 <div class="media">
   <!-- Image -->
-  <img class="mr-3 user-image" src="//placehold.it/64x64/eee/eee" width="64px" alt="{{ user.get.username }}">
+  <img class="user-image" src="{{ comment.user.picture }}" alt="{{ comment.user.username }}">
   <!-- Commend body -->
   <div class="media-body">
     <!-- Header -->
-    <h5 class="mt-0">
+    <div>
       <!-- Link -->
-      <a ui-sref="app.user({username: comment.get.user})">{{ comment.get.user }}</a>
+      <a ui-sref="app.user({username: comment.user.username})">{{ comment.user.username }}</a>
       <!-- Time -->
       <small class="float-right o-fade" title="{{ comment.get.created | date }}">
-        <small>{{ comment.get.created_since }}</small>
+        {{ comment.get.created_since }}
       </small>
-    </h5>
+    </div>
     <!-- Comment -->
-    <span class="t-pl">{{ comment.get.comment }}</span>
+    <span class="t-pl">{{ comment.comment }}</span>
   </div>
 </div>
