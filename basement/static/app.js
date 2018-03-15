@@ -14,12 +14,13 @@ var app = angular.module("royalePlus", [
 /**
  * App config
  */
-app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProvider, $disqusProvider, ENV) {
+app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProvider, $disqusProvider, $compileProvider, ENV) {
   $qProvider.errorOnUnhandledRejections(false);
   $resourceProvider.defaults.stripTrailingSlashes = false;
   $httpProvider.interceptors.push("AuthInterceptor");
   $locationProvider.hashPrefix("!");
   $disqusProvider.setShortname(ENV.DISQUS_SHORTNAME);
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|sms|tel|clashroyale):/);
 });
 
 /**
