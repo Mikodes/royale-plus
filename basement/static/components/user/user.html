@@ -90,6 +90,23 @@
           <div disqus="'user-' + user.username"></div>
         </div>
       </div>
+
+      <!-- Recent Activities -->
+      <div class="card my-4">
+        <div class="card-header bg-dark text-white py-4">
+          Recent Activities <i class="fas fa-fw o-fade float-right fa-flag"></i>
+        </div>
+        <div class="list-group list-group-flush text-dark">
+          <!-- Activity -->
+          <div class="list-group-item" ng-repeat="activity in activities">
+            <ng-include src="static('components/activity/activity_include.html')"></ng-include>
+          </div>
+        </div>
+        <!-- Loading -->
+        <div class="card-body text-center bg-white py-5" ng-if="!activities.length">
+          <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
+        </div>
+      </div>
     </div>
   </div>
 </div>
