@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Comment", function (Main) {
+app.service("Comment", function (Account, Main, API, toaster, $rootScope) {
   return function (data) {
 
     /**
@@ -9,11 +9,35 @@ app.service("Comment", function (Main) {
     this.get = data;
 
     /**
-     * @type {function}
-     * @returns {string}
+     * @type {Account}
      */
-    this.getKind = function () {
-      return Main.comment.kind[this.get.kind];
+    this.user = data.user ? new Account(data.user) : null;
+
+    /**
+     * @type {string}
+     */
+    this.comment = this.get.comment;
+
+    /**
+     * @type {number}
+     */
+    this.kind = this.get.kind;
+
+    /**
+     * @type {string}
+     */
+    this.object = this.get.kind;
+
+    /**
+     * Used for API calls
+     *
+     * @type {boolean}
+     */
+    this.loading = true;
+
+    /**
+     * @type {function}
+     */
     this.create = function () {
       API.Comments.save({
           kind: this.kind,
