@@ -95,5 +95,9 @@ app.controller("HomeController", function (Main, Account, Member, Activity, Comm
     $scope.showDiscussion = true;
   };
 
+  $scope.$on("royalePlus.Comment:create", function (event, data) {
+    $scope.comments.unshift(new Comment(data));
+  });
+
   constructor();
 });
