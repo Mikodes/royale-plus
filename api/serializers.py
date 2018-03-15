@@ -118,6 +118,13 @@ class CommentSerializer(serializers.ModelSerializer):
             'created',
             'created_since'
         ]
+        extra_kwargs = {
+            'user': {'read_only': True},
+        }
+
+    def create(self, validated_data: dict):
+        validated_data['user'] = self.context['request'].user
+        return super(CommentSerializer, self).create(validated_data)
 
 
 def jwt_response_payload_handler(token, user=None, request=None):
