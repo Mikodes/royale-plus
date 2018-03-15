@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("HomeController", function (Account, Member, Activity, Deck, Card, API, $scope) {
+app.controller("HomeController", function (Account, Member, Activity, Comment, Deck, Card, API, $scope) {
 
   function constructor() {
 
@@ -24,6 +24,11 @@ app.controller("HomeController", function (Account, Member, Activity, Deck, Card
      */
     $scope.activities = [];
 
+    /**
+     * @type {Array<Comment>}
+     */
+    $scope.comments = [];
+
     // Get members
     API.Clan.get({ keys: "members" }, function (data) {
       angular.forEach(data.members, function (member) {
@@ -42,6 +47,13 @@ app.controller("HomeController", function (Account, Member, Activity, Deck, Card
     API.Activities.get({ limit: 20 }, function (data) {
       angular.forEach(data.results, function (result) {
         $scope.activities.push(new Activity(result));
+      });
+    });
+
+    // Get comments
+    API.Comments.get({ limit: 30 }, function (data) {
+      angular.forEach(data.results, function (result) {
+        $scope.comments.push(new Comment(result));
       });
     });
 
