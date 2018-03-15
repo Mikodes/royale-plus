@@ -64,8 +64,12 @@
 
 /* Texts */
 
-.t-ws {
+.t-pw {
     white-space: pre-wrap;
+}
+
+.t-pl {
+    white-space: pre-line;
 }
 
 
