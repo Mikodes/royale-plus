@@ -40,6 +40,15 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
 
+class UserMinimalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'picture',
+        ]
+
+
 class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -97,7 +106,7 @@ class ActivitySerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField()
+    user = UserMinimalSerializer()
 
     class Meta:
         model = Comment
