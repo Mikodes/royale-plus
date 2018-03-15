@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from account.models import User
 from activity.models import Activity
+from comment.models import Comment
 from deck.models import Deck
 
 
@@ -91,6 +92,19 @@ class ActivitySerializer(serializers.ModelSerializer):
             'issued',
             'kind',
             'content',
+            'created_since'
+        ]
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = [
+            'user',
+            'comment',
+            'kind',
+            'object',
+            'created',
             'created_since'
         ]
 
