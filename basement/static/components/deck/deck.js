@@ -198,6 +198,21 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
     };
 
     /**
+     * Link to copy deck to game
+     *
+     * @returns {string}
+     */
+    this.getCopyLink = function () {
+      // Base link
+      var link = "clashroyale://copyDeck?deck=";
+      // Add each card copy id to link
+      for (var i in this.cards) {
+        link += this.cards[i].idCopy + ";";
+      }
+      return link;
+    };
+
+    /**
      * Export an object structure for backend API
      *
      * @type {function}
