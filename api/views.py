@@ -89,9 +89,14 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = super(CommentViewSet, self).get_queryset()
+
         user = self.request.query_params.get('user', None)
+        kind = self.request.query_params.get('kind', None)
 
         if user is not None:
             queryset = queryset.filter(user__username=user)
+
+        if kind is not None:
+            queryset = queryset.filter(kind=kind)
 
         return queryset
