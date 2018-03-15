@@ -85,6 +85,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     pagination_class = StandardPagination
+    filter_fields = ('user',)
 
     def get_queryset(self):
         queryset = super(CommentViewSet, self).get_queryset()
