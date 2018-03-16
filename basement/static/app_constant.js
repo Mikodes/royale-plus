@@ -143,5 +143,12 @@ app.constant("Main", {
       "zap": 28000008,
       "zappies": 26000052
     }
+  },
+  comment: {
+    kind: [
+      "Page",
+      "User",
+      "Deck"
+    ]
   }
 });

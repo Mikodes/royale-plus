@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
+app.service("Deck", function (API, Auth, Card, Account, Main, toaster, $state) {
   return function (name, cards, kind, arena) {
 
     /**
@@ -106,7 +106,7 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
         modes.push("3x Elixir");
       }
       return modes;
-    }
+    };
 
     /**
      * Calculate average elixir cost and update the variable then return it
@@ -168,7 +168,7 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
      * @type {boolean}
      */
     this.isOwner = function () {
-      return this.user === Auth.getAuth().username;
+      return this.user.username === Auth.getAuth().username;
     };
 
     /**
@@ -190,7 +190,7 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
 
       // API call, toast and redirect
       API.Decks.delete({ id: this.id });
-      $state.go("app.deck-list", { username: this.user });
+      $state.go("app.deck-list", { username: this.user.username });
       toaster.success("Deleted", "Deleted deck: " + this.name);
 
       // Success
@@ -246,7 +246,7 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
      */
     this.import = function (data) {
       this.id = data.id;
-      this.user = data.user;
+      this.user = new Account(data.user);
       this.name = data.name;
       this.cards = [];
       this.kind = data.kind;

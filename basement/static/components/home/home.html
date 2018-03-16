@@ -55,17 +55,19 @@
       </div>
 
       <!-- Discussion -->
-      <div class="card my-4 mobile-hide">
+      <div class="card my-4">
         <div class="card-header bg-dark text-white py-4">
           Discussion <i class="fas fa-comments float-right text-secondary"></i>
         </div>
-        <div class="card-body bg-white text-center">
-          <!-- Show button -->
-          <button class="btn btn-lg btn-info m-0" ng-click="joinDiscussion()" ng-if="showDiscussion != true">
-            <i class="fa fa-download"></i> Show Discussion
-          </button>
-          <!-- Widget -->
-          <div disqus="'home'" ng-if="showDiscussion == true"></div>
+        <!-- Comment form -->
+        <div class="card-footer">
+          <ng-include src="static('components/comment/comment_form_include.html')"></ng-include>
+        </div>
+        <!-- Comment list -->
+        <div class="list-group listr-group-flush text-dark">
+          <div class="list-group-item" ng-repeat="comment in comments">
+            <ng-include src="static('components/comment/comment_include.html')"></ng-include>
+          </div>
         </div>
       </div>
     </div>

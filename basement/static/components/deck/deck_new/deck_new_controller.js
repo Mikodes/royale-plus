@@ -199,7 +199,7 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
     // Save the deck
     API.Decks.save($scope.deck.export(), function (data) {
       toaster.success("Awesome", $scope.deck.name + " is in your collection now.");
-      $state.go("app.deck-list", { username: data.user });
+      $state.go("app.deck-list", { username: data.user.username });
 
       // Increase user decks
       $rootScope.$broadcast("royalePlus.Auth:updateAuth");

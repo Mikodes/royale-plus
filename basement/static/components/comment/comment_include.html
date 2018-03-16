@@ -1,0 +1,18 @@
+<div class="media animated fadeIn">
+  <!-- Image -->
+  <img class="user-image" src="{{ comment.user.picture }}" alt="{{ comment.user.username }}">
+  <!-- Commend body -->
+  <div class="media-body">
+    <!-- Header -->
+    <div>
+      <!-- Link -->
+      <a ui-sref="app.user({username: comment.user.username})">{{ comment.user.username }}</a>
+      <!-- Time -->
+      <small class="float-right o-fade" title="{{ comment.get.created | date }}">
+        {{ comment.get.created_since }}
+      </small>
+    </div>
+    <!-- Comment -->
+    <span class="t-pl">{{ comment.comment }}</span>
+  </div>
+</div>

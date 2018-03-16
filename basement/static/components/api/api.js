@@ -20,6 +20,9 @@ app.service("API", function (ENV, $resource) {
     name: "Activities",
     endpoint: "api/activities/" // GET
   }, {
+    name: "Comments",
+    endpoint: "api/comments/" // POST - PUT - GET - DELETE
+  }, {
     name: "Clan",
     endpoint: "crapi/clan/" // GET
   }, {

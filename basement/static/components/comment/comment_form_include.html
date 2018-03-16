@@ -1,0 +1,13 @@
+<!-- Form -->
+<form ng-submit="comment.create()">
+  <div class="input-group">
+    <!-- Comment -->
+    <textarea rows="1" maxlength="1000" class="form-control" placeholder="Comment" ng-model="comment.comment"></textarea>
+    <!-- Submit button -->
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="submit" ng-disabled="comment.loading">
+        <i class="fas fa-check"></i>
+      </button>
+    </div>
+  </div>
+</form>
