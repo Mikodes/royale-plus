@@ -31,7 +31,7 @@ app.service("Comment", function (Account, Main, API, toaster, $rootScope) {
     /**
      * @type {string}
      */
-    this.object = this.get.kind;
+    this.target = this.get.kind;
 
     /**
      * Used for API calls
@@ -47,7 +47,7 @@ app.service("Comment", function (Account, Main, API, toaster, $rootScope) {
       this.loading = true;
       API.Comments.save({
           kind: this.kind,
-          object: this.object,
+          target: this.target,
           comment: this.comment
         },
         function (data) {
