@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from account.models import User
 from activity.models import Activity
+from comment.models import Comment
 from deck.models import Deck
 
 
@@ -39,6 +40,15 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
 
+class UserMinimalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'picture',
+        ]
+
+
 class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -53,7 +63,7 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 
 
 class DeckSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField()
+    user = UserMinimalSerializer(read_only=True, default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Deck
@@ -72,18 +82,9 @@ class DeckSerializer(serializers.ModelSerializer):
             'mode_3x',
             'created',
         ]
-        extra_kwargs = {
-            'user': {'read_only': True},
-        }
-
-    def create(self, validated_data: dict):
-        validated_data['user'] = self.context['request'].user
-        return super(DeckSerializer, self).create(validated_data)
 
 
 class ActivitySerializer(serializers.ModelSerializer):
-    issuer = serializers.StringRelatedField()
-
     class Meta:
         model = Activity
         fields = [
@@ -91,6 +92,21 @@ class ActivitySerializer(serializers.ModelSerializer):
             'issued',
             'kind',
             'content',
+            'created_since'
+        ]
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    user = UserMinimalSerializer(read_only=True, default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Comment
+        fields = [
+            'user',
+            'comment',
+            'kind',
+            'target',
+            'created',
             'created_since'
         ]
 

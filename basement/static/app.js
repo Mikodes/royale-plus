@@ -5,7 +5,6 @@
  */
 var app = angular.module("royalePlus", [
   "ngResource",
-  "ngDisqus",
   "ui.router",
   "angularModalService",
   "toaster"
@@ -14,12 +13,11 @@ var app = angular.module("royalePlus", [
 /**
  * App config
  */
-app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProvider, $disqusProvider, $compileProvider, ENV) {
+app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProvider, $compileProvider, ENV) {
   $qProvider.errorOnUnhandledRejections(false);
   $resourceProvider.defaults.stripTrailingSlashes = false;
   $httpProvider.interceptors.push("AuthInterceptor");
-  $locationProvider.hashPrefix("!");
-  $disqusProvider.setShortname(ENV.DISQUS_SHORTNAME);
+  $locationProvider.hashPrefix("");
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|sms|tel|clashroyale):/);
 });
 

@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("HomeController", function (Account, Member, Activity, Deck, Card, API, $scope) {
+app.controller("HomeController", function (Main, Account, Member, Activity, Comment, Deck, Card, API, $scope) {
 
   function constructor() {
 
@@ -8,6 +8,14 @@ app.controller("HomeController", function (Account, Member, Activity, Deck, Card
      * @type {Deck}
      */
     $scope.deck = new Deck("Generated Deck", []);
+
+    /**
+     * @type {Comment}
+     */
+    $scope.comment = new Comment({
+      target: "Home", // For home page
+      kind: Main.comment.kind.indexOf("Page") // Page comment
+    });
 
     /**
      * @type {Array<Account>}
@@ -23,6 +31,11 @@ app.controller("HomeController", function (Account, Member, Activity, Deck, Card
      * @type {Array<Activity>}
      */
     $scope.activities = [];
+
+    /**
+     * @type {Array<Comment>}
+     */
+    $scope.comments = [];
 
     // Get members
     API.Clan.get({ keys: "members" }, function (data) {
@@ -44,6 +57,19 @@ app.controller("HomeController", function (Account, Member, Activity, Deck, Card
         $scope.activities.push(new Activity(result));
       });
     });
+
+    // Get comments
+    API.Comments.get({
+        limit: 30,
+        target: $scope.comment.target,
+        kind: $scope.comment.kind
+      },
+      function (data) {
+        angular.forEach(data.results, function (result) {
+          $scope.comments.push(new Comment(result));
+        });
+      }
+    );
 
     // Get random deck
     $scope.generateDeck();
@@ -68,12 +94,9 @@ app.controller("HomeController", function (Account, Member, Activity, Deck, Card
     });
   };
 
-  /**
-   * Show (load) discussion widget
-   */
-  $scope.joinDiscussion = function () {
-    $scope.showDiscussion = true;
-  };
+  $scope.$on("royalePlus.Comment:create", function (event, data) {
+    $scope.comments.unshift(new Comment(data));
+  });
 
   constructor();
 });

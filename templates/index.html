@@ -65,7 +65,6 @@
   <script src="{% static 'lib/angular/angular.js' %}"></script>
   <script src="{% static 'lib/angular-toaster/toaster.js' %}"></script>
   <script src="{% static 'lib/angular-resource/angular-resource.js' %}"></script>
-  <script src="{% static 'lib/angular-disqus/angular-disqus.js' %}"></script>
   <script src="{% static 'lib/angular-modal-service/angular-modal-service.js' %}"></script>
   <script src="{% static 'lib/angular-ui-router/angular-ui-router.js' %}"></script>
 
@@ -89,6 +88,8 @@
   <script src="{% static 'components/card/card.js' %}{{ v }}"></script>
 
   <script src="{% static 'components/activity/activity.js' %}{{ v }}"></script>
+
+  <script src="{% static 'components/comment/comment.js' %}{{ v }}"></script>
 
   <script src="{% static 'components/member/member.js' %}{{ v }}"></script>
   <script src="{% static 'components/member/member_controller.js' %}{{ v }}"></script>
@@ -115,7 +116,6 @@
       VERSION_STORAGE: 1,
 
       CLAN_TAG: "#2Y2C9RCJ",
-      DISQUS_SHORTNAME: "royale-plus",
       GOOGLE_ANALYTICS_ID: "UA-115461778-1",
 
       STATIC_URL: "{{ static_url }}",
