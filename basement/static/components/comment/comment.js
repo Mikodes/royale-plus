@@ -42,12 +42,14 @@ app.service("Comment", function (Account, Main, Auth, API, toaster, $rootScope) 
 
     /**
      * @type {function}
+     * @returns {boolean|null}
      */
     this.create = function () {
       this.loading = true;
 
+      // Check auth
       if (!Auth.isAuth()) {
-        toaster.error("Not signed in", "You need to sign in first.");
+        toaster.error("Not signed in", "You need to sign in to comment.");
         return;
       }
 
