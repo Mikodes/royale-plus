@@ -1,0 +1,8 @@
+<div class="w-100 text-center" ng-if="pagination.next">
+  <button class="btn btn-outline-warning bg-white btn-lg p-4" ng-click="pagination.loadMore()">
+    <!-- Load more -->
+    <span ng-if="!pagination.loading">LOAD MORE</span>
+    <!-- Loading more -->
+    <i ng-if="pagination.loading" class="fas fa-arrow-down fa-spin animated infinity bounce"></i>
+  </button>
+</div>
