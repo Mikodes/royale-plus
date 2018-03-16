@@ -191,6 +191,12 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
    */
   $scope.save = function () {
 
+    // Check auth
+    if (!Auth.isAuth()) {
+      toaster.error("Not signed in", "You need to sign in to build decks.");
+      return;
+    }
+
     // Validate
     if (!isDeckValidToSave()) {
       return;
@@ -230,7 +236,7 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
    */
   $scope.filterCards = function (filter) {
     $scope.orderBy = filter.key;
-  }
+  };
 
   /**
    * Update dynamic with of slots
