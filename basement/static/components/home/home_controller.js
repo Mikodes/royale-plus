@@ -59,11 +59,17 @@ app.controller("HomeController", function (Main, Account, Member, Activity, Comm
     });
 
     // Get comments
-    API.Comments.get({ limit: 30 }, function (data) {
-      angular.forEach(data.results, function (result) {
-        $scope.comments.push(new Comment(result));
-      });
-    });
+    API.Comments.get({
+        limit: 30,
+        target: $scope.comment.target,
+        kind: $scope.comment.kind
+      },
+      function (data) {
+        angular.forEach(data.results, function (result) {
+          $scope.comments.push(new Comment(result));
+        });
+      }
+    );
 
     // Get random deck
     $scope.generateDeck();
