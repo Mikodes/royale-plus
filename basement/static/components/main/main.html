@@ -29,6 +29,16 @@
       <!-- Right -->
       <ul class="navbar-nav">
 
+        <!-- Profile completion -->
+        <li class="nav-item dropdown" ng-if="auth.isAuth() && !user.is_profile_completed">
+          <a class="nav-link" data-toggle="dropdown">
+            <i class="fas fa-bell text-warning"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" ui-sref="app.settings">Your profile is incomplete</a>
+          </div>
+        </li>
+
         <!-- Auth -->
         <li class="nav-item dropdown" ng-if="auth.isAuth()">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown">
