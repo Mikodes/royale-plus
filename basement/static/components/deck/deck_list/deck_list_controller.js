@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("DeckListController", function (API, Deck, toaster, $scope, $state, $stateParams) {
+app.controller("DeckListController", function (API, Pagination, Deck, toaster, $scope, $state, $stateParams) {
 
   function constructor() {
 
@@ -18,7 +18,9 @@ app.controller("DeckListController", function (API, Deck, toaster, $scope, $stat
      *
      * @type {object}
      */
-    var payload = {};
+    var payload = {
+      limit: 9
+    };
 
     /**
      * If there's user in URL param, then update payload
@@ -28,22 +30,24 @@ app.controller("DeckListController", function (API, Deck, toaster, $scope, $stat
     }
 
     /**
-     * Load decks using payload
+     * @type {Pagination}
      */
-    API.Decks.get(payload,
-      function (data) {
-        angular.forEach(data.results, function (result) {
-          $scope.decks.push(new Deck().import(result));
-        });
-
-        // No decks
-        if (data.count == 0) {
-          toaster.error("No Decks", payload.user + " doesn't have any decks.");
-          $state.go("app.deck-list", { username: null });
-        }
-      }
-    );
+    $scope.pagination = new Pagination(API.Decks.get, payload);
   }
+
+  /**
+   * Loaded decks
+   */
+  $scope.$on("royalePlus.Pagination:loaded", function (event, data) {
+    angular.forEach(data.results, function (result) {
+      $scope.decks.push(new Deck().import(result));
+    });
+    // No decks
+    if (!data.count) {
+      toaster.error("No Decks", $stateParams.username + " doesn't have any decks.");
+      $state.go("app.deck-list", { username: null });
+    }
+  });
 
   constructor();
 });
