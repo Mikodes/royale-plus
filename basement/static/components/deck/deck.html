@@ -30,14 +30,20 @@
         </div>
       </div>
 
-      <!-- Deck discussion -->
-      <div class="card my-4 bg-dark text-white mobile-hide">
-        <div class="card-header py-4">
-          Deck Discussion <i class="fas fa-comments float-right text-secondary"></i>
+      <!-- Deck comments -->
+      <div class="card my-4 mobile-hide">
+        <div class="card-header bg-dark text-white py-4">
+            Deck Comments <i class="fas fa-comments float-right"></i>
         </div>
-        <div class="card-body bg-white text-center">
-          <!-- Widget -->
-          <div disqus="'deck-' + deck.id"></div>
+        <!-- Comment form -->
+        <div class="card-footer">
+          <ng-include src="static('components/comment/comment_form_include.html')"></ng-include>
+        </div>
+        <!-- Comment list -->
+        <div class="list-group listr-group-flush text-dark">
+          <div class="list-group-item" ng-repeat="comment in comments">
+            <ng-include src="static('components/comment/comment_include.html')"></ng-include>
+          </div>
         </div>
       </div>
     </div>
