@@ -20,6 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
             'joined',
             'joined_since',
             'is_active',
+            'is_profile_completed',
             'is_admin',
             'is_whatsapp',
             'member',
