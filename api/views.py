@@ -76,7 +76,7 @@ class ActivityViewSet(viewsets.ModelViewSet):
         issuer = self.request.query_params.get('issuer', None)
 
         if issuer is not None:
-            queryset = queryset.filter(issuer__username=issuer)
+            queryset = queryset.filter(issuer=issuer)
 
         return queryset
 
