@@ -20,8 +20,4 @@ app.controller("SignUpController", function (Auth, API, $scope, $state) {
       }
     );
   };
-
-  $scope.toggleSingIn = function () {
-    angular.element('.dropdown-toggle#signIn').dropdown('toggle');
-  };
 });
