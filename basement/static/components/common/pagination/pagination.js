@@ -36,6 +36,7 @@ app.service("Pagination", function ($resource, $rootScope) {
      * @type {function}
      */
     this.loadMore = function () {
+      this.loading = true;
       $resource(this.next).get(this.payload, this.loaded);
     };
 
