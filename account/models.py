@@ -60,6 +60,10 @@ class User(AbstractBaseUser):
     def joined_since(self):
         return timesince(self.joined)
 
+    @property
+    def is_profile_completed(self) -> bool:
+        return all([self.about, self.picture, self.nationality])
+
     def get_full_name(self):
         return self.username
 
