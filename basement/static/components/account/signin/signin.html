@@ -1,0 +1,40 @@
+<div class="container s-mar-y">
+  <div class="row justify-content-md-center">
+    <div class="col-lg-5 col-md-6">
+      <div class="card">
+        <!-- Title -->
+        <h4 class="card-body">
+          <i class="fas fa-user-plus float-right text-muted"></i> Sign In
+        </h4>
+        <!-- Sign up form -->
+        <form class="card-body" name="form" ng-submit="signIn(form)">
+          <!-- Username -->
+          <div class="form-group" ng-class="{'has-danger': form.error.username}">
+            <input type="text" class="form-control form-control-lg" placeholder="Username"
+              ng-model="form.data.username" required ng-minlength="3">
+            <div class="form-control-feedback text-danger" ng-if="form.error.username">
+              {{ form.error.username[0] }}
+            </div>
+          </div>
+          <!-- Passowrd -->
+          <div class="form-group">
+            <input type="password" class="form-control form-control-lg" placeholder="Password"
+              ng-model="form.data.password" required ng-minlength="3">
+              <div class="form-control-feedback text-danger" ng-if="form.error.password">
+                {{ form.error.password[0] }}
+              </div>
+          </div>
+          <!-- Submit -->
+          <button class="btn btn-success btn-lg btn-block" ng-disabled="form.$invalid || form.loading">
+            <i class="fas fa-fw fa-sign-in-alt"></i> Sign In
+          </button>
+          <!-- Sign up -->
+          <br>
+          <span class="text-secondary">
+            Dont't have an account? <a ui-sref="app.signup">Register</a>
+          </span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
