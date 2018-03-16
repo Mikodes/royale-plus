@@ -16,7 +16,7 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-VERSION = '1.5.0'
+VERSION = '1.5.1'
 
 # Application definition
 
