@@ -17,12 +17,16 @@ Sign up, browse decks, create your own collection and share.
 - Browse user decks
 - Build decks
 - Edit random decks or copy from others
-- Decks have arena, type, mode, avg elixir, etc...
+- Decks have arena, type, mode, avg elixir, etc
 
 ### Activities
 
 - Recent activities at homepage or user profile
 - Activities for user registration, deck creation, updates, etc
+
+### Comments
+
+- Users can comment on home page, user walls, decks, etc
 
 ### APIs
 
