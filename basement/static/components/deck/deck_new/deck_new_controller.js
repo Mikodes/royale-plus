@@ -63,6 +63,8 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
 
   function constructor() {
 
+    $scope.auth = Auth;
+
     /**
      * Saving (new deck) or updating (existing deck) a deck
      */

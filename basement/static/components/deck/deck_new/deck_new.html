@@ -6,7 +6,7 @@
       <div class="col-lg-8">
 
         <!-- Auth warning -->
-        <div class="card my-3 bg-warning" role="alert">
+        <div class="card my-3 bg-warning" ng-if="!auth.isAuth()">
           <div class="card-body py-3">
             <span class="align-middle">
               <i class="fas fa-exclamation-triangle fa-fw"></i>
