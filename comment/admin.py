@@ -9,7 +9,7 @@ class CommentAdmin(admin.ModelAdmin):
         'user',
         'comment',
         'kind',
-        'object',
+        'target',
         'created',
     )
     list_filter = [
@@ -19,6 +19,6 @@ class CommentAdmin(admin.ModelAdmin):
         'user',
         'comment',
         'kind',
-        'object',
+        'target',
         'created',
     ]
