@@ -12,8 +12,8 @@ class CommentKind:
 
 class Comment(models.Model):
     """
-    Kind could be Page (home page), User (user's wall) or a deck
-    Object is the target id/key that the comment is made for (None for pages)
+    Kind can be Page (home page), User (user's wall) or a deck
+    Target is the id/key that the comment is made for (None for pages)
     """
     COMMENT_KIND_CHOICES = (
         (CommentKind.PAGE, 'Page'),
@@ -24,7 +24,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User)
     comment = models.TextField(max_length=1000)
     kind = models.IntegerField(choices=COMMENT_KIND_CHOICES)
-    object = models.CharField(max_length=100, null=True)
+    target = models.CharField(max_length=100, null=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
 
     @property

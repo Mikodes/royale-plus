@@ -105,7 +105,7 @@ class CommentSerializer(serializers.ModelSerializer):
             'user',
             'comment',
             'kind',
-            'object',
+            'target',
             'created',
             'created_since'
         ]
