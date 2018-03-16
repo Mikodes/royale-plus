@@ -74,7 +74,7 @@ class Deck(models.Model):
     mode_3x = models.BooleanField(default=True)
 
     @property
-    def all_modes(self):
+    def all_modes(self) -> bool:
         return all([self.mode_1v1, self.mode_2v2, self.mode_2x, self.mode_3x])
 
     def __str__(self):
