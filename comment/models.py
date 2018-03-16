@@ -21,7 +21,7 @@ class Comment(models.Model):
         (CommentKind.DECK, 'Deck'),
     )
 
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField(max_length=1000)
     kind = models.IntegerField(choices=COMMENT_KIND_CHOICES)
     target = models.CharField(max_length=100, null=True)
