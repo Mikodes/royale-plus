@@ -447,7 +447,7 @@ card.no-name cover {
 /* Footer */
 
 .footer {
-    box-shadow: 0 1000px 0 1000px #f8f9fa;
+    box-shadow: 0 1000px 0 1000px #eee;
     background: #eee;
 }
 
