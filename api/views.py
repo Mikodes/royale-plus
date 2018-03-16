@@ -53,6 +53,7 @@ class DeckViewSet(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
     filter_fields = ('user', 'kind', 'arena',)
+    pagination_class = StandardPagination
 
     def get_queryset(self):
         queryset = super(DeckViewSet, self).get_queryset()
