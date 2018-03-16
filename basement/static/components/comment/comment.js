@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Comment", function (Account, Main, API, toaster, $rootScope) {
+app.service("Comment", function (Account, Main, Auth, API, toaster, $rootScope) {
   return function (data) {
 
     /**
@@ -45,6 +45,12 @@ app.service("Comment", function (Account, Main, API, toaster, $rootScope) {
      */
     this.create = function () {
       this.loading = true;
+
+      if (!Auth.isAuth()) {
+        toaster.error("Not signed in", "You need to sign in first.");
+        return;
+      }
+
       API.Comments.save({
           kind: this.kind,
           target: this.target,
