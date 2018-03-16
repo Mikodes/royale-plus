@@ -31,7 +31,7 @@ app.service("Comment", function (Account, Main, API, toaster, $rootScope) {
     /**
      * @type {string}
      */
-    this.target = this.get.kind;
+    this.target = this.get.target;
 
     /**
      * Used for API calls

@@ -13,7 +13,7 @@ app.controller("HomeController", function (Main, Account, Member, Activity, Comm
      * @type {Comment}
      */
     $scope.comment = new Comment({
-      object: "Home", // For home page
+      target: "Home", // For home page
       kind: Main.comment.kind.indexOf("Page") // Page comment
     });
 
