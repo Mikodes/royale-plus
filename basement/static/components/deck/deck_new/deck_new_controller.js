@@ -236,7 +236,7 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
    */
   $scope.filterCards = function (filter) {
     $scope.orderBy = filter.key;
-  }
+  };
 
   /**
    * Update dynamic with of slots
