@@ -58,7 +58,7 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
     if ($scope.deck.kind === -1) {
       $scope.deck.kind = $scope.deckKinds.indexOf("None");
     }
-    // Atleast one mode selected
+    // At least one mode selected
     if (!$scope.deck.getModes().length) {
       toaster.error("Unable to Save", "You need to select at least one mode. (1v1, 2v2, etc)");
       return false;
