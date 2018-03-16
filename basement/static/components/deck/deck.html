@@ -6,7 +6,7 @@
     </h1>
     <h4 class="o-fade-soft">
       <span ng-if="deck.kind > 0">{{ deck.getKind() }} deck by</span>
-      <a ui-sref="app.user({username: deck.user})" class="text">{{ deck.user }}</a>
+      <a ui-sref="app.user({username: deck.user.username})" class="text">{{ deck.user.username }}</a>
     </h4>
   </div>
 </div>
@@ -88,7 +88,7 @@
           <!-- User -->
           <li class="list-group-item">
             <span class="text-secondary">Created by:</span>
-            <span class="float-right"><a ui-sref="app.user({username: deck.user})">{{ deck.user }}</a></span>
+            <span class="float-right"><a ui-sref="app.user({username: deck.user.username})">{{ deck.user.username }}</a></span>
           </li>
 
           <!-- Created -->
@@ -107,7 +107,7 @@
 
         <!-- Normal options -->
         <div class="list-group list-group-flush">
-          <a class="list-group-item" ui-sref="app.deck-list({username: deck.user})">View {{ deck.user }}'s Decks</a>
+          <a class="list-group-item" ui-sref="app.deck-list({username: deck.user.username})">View {{ deck.user.username }}'s Decks</a>
           <a class="list-group-item" ui-sref="app.deck-new({deck: deck})">Copy and Edit</a>
           <a class="list-group-item" ng-href="{{ deck.getCopyLink() }}">Copy to Game</a>
         </div>
