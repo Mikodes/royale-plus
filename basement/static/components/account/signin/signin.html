@@ -4,42 +4,34 @@
       <div class="card">
         <!-- Title -->
         <h4 class="card-body">
-          <i class="fas fa-user-plus float-right text-muted"></i> Register
+          <i class="fas fa-user-plus float-right text-muted"></i> Sign In
         </h4>
         <!-- Sign up form -->
-        <form class="card-body" name="form" ng-submit="signUp(form)">
+        <form class="card-body" ng-submit="auth.signIn(form.username, form.password, form)">
           <!-- Username -->
           <div class="form-group" ng-class="{'has-danger': form.error.username}">
             <input type="text" class="form-control form-control-lg" placeholder="Username"
-              ng-model="form.data.username" required ng-minlength="3">
+              ng-model="form.username" required ng-minlength="3">
             <div class="form-control-feedback text-danger" ng-if="form.error.username">
               {{ form.error.username[0] }}
-            </div>
-          </div>
-          <!-- Email -->
-          <div class="form-group" ng-class="{'has-danger': form.error.email}">
-            <input type="email" class="form-control form-control-lg" placeholder="Email"
-              ng-model="form.data.email" required>
-            <div class="form-control-feedback text-danger" ng-if="form.error.email">
-              {{ form.error.email[0] }}
             </div>
           </div>
           <!-- Passowrd -->
           <div class="form-group">
             <input type="password" class="form-control form-control-lg" placeholder="Password"
-              ng-model="form.data.password" required ng-minlength="3">
-              <div class="form-control-feedback text-danger" ng-if="form.error.password">
-                {{ form.error.password[0] }}
-              </div>
+              ng-model="form.password" required ng-minlength="3">
+            <div class="form-control-feedback text-danger" ng-if="form.error.password">
+              {{ form.error.password[0] }}
+            </div>
           </div>
           <!-- Submit -->
           <button class="btn btn-success btn-lg btn-block" ng-disabled="form.$invalid || form.loading">
-            <i class="fas fa-fw fa-sign-in-alt"></i> Register
+            <i class="fas fa-fw fa-sign-in-alt"></i> Sign In
           </button>
-          <!-- Sign in -->
+          <!-- Sign up -->
           <br>
           <span class="text-secondary">
-            Already have an account? <a ui-sref="app.signin">Sign In</a>
+            Dont't have an account? <a ui-sref="app.signup">Register</a>
           </span>
         </form>
       </div>
