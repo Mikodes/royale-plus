@@ -88,13 +88,6 @@ app.controller("HomeController", function (Main, Account, Member, Activity, Comm
     });
   };
 
-  /**
-   * Show (load) discussion widget
-   */
-  $scope.joinDiscussion = function () {
-    $scope.showDiscussion = true;
-  };
-
   $scope.$on("royalePlus.Comment:create", function (event, data) {
     $scope.comments.unshift(new Comment(data));
   });
