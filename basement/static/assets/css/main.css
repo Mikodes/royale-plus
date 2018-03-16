@@ -85,9 +85,8 @@ input.btn-outline-secondary:hover:not(.active) {
 }
 
 .cover-bg {
-    padding: 100px 0;
+    padding: 120px 0;
     box-shadow: inset 0 0 0 10000px rgba(0, 0, 0, 0.25);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.9);
 }
 
 .cover-bg:not(.cover-bg-pattern) {
