@@ -55,5 +55,20 @@ app.service("Account", function (ENV) {
       // @todo follow here (with toast)
     };
 
+    /**
+     * @type {function}
+     *
+     * @param {Account}
+     */
+    this.unfollow = function (user) {
+
+      // Check if unfollowing self
+      if (this.isSameUser(user)) {
+        // @todo Toast here
+        return;
+      }
+
+      // @todo unfollow here (with toast)
+    };
   };
 });
