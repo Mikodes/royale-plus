@@ -28,5 +28,15 @@ app.service("Account", function (ENV) {
      * @type {string}
      */
     this.picture = this.get.picture || defaultImage;
+
+    /**
+     * @type {function}
+     * @returns {boolean}
+     *
+     * @param {Account} user
+     */
+    this.isSameUser = function (user) {
+      return this.username === user.username;
+    };
   };
 });
