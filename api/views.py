@@ -5,9 +5,16 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from account.models import User
+from account.models import User, Follow
 from activity.models import Activity
-from api.serializers import UserSerializer, UserUpdateSerializer, DeckSerializer, ActivitySerializer, CommentSerializer
+from api.serializers import (
+    UserSerializer,
+    UserUpdateSerializer,
+    DeckSerializer,
+    ActivitySerializer,
+    CommentSerializer,
+    FollowSerializer
+)
 from comment.models import Comment
 from deck.models import Deck
 
@@ -47,6 +54,26 @@ class UserUpdateView(generics.UpdateAPIView):
 
         serializer.save()
         return Response(data=serializer.data)
+
+
+class FollowViewSet(viewsets.ModelViewSet):
+    queryset = Follow.objects.all()
+    serializer_class = FollowSerializer
+    pagination_class = StandardPagination
+
+    def get_queryset(self):
+        queryset = super(FollowViewSet, self).get_queryset()
+
+        user = self.request.query_params.get('user', None)
+        following = self.request.query_params.get('following', None)
+
+        if user:
+            queryset = queryset.filter(user__username=user)
+
+        if following:
+            queryset = queryset.filter(following__username=following)
+
+        return queryset
 
 
 class DeckViewSet(viewsets.ModelViewSet):
