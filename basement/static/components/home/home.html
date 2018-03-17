@@ -19,7 +19,7 @@
         <div class="list-group list-group-flush">
           <!-- User link -->
           <a class="list-group-item" ng-repeat="user in users"
-            ui-sref="app.user({username: user.username, user: user.get})">
+            ui-sref="app.user({username: user.username, user: user})">
             <!-- User image -->
             <img ng-src="{{ user.picture }}" class="user-image" width="48px">
             <!-- User name -->
