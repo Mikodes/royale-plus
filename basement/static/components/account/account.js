@@ -10,6 +10,12 @@ app.service("Account", function (ENV, Auth, toaster, API) {
 
     /**
      * @private
+     * @type {object}
+     */
+    var currentUser = Auth.getAuth();
+
+    /**
+     * @private
      * @type {string}
      */
     var defaultImage = "static/assets/img/avatar.png?v=" + ENV.VERSION;
@@ -36,7 +42,7 @@ app.service("Account", function (ENV, Auth, toaster, API) {
      * @param {Account} user
      */
     this.isSameUser = function () {
-      return this.username === Auth.getAuth().username;
+      return this.username === currentUser.username;
     };
 
     /**
@@ -57,7 +63,7 @@ app.service("Account", function (ENV, Auth, toaster, API) {
       }
 
       // Follow
-      API.Follow.save({ username: Auth.getAuth().username },
+      API.Follow.save({ following: currentUser.username },
         function (data) {
           console.log(data);
         },
