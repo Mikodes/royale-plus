@@ -68,8 +68,14 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 
 
 class FollowSerializer(serializers.ModelSerializer):
-    user = UserMinimalSerializer(read_only=True, default=serializers.CurrentUserDefault())
-    following = UserMinimalSerializer()
+    user = UserMinimalSerializer(read_only=True)
+    following = UserMinimalSerializer(read_only=True)
+
+    def create(self, validated_data: dict):
+        return Follow.objects.create(
+            user=serializers.CurrentUserDefault(),
+            following=User.objects.get(username=validated_data['following'])
+        )
 
     class Meta:
         model = Follow
