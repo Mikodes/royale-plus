@@ -98,6 +98,9 @@ class Follow(models.Model):
             raise ValidationError("Users cannot follow themselves.")
         super(Follow, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return f'{self.user.username} follows {self.following.username}'
+
     class Meta:
         verbose_name = 'Follow'
         verbose_name_plural = 'Follows'
