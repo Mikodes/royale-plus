@@ -1,6 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import six
 from django.utils.timesince import timesince
@@ -92,7 +93,16 @@ class Follow(models.Model):
     user = models.ForeignKey(User, related_name='following', on_delete=models.CASCADE)
     following = models.ForeignKey(User, related_name='follower', on_delete=models.CASCADE)
 
+    def save(self, *args, **kwargs):
+        if self.user == self.following:
+            raise ValidationError("Users cannot follow themselves.")
+        super(Follow, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.user.username} follows {self.following.username}'
+
     class Meta:
         verbose_name = 'Follow'
         verbose_name_plural = 'Follows'
         ordering = ['-id']
+        unique_together = ('user', 'following',),
