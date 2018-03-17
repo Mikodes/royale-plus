@@ -27,6 +27,18 @@
 
           <!-- About -->
           <p class="o-fade-soft t-ws">{{ user.get.about || "Nothing to say..." }}</p>
+
+          <!-- Metrics -->
+          <div class="row">
+            <div class="col-lg-6">
+              <h6 class="text-warning">Following</h6>
+              <span>{{ user.get.followings_count }}</span>
+            </div>
+            <div class="col-lg-6">
+              <h6 class="text-warning">Followers</h6>
+              <span>{{ user.get.followers_count }}</span>
+            </div>
+          </div>
         </div>
 
         <!-- Info -->
