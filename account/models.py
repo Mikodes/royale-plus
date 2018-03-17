@@ -57,7 +57,7 @@ class User(AbstractBaseUser):
     ]
 
     @property
-    def joined_since(self):
+    def joined_since(self) -> str:
         return timesince(self.joined)
 
     @property
@@ -85,4 +85,14 @@ class User(AbstractBaseUser):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+        ordering = ['-id']
+
+
+class Follow(models.Model):
+    user = models.ForeignKey(User, related_name='following', on_delete=models.CASCADE)
+    following = models.ForeignKey(User, related_name='follower', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Follow'
+        verbose_name_plural = 'Follows'
         ordering = ['-id']
