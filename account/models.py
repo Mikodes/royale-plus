@@ -96,3 +96,4 @@ class Follow(models.Model):
         verbose_name = 'Follow'
         verbose_name_plural = 'Follows'
         ordering = ['-id']
+        unique_together = ('user', 'following',),
