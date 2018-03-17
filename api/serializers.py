@@ -69,7 +69,7 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 
 class FollowSerializer(serializers.ModelSerializer):
     user = UserMinimalSerializer(read_only=True, default=serializers.CurrentUserDefault())
-    following = UserMinimalSerializer(default=serializers.CurrentUserDefault())
+    following = UserMinimalSerializer()
 
     class Meta:
         model = Follow
