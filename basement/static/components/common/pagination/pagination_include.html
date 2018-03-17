@@ -3,6 +3,8 @@
     <!-- Load more -->
     <span ng-if="!pagination.loading">LOAD MORE</span>
     <!-- Loading more -->
-    <i ng-if="pagination.loading" class="fas fa-arrow-down fa-spin animated infinity bounce"></i>
+    <span ng-if="pagination.loading">
+      <i class="fas fa-arrow-down fa-spin animated infinity bounce"></i>
+    </span>
   </button>
 </div>
