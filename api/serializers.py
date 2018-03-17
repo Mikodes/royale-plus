@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from account.models import User
+from account.models import User, Follow
 from activity.models import Activity
 from comment.models import Comment
 from deck.models import Deck
@@ -60,6 +60,18 @@ class UserUpdateSerializer(serializers.ModelSerializer):
             'email',
             'link',
             'nationality',
+        ]
+
+
+class FollowSerializer(serializers.ModelSerializer):
+    user = UserMinimalSerializer(read_only=True, default=serializers.CurrentUserDefault())
+    following = UserMinimalSerializer(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Follow
+        fields = [
+            'user',
+            'following',
         ]
 
 
