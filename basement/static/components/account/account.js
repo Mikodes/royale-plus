@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Account", function (ENV, Auth, toaster) {
+app.service("Account", function (ENV, Auth, toaster, API) {
   return function (data) {
 
     /**
@@ -41,11 +41,10 @@ app.service("Account", function (ENV, Auth, toaster) {
 
     /**
      * @type {function}
-     *
-     * @param {Account} user
      */
-    this.follow = function (user) {
+    this.follow = function () {
 
+      // Check if user is not authenticated
       if (!Auth.isAuth()) {
         toaster.error("Unable to follow", "You need to be a member to follow.");
         return;
@@ -57,7 +56,16 @@ app.service("Account", function (ENV, Auth, toaster) {
         return;
       }
 
-      // @todo follow here (with toast)
+      // Follow
+      API.Follow.save({ username: Auth.getAuth().username },
+        function (data) {
+          console.log(data);
+        },
+        function (data) {
+          console.log(data);
+          toaster.error("Oops", "Somthing went wrong");
+        }
+      );
     };
 
     /**
