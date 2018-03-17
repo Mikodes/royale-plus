@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Account", function (ENV) {
+app.service("Account", function (ENV, Auth, toaster) {
   return function (data) {
 
     /**
@@ -35,8 +35,8 @@ app.service("Account", function (ENV) {
      *
      * @param {Account} user
      */
-    this.isSameUser = function (user) {
-      return this.username === user.username;
+    this.isSameUser = function () {
+      return this.username === Auth.getAuth().username;
     };
 
     /**
@@ -46,11 +46,14 @@ app.service("Account", function (ENV) {
      */
     this.follow = function (user) {
 
-      // @todo check auth (with toast)
+      if (!Auth.isAuth()) {
+        toaster.error("Unable to follow", "You need to be a member to follow.");
+        return;
+      }
 
       // Check if following self
-      if (this.isSameUser(user)) {
-        // @todo Toast here
+      if (this.isSameUser()) {
+        toaster.error("Unable to follow", "You can't follow yourself");
         return;
       }
 
@@ -67,7 +70,7 @@ app.service("Account", function (ENV) {
       // @todo check auth (with toast)
 
       // Check if unfollowing self
-      if (this.isSameUser(user)) {
+      if (this.isSameUser()) {
         // @todo Toast here
         return;
       }
