@@ -38,5 +38,22 @@ app.service("Account", function (ENV) {
     this.isSameUser = function (user) {
       return this.username === user.username;
     };
+
+    /**
+     * @type {function}
+     *
+     * @param {Account} user
+     */
+    this.follow = function (user) {
+
+      // Check if following self
+      if (this.isSameUser(user)) {
+        // @todo Toast here
+        return;
+      }
+
+      // @todo follow here (with toast)
+    };
+
   };
 });
