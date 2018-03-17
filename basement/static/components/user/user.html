@@ -8,6 +8,10 @@
       <div class="card my-4">
         <div class="card-body bg-dark text-white text-center">
 
+          <!-- Follow -->
+          <button class="btn btn-outline-success mb-2 d-block float-right">Follow</button>
+          <div class="clearfix"></div>
+
           <!-- Picture -->
           <div class="user-picture-wrapper">
             <div class="user-picture" style="background-image: url('{{ user.picture || static('assets/img/avatar.png') }}')"></div>
@@ -27,7 +31,7 @@
 
         <!-- Info -->
         <div class="list-group list-group-flush">
-        
+
           <!-- Membership -->
           <div class="list-group-item" ng-if="user.member">
             <span class="text-secondary">
@@ -47,7 +51,7 @@
               <a ui-sref="app.deck-list({username: user.username})">{{ user.decks_count }} decks</a>
             </span>
           </div>
-        
+
           <!-- Website link -->
           <div class="list-group-item" ng-if="user.link">
             <span class="text-secondary">
