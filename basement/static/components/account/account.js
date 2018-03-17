@@ -46,6 +46,8 @@ app.service("Account", function (ENV) {
      */
     this.follow = function (user) {
 
+      // @todo check auth (with toast)
+
       // Check if following self
       if (this.isSameUser(user)) {
         // @todo Toast here
@@ -61,6 +63,8 @@ app.service("Account", function (ENV) {
      * @param {Account}
      */
     this.unfollow = function (user) {
+
+      // @todo check auth (with toast)
 
       // Check if unfollowing self
       if (this.isSameUser(user)) {
