@@ -70,7 +70,6 @@ app.controller("UserController", function (API, Activity, Account, Auth, Comment
       usersKey = "following";
     }
 
-    Common.modal("account/user_list/user_list.html");
     API.Follow.get(payload, function (data) {
       var users = [];
       angular.forEach(data.results, function (result) {
