@@ -63,7 +63,7 @@ app.service("Account", function (ENV, Auth, toaster, API) {
       }
 
       // Follow
-      API.Follow.save({ following: currentUser.username },
+      API.Follow.save({ following: this.username },
         function (data) {
           console.log(data);
         },
