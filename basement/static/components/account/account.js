@@ -78,18 +78,6 @@ app.service("Account", function (ENV, API, Auth, toaster) {
        */
       follow: function () {
 
-        // Check if user is not authenticated
-        if (!Auth.isAuth()) {
-          toaster.error("Unable to follow", "You need to be a member to follow.");
-          return;
-        }
-
-        // Check if following self
-        if (self.isSameUser()) {
-          toaster.error("Unable to follow", "You can't follow yourself");
-          return;
-        }
-
         // Follow
         API.Follow.save({ following: self.username },
           function (data) {
@@ -117,6 +105,29 @@ app.service("Account", function (ENV, API, Auth, toaster) {
 
         // @todo unfollow here (with toast)
       }
+    };
+
+    this.checkFollow = function () {
+
+      // Check if user is not authenticated
+      if (!Auth.isAuth()) {
+        toaster.error("Unable to follow", "You need to be a member to follow.");
+        return;
+      }
+
+      // Check if following self
+      if (self.isSameUser()) {
+        toaster.error("Unable to follow", "You can't follow yourself");
+        return;
+      }
+
+      // Check if already followed
+      if (this.follow.isFollowed()) {
+        console.log("unfollow");
+        return this.follow.unfollow();
+      }
+
+      this.follow.follow();
     };
   };
 });
