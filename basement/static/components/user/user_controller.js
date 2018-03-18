@@ -73,7 +73,7 @@ app.controller("UserController", function (API, Activity, Account, Auth, Comment
     API.Follow.get(payload, function (data) {
       var users = [];
       angular.forEach(data.results, function (result) {
-        users.push(new Account(result[usersKey]));
+        users.push(new Account(result[usersKey], result.id));
       });
       Common.modal("account/user_list/user_list.html", { users: users });
     });
