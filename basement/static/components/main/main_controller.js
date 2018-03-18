@@ -42,5 +42,10 @@ app.controller("MainController", function (ENV, Auth, API, Account, $scope, $roo
   $scope.$on("royalePlus.Auth:updateAuth", getUserData);
   $scope.$on("royalePlus.Auth:unAuth", getUserData);
 
+  // Redirect user
+  $scope.$on('royalePlus.Auth:signIn', function(event, data) {
+    $state.go("app.user", { username: data.username, user: new Account(Auth.getAuth()) });
+  });
+
   constructor();
 });
