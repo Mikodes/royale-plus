@@ -16,7 +16,7 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-VERSION = '1.5.1'
+VERSION = '1.6.0'
 
 # Application definition
 
@@ -135,7 +135,7 @@ ALLOWED_HOSTS = []
 PRODUCTION = os.environ.get('PRODUCTION', False)
 ADMIN_URL = os.environ.get('ADMIN_URL', r'^admin/')
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'XXXX')
-DEBUG = os.environ.get('DJANGO_DEBUG', True)
+DEBUG = os.environ.get('DJANGO_DEBUG', False)
 ALLOWED_HOSTS.append(os.environ.get('DJANGO_ALLOWED_HOST', '127.0.0.1'))
 DATABASES = {
     'default': {
