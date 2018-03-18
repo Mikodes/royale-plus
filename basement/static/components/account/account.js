@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Account", function (ENV, API, Auth, Follow, toaster) {
+app.service("Account", function (ENV, API, Auth, toaster) {
   return function (data) {
 
     /**
