@@ -9,7 +9,15 @@
         <div class="card-body bg-dark text-white text-center">
 
           <!-- Follow -->
-          <button class="btn btn-outline-success mb-2 d-block float-right" ng-click="user.follow.follow()">Follow</button>
+          <button class="btn btn-outline-success mb-2 d-block float-right"
+            ng-if="!user.isSameUser() && !user.follow.isFollowed()" ng-click="user.follow.follow()">Follow
+          </button>
+
+          <!-- Unfollow -->
+          <button class="btn btn-success mb-2 d-block float-right"
+            ng-if="!user.isSameUser() && user.follow.isFollowed()" ng-click="user.follow.unfollow()">Unfollow
+          </button>
+
           <div class="clearfix"></div>
 
           <!-- Picture -->
