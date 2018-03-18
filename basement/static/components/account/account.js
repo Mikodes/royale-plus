@@ -119,13 +119,16 @@ app.service("Account", function (ENV, API, Auth, toaster) {
           return;
         }
 
-        // Check if unfollowing self
-        if (self.isSameUser()) {
-          // @todo Toast here
-          return;
-        }
-
-        // @todo unfollow here (with toast)
+        // Unfollow
+        API.Follow.delete({ id: self.follow.id },
+          function (data) {
+            self.follow.id = false;
+            self.follow.followers--;
+          },
+          function (data) {
+            toaster.error("Oops", "Somthing went wrong");
+          }
+        );
       }
     };
   };
