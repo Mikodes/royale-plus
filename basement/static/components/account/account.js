@@ -93,10 +93,10 @@ app.service("Account", function (ENV, API, Auth, toaster) {
         // Follow
         API.Follow.save({ following: self.username },
           function (data) {
-            console.log(data);
+            self.follow.id = data.id;
+            self.follow.followers++;
           },
           function (data) {
-            console.log(data);
             toaster.error("Oops", "Somthing went wrong");
           }
         );
