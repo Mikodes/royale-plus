@@ -17,7 +17,9 @@ app.service("Common", function (ENV, ModalService) {
       bodyClass: "modal-open",
       templateUrl: self.component(componentUrl),
       controller: function ($scope, $element, close) {
-        $scope.data = data;
+        angular.forEach(data, function (value, key) {
+          $scope[key] = value;
+        });
       }
     }).then(function (modal) {
       modal.element.modal();

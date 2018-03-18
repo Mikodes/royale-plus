@@ -83,8 +83,8 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 
 
 class FollowSerializer(serializers.ModelSerializer):
-    user = UserMinimalSerializer(read_only=True)
-    following = UserMinimalSerializer(read_only=True)
+    user = UserSerializer(read_only=True)
+    following = UserSerializer(read_only=True)
 
     class Meta:
         model = Follow
