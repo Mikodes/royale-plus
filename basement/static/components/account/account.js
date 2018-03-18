@@ -131,16 +131,5 @@ app.service("Account", function (ENV, API, Auth, toaster) {
         );
       }
     };
-
-    function constructor() {
-      /**
-       * Use provided follow id if not available in data
-       */
-      if (followedId) {
-        self.follow.id = followedId;
-      }
-    }
-
-    constructor();
   };
 });
