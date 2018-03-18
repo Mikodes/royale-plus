@@ -1,0 +1,22 @@
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header text-center py-4">
+        <h3 class="w-100">{{ title }}</h3>
+        <button class="btn btn-dark" data-dismiss="modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body bg-white text-dark p-4">
+        <div class="card">
+          <div class="list-group list-group-flush">
+            <!-- User -->
+            <li class="list-group-item" ng-repeat="user in users"
+              ng-include="static('components/account/user_include.html')">
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

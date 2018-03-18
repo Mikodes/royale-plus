@@ -18,19 +18,8 @@
         </div>
         <div class="list-group list-group-flush">
           <!-- User -->
-          <li class="list-group-item" ng-repeat="user in users">
-            <!-- User image -->
-            <img ng-src="{{ user.picture }}" class="user-image" width="48px">
-            <!-- User name -->
-            <a ui-sref="app.user({username: user.username, user: user})">{{ user.username }}</a>
-            <!-- Follow -->
-            <button class="btn btn-outline-success btn-sm float-right mt-1"
-              ng-click="user.follow.follow()" ng-if="!user.isSameUser() && !user.follow.isFollowed()">Follow
-            </button>
-            <!-- Unfollow -->
-            <button class="btn btn-success btn-sm float-right mt-1"
-              ng-click="user.follow.unfollow()" ng-if="!user.isSameUser() && user.follow.isFollowed()">Unfollow
-            </button>
+          <li class="list-group-item" ng-repeat="user in users"
+            ng-include="static('components/account/user_include.html')">
           </li>
         </div>
         <!-- Loading -->

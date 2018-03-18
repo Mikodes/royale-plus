@@ -1,7 +1,7 @@
 "use strict";
 
 app.service("Account", function (ENV, API, Auth, toaster) {
-  return function (data) {
+  return function (data, followedId) {
 
     /**
      * @private
