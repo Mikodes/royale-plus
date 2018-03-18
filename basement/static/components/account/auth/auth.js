@@ -90,7 +90,7 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
       self.setAuth(data.user, data.token);
       form.loading = false;
       toaster.info("Signed in", "Welcome to the awesomeness " + username + ".");
-      $state.go("app.user", { username: username, user: self.getAuth() });
+      $rootScope.$broadcast("royalePlus.Auth:signIn", data.user);
 
       if (success) {
         success();
