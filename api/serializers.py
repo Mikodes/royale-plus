@@ -10,6 +10,18 @@ class UserSerializer(serializers.ModelSerializer):
     decks_count = serializers.ReadOnlyField(source='deck_set.count')
     followers_count = serializers.ReadOnlyField(source='follower.count')
     followings_count = serializers.ReadOnlyField(source='following.count')
+    followed_id = serializers.SerializerMethodField()
+
+    def get_followed_id(self, obj):
+        if not self.context['request'].user.is_authenticated():
+            return False
+
+        try:
+            follow: Follow = Follow.objects.get(following=obj, user=self.context['request'].user)
+        except Follow.DoesNotExist:
+            return False
+
+        return follow.id
 
     class Meta:
         model = User
@@ -18,6 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
             'password',
             'email',
             'decks_count',
+            'followed_id',
             'followers_count',
             'followings_count',
             'last_login',
