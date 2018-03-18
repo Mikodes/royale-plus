@@ -13,11 +13,13 @@ class UserSerializer(serializers.ModelSerializer):
     followed_id = serializers.SerializerMethodField()
 
     def get_followed_id(self, obj):
-        if not self.context['request'].user.is_authenticated():
+        user: User = self.context['request'].user
+        
+        if not user.is_authenticated():
             return False
 
         try:
-            follow: Follow = Follow.objects.get(following=obj, user=self.context['request'].user)
+            follow: Follow = Follow.objects.get(following=obj, user=user)
         except Follow.DoesNotExist:
             return False
 
@@ -86,11 +88,11 @@ class FollowSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Follow
-        fields = [
+        fields = (
             'id',
             'user',
             'following',
-        ]
+        )
 
 
 class FollowCreateSerializer(serializers.ModelSerializer):

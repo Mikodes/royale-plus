@@ -93,11 +93,6 @@ class Follow(models.Model):
     user = models.ForeignKey(User, related_name='following', on_delete=models.CASCADE)
     following = models.ForeignKey(User, related_name='follower', on_delete=models.CASCADE)
 
-    def save(self, *args, **kwargs):
-        if self.user == self.following:
-            raise ValidationError("Users cannot follow themselves.")
-        super(Follow, self).save(*args, **kwargs)
-
     def __str__(self):
         return f'{self.user.username} follows {self.following.username}'
 
