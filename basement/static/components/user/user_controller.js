@@ -62,6 +62,10 @@ app.controller("UserController", function (API, Activity, Account, Auth, Comment
    * @param {boolean} showFollowers
    */
   $scope.showFollows = function (showFollowers) {
+    if (!showFollowers && !$scope.user.get.followings_count || showFollowers && !$scope.user.get.followers_count) {
+      return;
+    }
+
     var payload = { following: $scope.user.username };
     var usersKey = "user";
     var title = "Followers";
