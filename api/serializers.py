@@ -98,7 +98,10 @@ class FollowCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Follow
-        fields = ('following',)
+        fields = (
+            'following',
+            'id',
+        )
 
     def validate_following(self, following: str) -> str:
         try:
