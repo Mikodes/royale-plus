@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("UserController", function (API, Activity, Account, Auth, Comment, Main, toaster, $scope, $state, $stateParams) {
+app.controller("UserController", function (API, Activity, Account, Auth, Comment, Common, Main, toaster, $scope, $state, $stateParams) {
 
   function constructor() {
 
@@ -58,6 +58,35 @@ app.controller("UserController", function (API, Activity, Account, Auth, Comment
       }
     );
   }
+
+  /**
+   * @desc Open metrics modal
+   *
+   * @param metrics string
+   */
+  $scope.openMetrics = function (metrics) {
+    var payload = {};
+
+    payload[metrics] = $scope.user.username;
+
+    API.Follow.get(payload,
+      function (data) {
+        var modalData = [];
+
+        if (metrics == "following") {
+          angular.forEach(data.results, function (result) {
+            modalData.push(result.user);
+          });
+        } else {
+          angular.forEach(data.results, function (result) {
+            modalData.push(result.following);
+          });
+        }
+
+        Common.modal("account/users/users.html", modalData);
+      }
+    );
+  };
 
   $scope.$on("royalePlus.Comment:create", function (event, data) {
     $scope.comments.unshift(new Comment(data));
