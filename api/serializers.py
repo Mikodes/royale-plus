@@ -14,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_followed_id(self, obj):
         user: User = self.context['request'].user
-        
+
         if not user.is_authenticated():
             return False
 
@@ -27,7 +27,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = [
+        fields = (
             'username',
             'password',
             'email',
@@ -47,7 +47,7 @@ class UserSerializer(serializers.ModelSerializer):
             'picture',
             'link',
             'nationality',
-        ]
+        )
         extra_kwargs = {
             'password': {'write_only': True},
         }
@@ -63,23 +63,23 @@ class UserSerializer(serializers.ModelSerializer):
 class UserMinimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = [
+        fields = (
             'username',
             'picture',
-        ]
+        )
 
 
 class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = [
+        fields = (
             'about',
             'picture',
             'member',
             'email',
             'link',
             'nationality',
-        ]
+        )
 
 
 class FollowSerializer(serializers.ModelSerializer):
@@ -89,7 +89,6 @@ class FollowSerializer(serializers.ModelSerializer):
     class Meta:
         model = Follow
         fields = (
-            'id',
             'user',
             'following',
         )
@@ -101,8 +100,8 @@ class FollowCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Follow
         fields = (
-            'following',
             'id',
+            'following',
         )
 
     def validate_following(self, following: str) -> str:
@@ -157,13 +156,13 @@ class DeckSerializer(serializers.ModelSerializer):
 class ActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Activity
-        fields = [
+        fields = (
             'issuer',
             'issued',
             'kind',
             'content',
             'created_since'
-        ]
+        )
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -171,14 +170,14 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = [
+        fields = (
             'user',
             'comment',
             'kind',
             'target',
             'created',
             'created_since'
-        ]
+        )
 
 
 def jwt_response_payload_handler(token, user=None, request=None):
