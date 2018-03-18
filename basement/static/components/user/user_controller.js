@@ -64,10 +64,12 @@ app.controller("UserController", function (API, Activity, Account, Auth, Comment
   $scope.showFollows = function (showFollowers) {
     var payload = { following: $scope.user.username };
     var usersKey = "user";
+    var title = "Followers";
 
     if (!showFollowers) {
       payload = { user: $scope.user.username };
       usersKey = "following";
+      title = "Following";
     }
 
     API.Follow.get(payload, function (data) {
@@ -75,7 +77,10 @@ app.controller("UserController", function (API, Activity, Account, Auth, Comment
       angular.forEach(data.results, function (result) {
         users.push(new Account(result[usersKey]));
       });
-      Common.modal("account/user_list/user_list.html", { users: users });
+      Common.modal("account/user_list/user_list.html", {
+        users: users,
+        title: title
+      });
     });
   };
 
