@@ -12,7 +12,7 @@ app.service("API", function (ENV, $resource) {
     endpoint: "api/users/:username/" // POST - PUT - GET - DELETE
   }, {
     name: "Follow",
-    endpoint: "api/follows/" // POST - PUT
+    endpoint: "api/follows/:id/" // POST - GET - DELETE
   }, {
     name: "Decks",
     endpoint: "api/decks/:id/" // POST - PUT - GET - DELETE
