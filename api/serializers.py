@@ -71,18 +71,47 @@ class FollowSerializer(serializers.ModelSerializer):
     user = UserMinimalSerializer(read_only=True)
     following = UserMinimalSerializer(read_only=True)
 
-    def create(self, validated_data: dict):
-        return Follow.objects.create(
-            user=serializers.CurrentUserDefault(),
-            following=User.objects.get(username=validated_data['following'])
-        )
-
     class Meta:
         model = Follow
         fields = [
+            'id',
             'user',
             'following',
         ]
+
+
+class FollowCreateSerializer(serializers.ModelSerializer):
+    following = serializers.CharField(required=True)
+
+    class Meta:
+        model = Follow
+        fields = ('following',)
+
+    def validate_following(self, following: str) -> str:
+        try:
+            following_user: User = User.objects.get(username=following)
+            current_user: User = self.context['request'].user
+
+            if current_user == following_user:
+                raise serializers.ValidationError('Cannot follow yourself.')
+
+            if Follow.objects.filter(user=current_user, following=following_user).exists():
+                raise serializers.ValidationError(f'Already following {following_user.username}')
+
+        except User.DoesNotExist:
+            raise serializers.ValidationError('Invalid user to follow.')
+
+        return following
+
+    def create(self, validated_data):
+        following: User = User.objects.get(username=validated_data['following'])
+
+        validated_data.update({
+            'user': self.context['request'].user,
+            'following': following,
+        })
+
+        return super(FollowCreateSerializer, self).create(validated_data)
 
 
 class DeckSerializer(serializers.ModelSerializer):

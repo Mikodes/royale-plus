@@ -13,7 +13,8 @@ from api.serializers import (
     DeckSerializer,
     ActivitySerializer,
     CommentSerializer,
-    FollowSerializer
+    FollowSerializer,
+    FollowCreateSerializer,
 )
 from comment.models import Comment
 from deck.models import Deck
@@ -41,7 +42,7 @@ class UserUpdateView(generics.UpdateAPIView):
     pagination_class = StandardPagination
     permission_classes = (IsAuthenticated,)
 
-    def put(self, request: Request) -> Response:
+    def put(self, request: Request, *args, **kwargs) -> Response:
         user = request.user
 
         serializer = UserUpdateSerializer(
@@ -60,6 +61,7 @@ class FollowViewSet(viewsets.ModelViewSet):
     queryset = Follow.objects.all()
     serializer_class = FollowSerializer
     pagination_class = StandardPagination
+    http_method_names = ('get', 'delete', 'post',)
 
     def get_queryset(self):
         queryset = super(FollowViewSet, self).get_queryset()
@@ -74,6 +76,14 @@ class FollowViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(following__username=following)
 
         return queryset
+
+    def get_serializer_class(self):
+        serializer_class = self.serializer_class
+
+        if self.request.method == 'POST':
+            serializer_class = FollowCreateSerializer
+
+        return serializer_class
 
 
 class DeckViewSet(viewsets.ModelViewSet):
