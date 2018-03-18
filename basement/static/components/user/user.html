@@ -40,13 +40,13 @@
         <!-- Follow counts -->
         <ul class="nav nav-pills nav-fill bg-light">
           <li class="nav-item">
-            <a class="nav-link" ng-click="openMetrics('user')">
+            <a class="nav-link" ng-click="showFollows(false)">
               <h6>Following</h6>
               <span>{{ user.follow.followings }}</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" ng-click="openMetrics('following')">
+            <a class="nav-link" ng-click="showFollows(true)">
               <h6>Followers</h6>
               <span>{{ user.follow.followers }}</span>
             </a>

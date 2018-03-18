@@ -58,34 +58,26 @@ app.controller("UserController", function (API, Activity, Account, Auth, Comment
       }
     );
   }
-
   /**
-   * @desc Open metrics modal
-   *
-   * @param metrics string
+   * @param {boolean} showFollowers
    */
-  $scope.openMetrics = function (metrics) {
-    var payload = {};
+  $scope.showFollows = function (showFollowers) {
+    var payload = { following: $scope.user.username };
+    var usersKey = "user";
 
-    payload[metrics] = $scope.user.username;
+    if (!showFollowers) {
+      payload = { user: $scope.user.username };
+      usersKey = "following";
+    }
 
-    API.Follow.get(payload,
-      function (data) {
-        var modalData = [];
-
-        if (metrics == "following") {
-          angular.forEach(data.results, function (result) {
-            modalData.push(result.user);
-          });
-        } else {
-          angular.forEach(data.results, function (result) {
-            modalData.push(result.following);
-          });
-        }
-
-        Common.modal("account/users/users.html", modalData);
-      }
-    );
+    Common.modal("account/user_list/user_list.html");
+    API.Follow.get(payload, function (data) {
+      var users = [];
+      angular.forEach(data.results, function (result) {
+        users.push(new Account(result[usersKey]));
+      });
+      Common.modal("account/user_list/user_list.html", { users: users });
+    });
   };
 
   $scope.$on("royalePlus.Comment:create", function (event, data) {
