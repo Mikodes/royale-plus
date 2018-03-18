@@ -38,18 +38,20 @@
         </div>
 
         <!-- Follow counts -->
-        <div class="card-body bg-light text-center">
-          <div class="row">
-            <div class="col-6">
+        <ul class="nav nav-pills nav-fill bg-light">
+          <li class="nav-item">
+            <a class="nav-link" ng-click="openMetrics('user')">
               <h6>Following</h6>
               <span>{{ user.get.followings_count }}</span>
-            </div>
-            <div class="col-6">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" ng-click="openMetrics('following')">
               <h6>Followers</h6>
               <span>{{ user.get.followers_count }}</span>
-            </div>
-          </div>
-        </div>
+            </a>
+          </li>
+        </ul>
 
         <!-- Info -->
         <div class="list-group list-group-flush">
