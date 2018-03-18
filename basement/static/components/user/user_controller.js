@@ -62,7 +62,9 @@ app.controller("UserController", function (API, Activity, Account, Auth, Comment
    * @param {boolean} showFollowers
    */
   $scope.showFollows = function (showFollowers) {
-    if (!showFollowers && !$scope.user.get.followings_count || showFollowers && !$scope.user.get.followers_count) {
+    
+    // Don't show when no following/followers
+    if ((!showFollowers && !$scope.user.get.followings_count) || (showFollowers && !$scope.user.get.followers_count)) {
       return;
     }
 
