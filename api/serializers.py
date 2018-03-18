@@ -88,11 +88,11 @@ class FollowSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Follow
-        fields = [
+        fields = (
             'id',
             'user',
             'following',
-        ]
+        )
 
 
 class FollowCreateSerializer(serializers.ModelSerializer):
