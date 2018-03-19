@@ -79,9 +79,13 @@ app.controller("DeckListController", function (API, Main, Pagination, Deck, toas
       payload.user = $stateParams.id;
     }
 
-    /**
-     * @type {Pagination}
-     */
+    initDecks();
+  }
+
+  /**
+   * Paginaition
+   */
+  function initDecks() {
     $scope.pagination = new Pagination(API.Decks.get, payload);
   }
 
@@ -108,7 +112,18 @@ app.controller("DeckListController", function (API, Main, Pagination, Deck, toas
     }
 
     $scope.decks = [];
-    $scope.pagination = new Pagination(API.Decks.get, payload);
+    initDecks();
+  };
+
+  /**
+   * Reset filter
+   */
+  $scope.resetFilter = function () {
+    payload = {
+      limit: 9
+    };
+
+    constructor();
   };
 
   /**
