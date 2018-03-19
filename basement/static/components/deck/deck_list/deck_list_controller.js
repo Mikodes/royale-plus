@@ -25,8 +25,8 @@ app.controller("DeckListController", function (API, Pagination, Deck, toaster, $
     /**
      * If there's user in URL param, then update payload
      */
-    if ($stateParams.username) {
-      payload.user = $stateParams.username;
+    if ($stateParams.id) {
+      payload.user = $stateParams.id;
     }
 
     /**
@@ -44,7 +44,7 @@ app.controller("DeckListController", function (API, Pagination, Deck, toaster, $
     });
     // No decks
     if (!data.count) {
-      toaster.error("No Decks", $stateParams.username + " doesn't have any decks.");
+      toaster.error("No Decks", "This user doesn't have any decks.");
       $state.go("app.deck-list", { username: null });
     }
   });

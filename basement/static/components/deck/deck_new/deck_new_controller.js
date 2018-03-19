@@ -166,7 +166,7 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
     if ($stateParams.id && !$scope.copiedDeck) {
       $scope.loading = true;
       // Get deck by id and username
-      API.Decks.get({ id: $stateParams.id, user: Auth.getAuth().username },
+      API.Decks.get({ id: $stateParams.id, user: Auth.getAuth().id },
         function (data) {
           $scope.deck = new Deck().import(data);
         },
@@ -212,7 +212,7 @@ app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toast
     // Save the deck
     API.Decks.save($scope.deck.export(), function (data) {
       toaster.success("Awesome", $scope.deck.name + " is in your collection now.");
-      $state.go("app.deck-list", { username: data.user.username });
+      $state.go("app.deck-list", { id: data.user.id });
 
       // Increase user decks
       $rootScope.$broadcast("royalePlus.Auth:updateAuth");

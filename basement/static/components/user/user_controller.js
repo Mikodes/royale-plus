@@ -68,12 +68,12 @@ app.controller("UserController", function (API, Activity, Account, Auth, Comment
       return;
     }
 
-    var payload = { following: $scope.user.username };
+    var payload = { following: $scope.user.id };
     var usersKey = "user";
     var title = "Followers";
 
     if (!showFollowers) {
-      payload = { user: $scope.user.username };
+      payload = { user: $scope.user.id };
       usersKey = "following";
       title = "Following";
     }

@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content bg-dark text-white">
       <div class="modal-header text-center py-4">
-        <h3 class="w-100">{{ data.name | uppercase }}</h3>
+        <h3 class="w-100">{{ card.name | uppercase }}</h3>
         <button class="btn btn-dark" data-dismiss="modal">
           <i class="fas fa-times"></i>
         </button>
@@ -10,32 +10,32 @@
       <div class="modal-body bg-white text-dark p-4">
         <div class="row mobile-same">
           <div class="col-5 mobile-same text-center">
-            <img ng-src="{{ data.image }}" class="animated flipInY w-100">
+            <img ng-src="{{ card.image }}" class="animated flipInY w-100">
           </div>
           <div class="col-7 mobile-same">
             <h5>
               <small class="text-secondary">RARITY</small>
-              <b class="float-right rarity-{{ data.rarity | lowercase }}">{{ data.rarity }}</b>
+              <b class="float-right rarity-{{ card.rarity | lowercase }}">{{ card.rarity }}</b>
             </h5>
             <hr>
             <h5>
               <small class="text-secondary">COST</small>
-              <b class="float-right">{{ data.elixirCost }}</b>
+              <b class="float-right">{{ card.elixirCost }}</b>
             </h5>
             <hr>
             <h5>
               <small class="text-secondary">TYPE</small>
-              <b class="float-right">{{ data.type }}</b>
+              <b class="float-right">{{ card.type }}</b>
             </h5>
             <hr>
             <h5>
               <small class="text-secondary">ARENA</small>
-              <b class="float-right">{{ data.arena }}</b>
+              <b class="float-right">{{ card.arena }}</b>
             </h5>
             <hr>
           </div>
           <br>
-          <p class="px-3 pt-3 m-0">{{ data.description }}</p>
+          <p class="px-3 pt-3 m-0">{{ card.description }}</p>
         </div>
       </div>
     </div>
