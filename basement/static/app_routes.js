@@ -73,7 +73,7 @@ app.config(function (ENV, $stateProvider, $urlRouterProvider) {
   })
 
   .state("app.deck-list", {
-    url: "/decks/:username",
+    url: "/decks/:id",
     controller: "DeckListController",
     templateUrl: comp("deck/deck_list/deck_list.html")
   })
