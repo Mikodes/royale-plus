@@ -30,7 +30,12 @@ class AccountTests(APITestCase):
         self.assertEqual(user['email'], self.USER_DATA['email'])
 
     def test_user_list(self):
-        response = self.client.get('/api/users')
+        response = self.client.get(reverse('user-list'))
 
-        print(response)
-        # self.assertEqual(response.data.count, User.objects.count())
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], User.objects.count())
+        self.assertEqual(response.data['results'][0]['username'], self.USER_DATA['username'])
+
+        self.assertNotIn('password', response.data['results'][0])
+        self.assertNotIn('is_staff', response.data['results'][0])
+
