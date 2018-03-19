@@ -1,3 +1,4 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, generics
 from rest_framework.exceptions import ValidationError
 from rest_framework.pagination import PageNumberPagination
@@ -62,20 +63,8 @@ class FollowViewSet(viewsets.ModelViewSet):
     serializer_class = FollowSerializer
     pagination_class = StandardPagination
     http_method_names = ('get', 'delete', 'post',)
-
-    def get_queryset(self):
-        queryset = super(FollowViewSet, self).get_queryset()
-
-        user = self.request.query_params.get('user', None)
-        following = self.request.query_params.get('following', None)
-
-        if user:
-            queryset = queryset.filter(user__username=user)
-
-        if following:
-            queryset = queryset.filter(following__username=following)
-
-        return queryset
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = '__all__'
 
     def get_serializer_class(self):
         serializer_class = self.serializer_class
@@ -89,56 +78,23 @@ class FollowViewSet(viewsets.ModelViewSet):
 class DeckViewSet(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
-    filter_fields = ('user', 'kind', 'arena',)
     pagination_class = StandardPagination
-
-    def get_queryset(self):
-        queryset = super(DeckViewSet, self).get_queryset()
-        user = self.request.query_params.get('user', None)
-
-        if user is not None:
-            queryset = queryset.filter(user__username=user)
-
-        return queryset
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = '__all__'
 
 
 class ActivityViewSet(viewsets.ModelViewSet):
     queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
-    filter_fields = ('issuer', 'kind',)
     http_method_names = ('get',)
     pagination_class = StandardPagination
-
-    def get_queryset(self):
-        queryset = super(ActivityViewSet, self).get_queryset()
-        issuer = self.request.query_params.get('issuer', None)
-
-        if issuer is not None:
-            queryset = queryset.filter(issuer=issuer)
-
-        return queryset
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = '__all__'
 
 
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     pagination_class = StandardPagination
-    filter_fields = ('user',)
-
-    def get_queryset(self):
-        queryset = super(CommentViewSet, self).get_queryset()
-
-        user = self.request.query_params.get('user', None)
-        kind = self.request.query_params.get('kind', None)
-        target = self.request.query_params.get('target', None)
-
-        if user is not None:
-            queryset = queryset.filter(user__username=user)
-
-        if kind is not None:
-            queryset = queryset.filter(kind=kind)
-
-        if target is not None:
-            queryset = queryset.filter(target=target)
-
-        return queryset
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = '__all__'
