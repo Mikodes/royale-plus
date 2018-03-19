@@ -1,22 +1,52 @@
 <div class="container py-4 mobile-same">
 
   <!-- Header -->
-  <h1 class="text-dark my-2">
-
-    <!-- Title -->
-    <span>Latest decks</span>
-
-    <!-- By user -->
-    <span ng-if="params.username">
-      by <a ui-sref="app.user({username: params.username})" class="text-primary">{{ params.username }}</a>
-    </span>
-  </h1>
+  <h1 class="text-dark my-2">Deck List</h1>
 
   <!-- Line -->
   <hr class="mobile-hide mb-0">
 </div>
 
 <div class="container">
+
+  <!-- Deck options -->
+  <div class="card">
+    <div class="card-header bg-dark text-white">
+      Filter
+      <button class="btn btn-warning btn-sm float-right" ng-click="resetFilter()">Reset</button>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-4">
+          <!-- Deck arena -->
+          <div class="form-group mb-0">
+            <select class="form-control" ng-model="deckFilter.arena" ng-change="filter('arena')">
+              <option ng-value="null">Deck arena</option>
+              <option ng-value="$index" ng-repeat="arena in deckArenas">{{ deckArenas[$index] }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <!-- Deck type -->
+          <div class="form-group mb-0">
+            <select class="form-control" ng-model="deckFilter.kind" ng-change="filter('kind')">
+              <option ng-value="null">Deck type</option>
+              <option ng-value="$index" ng-repeat="type in deckKinds">{{ deckKinds[$index] }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group mb-0">
+            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons-checkbox">
+              <input ng-repeat="mode in modes"
+                class="btn btn-outline-secondary w-100"
+                type="button" ng-model="deckFilter[mode.key]" value="{{mode.label}}" ng-change="filter(mode.key)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Loading -->
   <div class="text-center py-5" ng-if="!decks.length">

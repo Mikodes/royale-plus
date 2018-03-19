@@ -1,10 +1,55 @@
 "use strict";
 
-app.controller("DeckListController", function (API, Pagination, Deck, toaster, $scope, $state, $stateParams) {
+app.controller("DeckListController", function (API, Main, Pagination, Deck, toaster, $scope, $state, $stateParams) {
+
+  /**
+   * APY payload
+   *
+   * @type {object}
+   */
+  var payload = {
+    limit: 9
+  };
 
   function constructor() {
 
     $scope.params = $stateParams;
+
+    /**
+     * Filter
+     *
+     * @type {object}
+     */
+    $scope.deckFilter = {
+      arena: null,
+      kind: null
+    };
+
+    /**
+     * Modes
+     *
+     * @type {Array<object>}
+     */
+    $scope.modes = [{
+      key: "mode_1v1",
+      label: "1v1"
+    }, {
+      key: "mode_2v2",
+      label: "2v2"
+    }, {
+      key: "mode_2x",
+      label: "2x Elixir"
+    }, {
+      key: "mode_3x",
+      label: "3x Elixir"
+    }];
+
+    /**
+     * Keep all modes in filter list
+     */
+    angular.forEach($scope.modes, function (value) {
+      $scope.deckFilter[value.key] = false;
+    });
 
     /**
      * All decks to show
@@ -14,13 +59,18 @@ app.controller("DeckListController", function (API, Pagination, Deck, toaster, $
     $scope.decks = [];
 
     /**
-     * APY payload
+     * All areans
      *
-     * @type {object}
+     * @type {Array<string>}
      */
-    var payload = {
-      limit: 9
-    };
+    $scope.deckArenas = Main.deck.arena;
+
+    /**
+     * All type of decks
+     *
+     * @type {Array<string>}
+     */
+    $scope.deckKinds = Main.deck.kind;
 
     /**
      * If there's user in URL param, then update payload
@@ -29,11 +79,52 @@ app.controller("DeckListController", function (API, Pagination, Deck, toaster, $
       payload.user = $stateParams.id;
     }
 
-    /**
-     * @type {Pagination}
-     */
+    initDecks();
+  }
+
+  /**
+   * Paginaition
+   */
+  function initDecks() {
     $scope.pagination = new Pagination(API.Decks.get, payload);
   }
+
+  /**
+   * Modes
+   *
+   * @param key {string | boolean}
+   */
+  $scope.filter = function (key) {
+
+    // Check for value
+    if ($scope.deckFilter[key] !== null) {
+      payload[key] = $scope.deckFilter[key];
+    }
+
+    // Check if value is false or null
+    if ($scope.deckFilter[key] === false || $scope.deckFilter[key] === null) {
+      payload[key] = null;
+    }
+
+    //  Remove "All Arena" from payload
+    if (key == "arena" && $scope.deckFilter[key] == 0) {
+      payload[key] = null;
+    }
+
+    $scope.decks = [];
+    initDecks();
+  };
+
+  /**
+   * Reset filter
+   */
+  $scope.resetFilter = function () {
+    payload = {
+      limit: 9
+    };
+
+    constructor();
+  };
 
   /**
    * Loaded decks
