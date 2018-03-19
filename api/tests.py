@@ -14,17 +14,23 @@ class AccountTests(APITestCase):
         'password': 'wow tricky password',
     }
 
+    SIGNUP_RESPONSE: any
+
+    def setUp(self):
+        self.SIGNUP_RESPONSE = self.client.post(reverse('signup'), self.USER_DATA, format=self.FORMAT)
+
     def test_user_signup(self):
-        response = self.client.post(
-            path=reverse('signup'),
-            format=self.FORMAT,
-            data=self.USER_DATA,
-        )
+        response = self.SIGNUP_RESPONSE
+        user: dict = response.data
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(User.objects.count(), 1)
 
-        user: dict = response.data
-
         self.assertEqual(user['username'], self.USER_DATA['username'])
         self.assertEqual(user['email'], self.USER_DATA['email'])
+
+    def test_user_list(self):
+        response = self.client.get('/api/users')
+
+        print(response)
+        # self.assertEqual(response.data.count, User.objects.count())
