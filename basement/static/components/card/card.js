@@ -26,7 +26,7 @@ app.service("Card", function (Main, Common) {
     };
 
     this.view = function () {
-      Common.modal("card/card.html", this);
+      Common.modal("card/card.html", { card: this });
     };
 
     this.export = function () {
