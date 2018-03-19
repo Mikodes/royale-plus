@@ -39,3 +39,6 @@ class AccountTests(APITestCase):
         self.assertNotIn('password', response.data['results'][0])
         self.assertNotIn('is_staff', response.data['results'][0])
 
+    def test_user_detail(self):
+        response = self.client.get(reverse('user-detail', kwargs={'username': 'Amir'}))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
