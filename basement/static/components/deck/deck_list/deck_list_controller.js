@@ -2,6 +2,15 @@
 
 app.controller("DeckListController", function (API, Main, Pagination, Deck, toaster, $scope, $state, $stateParams) {
 
+  /**
+   * APY payload
+   *
+   * @type {object}
+   */
+  var payload = {
+    limit: 9
+  };
+
   function constructor() {
 
     $scope.params = $stateParams;
@@ -12,8 +21,8 @@ app.controller("DeckListController", function (API, Main, Pagination, Deck, toas
      * @type {object}
      */
     $scope.deckFilter = {
-      arena: -1,
-      kind: -1
+      arena: null,
+      kind: null
     };
 
     /**
@@ -35,6 +44,9 @@ app.controller("DeckListController", function (API, Main, Pagination, Deck, toas
       label: "3x Elixir"
     }];
 
+    /**
+     * Keep all modes in filter list
+     */
     angular.forEach($scope.modes, function (value) {
       $scope.deckFilter[value.key] = false;
     });
@@ -61,41 +73,42 @@ app.controller("DeckListController", function (API, Main, Pagination, Deck, toas
     $scope.deckKinds = Main.deck.kind;
 
     /**
-     * APY payload
-     *
-     * @type {object}
-     */
-    $scope.payload = {
-      limit: 9
-    };
-
-    /**
      * If there's user in URL param, then update payload
      */
     if ($stateParams.id) {
-      $scope.payload.user = $stateParams.id;
+      payload.user = $stateParams.id;
     }
 
     /**
      * @type {Pagination}
      */
-    $scope.pagination = new Pagination(API.Decks.get, $scope.payload);
+    $scope.pagination = new Pagination(API.Decks.get, payload);
   }
 
+  /**
+   * Modes
+   *
+   * @param key {string | boolean}
+   */
   $scope.filter = function (key) {
 
     // Check for value
-    if ($scope.deckFilter[key] !== -1) {
-      $scope.payload[key] = $scope.deckFilter[key];
+    if ($scope.deckFilter[key] !== null) {
+      payload[key] = $scope.deckFilter[key];
     }
 
-    // Check for bool
-    if ($scope.deckFilter[key] == false) {
-      $scope.payload[key] = null;
+    // Check if value is false or null
+    if ($scope.deckFilter[key] === false || $scope.deckFilter[key] === null) {
+      payload[key] = null;
+    }
+
+    //  Remove "All Arena" from payload
+    if (key == "arena" && $scope.deckFilter[key] == 0) {
+      payload[key] = null;
     }
 
     $scope.decks = [];
-    $scope.pagination = new Pagination(API.Decks.get, $scope.payload);
+    $scope.pagination = new Pagination(API.Decks.get, payload);
   };
 
   /**
