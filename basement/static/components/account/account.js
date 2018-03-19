@@ -28,6 +28,11 @@ app.service("Account", function (ENV, API, Auth, toaster) {
     /**
      * @type {string}
      */
+    this.id = this.get.id;
+
+    /**
+     * @type {string}
+     */
     this.username = this.get.username;
 
     /**
