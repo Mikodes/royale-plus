@@ -18,6 +18,44 @@
 
 <div class="container">
 
+  <!-- Deck options -->
+  <div class="card">
+    <div class="card-header bg-dark text-warning">
+      <h3>Filter</h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-4">
+          <!-- Deck arena -->
+          <div class="form-group">
+            <select class="form-control" ng-model="deckFilter.arena" ng-change="filter('arena')">
+              <option ng-value="-1">Deck arena</option>
+              <option ng-value="$index" ng-repeat="arena in deckArenas">{{ deckArenas[$index] }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <!-- Deck type -->
+          <div class="form-group">
+            <select class="form-control" ng-model="deckFilter.kind" ng-change="filter('kind')">
+              <option ng-value="-1">Deck type</option>
+              <option ng-value="$index" ng-repeat="type in deckKinds">{{ deckKinds[$index] }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons-checkbox">
+              <input ng-repeat="mode in modes"
+                class="btn btn-outline-secondary w-100"
+                type="button" ng-model="deckFilter[mode.key]" value="{{mode.label}}" ng-change="filter(mode.key)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Loading -->
   <div class="text-center py-5" ng-if="!decks.length">
     <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
