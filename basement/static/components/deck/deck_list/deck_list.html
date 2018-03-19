@@ -11,12 +11,15 @@
 
   <!-- Deck options -->
   <div class="card">
-    <div class="card-header bg-dark text-white">Filter</div>
+    <div class="card-header bg-dark text-white">
+      Filter
+      <button class="btn btn-warning btn-sm float-right" ng-click="resetFilter()">Reset</button>
+    </div>
     <div class="card-body">
       <div class="row">
         <div class="col-lg-4">
           <!-- Deck arena -->
-          <div class="form-group">
+          <div class="form-group mb-0">
             <select class="form-control" ng-model="deckFilter.arena" ng-change="filter('arena')">
               <option ng-value="null">Deck arena</option>
               <option ng-value="$index" ng-repeat="arena in deckArenas">{{ deckArenas[$index] }}</option>
@@ -25,7 +28,7 @@
         </div>
         <div class="col-lg-4">
           <!-- Deck type -->
-          <div class="form-group">
+          <div class="form-group mb-0">
             <select class="form-control" ng-model="deckFilter.kind" ng-change="filter('kind')">
               <option ng-value="null">Deck type</option>
               <option ng-value="$index" ng-repeat="type in deckKinds">{{ deckKinds[$index] }}</option>
@@ -33,7 +36,7 @@
           </div>
         </div>
         <div class="col-lg-4">
-          <div class="form-group">
+          <div class="form-group mb-0">
             <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons-checkbox">
               <input ng-repeat="mode in modes"
                 class="btn btn-outline-secondary w-100"
