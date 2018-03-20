@@ -4,8 +4,6 @@ from account.models import User, Follow
 
 
 class UserTestCase(TestCase):
-    user: User
-
     def setUp(self):
         self.user = User.objects.create(
             username='Amir',
@@ -32,7 +30,7 @@ class UserTestCase(TestCase):
 class FollowTestCase(TestCase):
     amir: User
     clone: User
-    
+
     def setUp(self):
         self.amir = User.objects.create(
             username='Amir',
