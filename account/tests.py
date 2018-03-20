@@ -42,9 +42,9 @@ class FollowTestCase(TestCase):
             email='amirclone@savandbros.com',
             password='wow tricky password by amir clone'
         )
-        
+
     def test_user_follow(self):
         # Make Amir follow Amir Clone
         follow: Follow = Follow.objects.create(user=self.amir, following=self.clone)
-        
-        self.assertEqual(follow.__str__(), 'Amir follows AmirClone')
+
+        self.assertEqual(str(follow), 'Amir follows AmirClone')
