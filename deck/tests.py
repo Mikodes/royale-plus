@@ -5,8 +5,6 @@ from deck.models import Deck, DeckKind, DeckArena
 
 
 class DeckTestCase(TestCase):
-    deck: Deck
-
     def setUp(self):
         user: User = User.objects.create(
             username='Amir',
