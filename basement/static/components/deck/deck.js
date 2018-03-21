@@ -66,6 +66,11 @@ app.service("Deck", function (API, Auth, Card, Account, Main, toaster, $state) {
     this.mode3x = true;
 
     /**
+     * @type {boolean}
+     */
+    this.isDeleted = false;
+
+    /**
      * Get the type name by index
      *
      * @type {function}
@@ -188,8 +193,11 @@ app.service("Deck", function (API, Auth, Card, Account, Main, toaster, $state) {
         return false;
       }
 
-      // API call, toast and redirect
+      // API call
       API.Decks.delete({ id: this.id });
+      this.isDeleted = true;
+
+      // toast and redirect
       $state.go("app.deck-list", { username: this.user.username });
       toaster.success("Deleted", "Deleted deck: " + this.name);
 
