@@ -27,9 +27,6 @@ class UserTestCase(TestCase):
 
 
 class FollowTestCase(TestCase):
-    amir: User
-    clone: User
-
     def setUp(self):
         self.amir = User.objects.create(
             username='Amir',
