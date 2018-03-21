@@ -4,6 +4,12 @@ app.service("Deck", function (API, Auth, Card, Account, Main, toaster, $state) {
   return function (name, cards, kind, arena) {
 
     /**
+     * Deck class
+     * @private
+     */
+    var self = this;
+
+    /**
      * @type {number}
      */
     this.id = null;
@@ -64,6 +70,11 @@ app.service("Deck", function (API, Auth, Card, Account, Main, toaster, $state) {
      * @type {boolean}
      */
     this.mode3x = true;
+
+    /**
+     * @type {boolean}
+     */
+    this.isDeleted = false;
 
     /**
      * Get the type name by index
@@ -188,13 +199,13 @@ app.service("Deck", function (API, Auth, Card, Account, Main, toaster, $state) {
         return false;
       }
 
-      // API call, toast and redirect
-      API.Decks.delete({ id: this.id });
-      $state.go("app.deck-list", { username: this.user.username });
-      toaster.success("Deleted", "Deleted deck: " + this.name);
-
-      // Success
-      return true;
+      // API call
+      API.Decks.delete({ id: this.id },
+        function (data) {
+          self.isDeleted = true;
+          $state.go("app.deck-list", { id: self.user.id });
+          toaster.success("Deleted", "Deleted deck: " + self.name);
+        });
     };
 
     /**
