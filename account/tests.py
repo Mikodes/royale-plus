@@ -11,8 +11,7 @@ class UserTestCase(TestCase):
             password='wow tricky password',
         )
 
-    def test_user_methods(self):
-        self.assertIsNotNone(self.user.joined_since)
+    def test_is_profile_completed(self):
         self.assertFalse(self.user.is_profile_completed)
 
         self.user.nationality = 'IRAN'
