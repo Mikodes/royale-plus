@@ -22,8 +22,8 @@ router.register(r'comments', CommentViewSet)
 
 urlpatterns = router.urls
 urlpatterns += [
-    url(r'^docs/', include_docs_urls(title='Royale Clan API')),
-    url(r'^auth/', obtain_jwt_token),
-    url(r'^signup/', UserCreateView.as_view()),
-    url(r'^settings/', UserUpdateView.as_view()),
+    url(r'^docs/', include_docs_urls(title='Royale Clan API'), name='docs'),
+    url(r'^auth/', obtain_jwt_token, name='auth'),
+    url(r'^signup/', UserCreateView.as_view(), name='signup'),
+    url(r'^settings/', UserUpdateView.as_view(), name='settings'),
 ]
