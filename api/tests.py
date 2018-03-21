@@ -10,7 +10,7 @@ class AccountTests(APITestCase):
 
     USER_DATA: dict = {
         'username': 'Amir',
-        'email': 'amir@savandbros.com',
+        'email': 'amir@pureawesomeness.com',
         'password': 'wow tricky password',
     }
 

@@ -8,7 +8,7 @@ class DeckTestCase(TestCase):
     def setUp(self):
         user: User = User.objects.create(
             username='Amir',
-            email='amir@savandbros.com',
+            email='amir@pureawesomeness.com',
             password='wow tricky password',
         )
         self.deck = Deck.objects.create(

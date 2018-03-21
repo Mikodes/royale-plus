@@ -7,7 +7,7 @@ class UserTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create(
             username='Amir',
-            email='amir@savandbros.com',
+            email='amir@pureawesomeness.com',
             password='wow tricky password',
         )
 
@@ -33,12 +33,12 @@ class FollowTestCase(TestCase):
     def setUp(self):
         self.amir = User.objects.create(
             username='Amir',
-            email='amir@savandbros.com',
+            email='amir@pureawesomeness.com',
             password='wow tricky password',
         )
         self.clone = User.objects.create(
             username='AmirClone',
-            email='amirclone@savandbros.com',
+            email='amirclone@pureawesomeness.com',
             password='wow tricky password by amir clone'
         )
 
