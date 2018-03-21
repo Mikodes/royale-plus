@@ -13,6 +13,8 @@ app.controller("DeckListController", function (API, Main, Pagination, Deck, toas
 
   function constructor() {
 
+    $scope.pageNothingText = "No decks yet.";
+
     $scope.params = $stateParams;
 
     /**
@@ -133,11 +135,13 @@ app.controller("DeckListController", function (API, Main, Pagination, Deck, toas
     angular.forEach(data.results, function (result) {
       $scope.decks.push(new Deck().import(result));
     });
+
     // No decks
     if (!data.count) {
-      toaster.error("No Decks", "This user doesn't have any decks.");
-      $state.go("app.deck-list", { username: null });
+      $state.go("app.deck-list", { id: null });
     }
+
+    $scope.initialled = true;
   });
 
   constructor();
