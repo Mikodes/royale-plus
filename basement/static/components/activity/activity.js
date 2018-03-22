@@ -38,17 +38,19 @@ app.service("Activity", function (Main) {
      * @returns {string}
      */
     this.getIcon = function () {
-      if (this.get.kind == 2) {
+      // User activity
+      if (this.getKind === "User") {
+        // Comment
         if (this.get.content.indexOf("commented") === 0) {
           return "comment";
         }
-
+        // Register
         if (this.get.content.indexOf("joined") === 0) {
           return "user-plus ";
         }
       }
-
-      return activityKindIcon[this.get.kind];
+      // Default
+      return "fa-info-circle";
     };
 
     /**
