@@ -13,8 +13,6 @@ app.controller("DeckListController", function (API, Main, Pagination, Deck, toas
 
   function constructor() {
 
-    $scope.pageNothingText = "No decks yet.";
-
     $scope.params = $stateParams;
 
     /**
@@ -118,13 +116,10 @@ app.controller("DeckListController", function (API, Main, Pagination, Deck, toas
   };
 
   /**
-   * Reset filter
+   * Reset filter/payload
    */
   $scope.resetFilter = function () {
-    payload = {
-      limit: 9
-    };
-
+    payload = { limit: 9 };
     constructor();
   };
 
