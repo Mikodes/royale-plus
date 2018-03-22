@@ -39,7 +39,7 @@ app.service("Activity", function (Main) {
      */
     this.getIcon = function () {
       // User activity
-      if (this.getKind === "User") {
+      if (this.getKind() === "User") {
         // Comment
         if (this.get.content.indexOf("commented") === 0) {
           return "comment";
