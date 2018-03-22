@@ -46,7 +46,7 @@ app.service("Activity", function (Main) {
         }
         // Register
         if (this.get.content.indexOf("joined") === 0) {
-          return "user-plus ";
+          return "user-plus";
         }
       }
       // Default
