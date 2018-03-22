@@ -15,8 +15,8 @@
 {{ activity.get.content }}.
 
 <!-- Issued -->
-<a ng-if="activity.getKind() === 'Deck'" class="btn btn-sm btn-light text-primary"
-  ui-sref="app.deck({id: activity.get.issued})"> View
+<a ng-if="activity.getKind() === 'Deck' || 'User'" class="btn btn-sm btn-light text-primary"
+  ui-sref="{{ activity.getLink() }}"> View
 </a>
 
 <!-- Time since -->
