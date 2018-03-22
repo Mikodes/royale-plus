@@ -47,12 +47,16 @@ app.service("Activity", function (Main) {
       if (this.getKind() === "User") {
         // Comment
         if (this.get.content.indexOf("commented") === 0) {
-          return "comment-alt";
+          return "comments";
         }
         // Register
         if (this.get.content.indexOf("joined") === 0) {
           return "user-plus";
         }
+      }
+      // Deck activity
+      if (this.getKind() === "Deck") {
+        return "cube";
       }
       // Default
       return "info-circle";
