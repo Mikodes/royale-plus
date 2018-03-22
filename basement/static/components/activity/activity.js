@@ -16,12 +16,17 @@ app.service("Activity", function (Main) {
       return Main.activity.kind[this.get.kind];
     };
 
+    // Get ui-sref
     this.getLink = function () {
+
       if (this.getKind() == "User") {
         if (this.get.content.indexOf("commented") === 0) {
-
+          return "app.user({username: activity.get.issued})";
         }
-        return "app.user({username: activity.get.issuer})";
+
+        if (this.get.content.indexOf("joined") === 0) {
+          return "app.user({username: activity.get.issuer})";
+        }
       }
 
       if (this.getKind() == "Deck") {
@@ -32,7 +37,7 @@ app.service("Activity", function (Main) {
     this.getIcon = function () {
       if (this.get.kind == 2) {
         if (this.get.content.indexOf("commented") === 0) {
-          return "comment";
+          return "comment-alt";
         }
 
         if (this.get.content.indexOf("joined") === 0) {
