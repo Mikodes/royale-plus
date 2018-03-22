@@ -50,7 +50,7 @@ app.service("Activity", function (Main) {
         }
       }
       // Default
-      return "fa-info-circle";
+      return "info-circle";
     };
 
     /**
