@@ -11,6 +11,7 @@ def create_comment(sender, instance, created, **kwargs):
     if created and instance.kind == CommentKind.USER and instance.user.username != instance.target:
         Activity.objects.create(
             issuer=instance.user.username,
+            issued=instance.target,
             content=f'commented on {instance.target}\'s wall',
             kind=ActivityKind.USER,
         )
