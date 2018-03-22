@@ -18,20 +18,21 @@ app.service("Activity", function (Main) {
 
     /**
      * @type {function}
-     * @returns {string}
+     * @returns {string|null}
      */
     this.getLink = function () {
-
+      // User activity
       if (this.getKind() == "User") {
+        // Comment
         if (this.get.content.indexOf("commented") === 0) {
           return "app.user({username: activity.get.issued})";
         }
-
+        // Register
         if (this.get.content.indexOf("joined") === 0) {
           return "app.user({username: activity.get.issuer})";
         }
       }
-
+      // Deck activity
       if (this.getKind() == "Deck") {
         return "app.deck({id: activity.get.issued})";
       }
