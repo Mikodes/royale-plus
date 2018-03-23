@@ -55,5 +55,7 @@ app.controller("DeckController", function (API, Deck, toaster, Comment, Main, $s
     $scope.comments.unshift(new Comment(data));
   });
 
+  $scope.$on("royalePlus.MainController:loadedCards", constructor);
+
   constructor();
 });
