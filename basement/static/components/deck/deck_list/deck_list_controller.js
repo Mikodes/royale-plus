@@ -139,7 +139,7 @@ app.controller("DeckListController", function (API, Main, Pagination, Deck, toas
     $scope.initialled = true;
   });
 
-  $scope.$on("royalePlus.MainController:loadedCards", constructor););
+  $scope.$on("royalePlus.MainController:loadedCards", constructor);
 
   constructor();
 });
