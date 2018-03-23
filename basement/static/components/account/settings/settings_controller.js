@@ -18,9 +18,24 @@ app.controller("SettingsController", function (Auth, API, toaster, $scope, $root
     });
   }
 
+  /**
+   * @desc Creates an array
+   *
+   * @returns {Array<number>}
+   */
   $scope.getAvatars = function () {
     var index = Array.from(Array(100).keys());
     return index;
+  };
+
+
+  /**
+   * @desc Set avatar and update
+   */
+  $scope.setAvatar = function (index) {
+    $scope.form.data.picture = index;
+
+    $scope.update($scope.form);
   };
 
   $scope.update = function (form) {
