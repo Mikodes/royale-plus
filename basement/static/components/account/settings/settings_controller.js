@@ -18,6 +18,11 @@ app.controller("SettingsController", function (Auth, API, toaster, $scope, $root
     });
   }
 
+  $scope.getAvatars = function () {
+    var index = Array.from(Array(100).keys());
+    return index;
+  };
+
   $scope.update = function (form) {
     form.loading = true;
 
