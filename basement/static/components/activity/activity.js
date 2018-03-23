@@ -74,12 +74,8 @@ app.service("Activity", function (Main) {
      * @type {function}
      * @returns {boolean}
      */
-    this.showView = function () {
-      if (this.getKind() == "User" || this.getKind() == "Deck") {
-        return true;
-      }
-
-      return false;
+    this.hasViewButton = function () {
+      return this.getKind() == "User" || this.getKind() == "Deck"
     };
   };
 });
