@@ -69,5 +69,13 @@ app.service("Activity", function (Main) {
     this.hasUser = function () {
       return this.getKind() === "User" || this.getKind() === "Deck";
     };
+
+    /**
+     * @type {function}
+     * @returns {boolean}
+     */
+    this.hasViewButton = function () {
+      return this.getKind() == "User" || this.getKind() == "Deck"
+    };
   };
 });
