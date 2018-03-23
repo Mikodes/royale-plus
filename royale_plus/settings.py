@@ -148,6 +148,9 @@ DATABASES = {
     }
 }
 
+# User to follow when a new account is registered
+FOLLOW_USER = os.environ.get('FOLLOW_USER', 1)
+
 # Production override settings
 
 if PRODUCTION:
