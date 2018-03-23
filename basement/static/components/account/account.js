@@ -51,6 +51,15 @@ app.service("Account", function (ENV, API, Auth, toaster) {
     };
 
     /**
+     * @type {function}
+     * @returns {Array<number>}
+     */
+    this.getAvatars = function () {
+      var index = Array.from(Array(100).keys());
+      return index;
+    };
+
+    /**
      * @type {object}
      */
     this.follow = {
