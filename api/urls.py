@@ -11,6 +11,7 @@ router.register(r'follows', views.FollowViewSet)
 router.register(r'decks', views.DeckViewSet)
 router.register(r'activities', views.ActivityViewSet)
 router.register(r'comments', views.CommentViewSet)
+router.register(r'tournaments', views.TournamentViewSet)
 
 urlpatterns = router.urls
 urlpatterns += [
