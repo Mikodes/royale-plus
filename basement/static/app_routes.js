@@ -89,6 +89,12 @@ app.config(function (ENV, $stateProvider, $urlRouterProvider) {
     params: {
       deck: null
     }
+  })
+
+  .state("app.tournament-list", {
+    url: "/tournaments",
+    controller: "TournamentListController",
+    templateUrl: comp("tournament/tournament_list/tournament_list.html")
   });
 
   $urlRouterProvider.otherwise("/");
