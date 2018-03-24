@@ -1,14 +1,21 @@
 "use strict";
 
-app.controller("DeckListController", function (API, $scope) {
+app.controller("TournamentListController", function (API, Tournament, $scope) {
 
   function constructor() {
+
+    /**
+     * @type {Array<Tournament>}
+     */
+    $scope.tournaments = [];
 
     /**
      * Get tournaments
      */
     API.Tournaments.get({}, function (data) {
-      $scope.tournaments = data.results;
+      angular.forEach(data.results, function (result) {
+        $scope.tournaments.push(new Tournament(result));
+      });
     });
   }
 
