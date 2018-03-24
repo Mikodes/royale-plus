@@ -48,6 +48,7 @@ class UserSerializer(serializers.ModelSerializer):
             'picture',
             'link',
             'nationality',
+            'coins',
         )
         extra_kwargs = {
             'password': {'write_only': True},
