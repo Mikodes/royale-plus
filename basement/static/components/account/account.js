@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Account", function (ENV, API, Auth, toaster) {
+app.service("Account", function (API, Auth, toaster) {
   return function (data, followedId) {
 
     /**
@@ -13,12 +13,6 @@ app.service("Account", function (ENV, API, Auth, toaster) {
      * @type {object}
      */
     var currentUser = Auth.getAuth();
-
-    /**
-     * @private
-     * @type {string}
-     */
-    var defaultImage = "static/assets/img/avatar.png?v=" + ENV.VERSION;
 
     /**
      * @type {object}
@@ -36,11 +30,6 @@ app.service("Account", function (ENV, API, Auth, toaster) {
     this.username = this.get.username;
 
     /**
-     * @type {string}
-     */
-    this.picture = this.get.picture || defaultImage;
-
-    /**
      * @type {function}
      * @returns {boolean}
      *
@@ -52,11 +41,23 @@ app.service("Account", function (ENV, API, Auth, toaster) {
 
     /**
      * @type {function}
-     * @returns {Array<number>}
+     *
+     * @param pictureId number
+     * @returns {string}
      */
-    this.getAvatars = function () {
-      var index = Array.from(Array(100).keys());
-      return index;
+    this.getAvatar = function (pictureId) {
+      var avatars = [];
+      var numArray = Array.from(Array(100).keys());
+
+      angular.forEach(numArray, function (index) {
+        avatars[index] = `assets/img/avatars/${index}.jpg`;
+      });
+
+      if (pictureId) {
+        return avatars[pictureId];
+      }
+
+      return avatars[self.get.picture];
     };
 
     /**
