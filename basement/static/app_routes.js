@@ -7,10 +7,14 @@ app.config(function (ENV, $stateProvider, $urlRouterProvider) {
 
   /**
    * Get template URL with version
+   *
    * @type {function}
+   * @returns {string}
+   *
+   * @param {string} path
    */
-  function comp(url) {
-    return "static/components/" + url + "?v=" + ENV.VERSION;
+  function comp(path) {
+    return "static/components/" + path + "?v=" + ENV.VERSION;
   }
 
   $stateProvider.state("app", {
