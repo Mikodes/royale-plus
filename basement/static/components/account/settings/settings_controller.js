@@ -1,10 +1,12 @@
 "use strict";
 
-app.controller("SettingsController", function (Auth, API, toaster, $scope, $rootScope, $state) {
+app.controller("SettingsController", function (Auth, API, Account, toaster, $scope, $rootScope, $state) {
 
   var user = Auth.getAuth();
 
   function constructor() {
+    $scope.userInstance = new Account(Auth.getAuth);
+
     API.Users.get({ username: user.username }, function (data) {
       $scope.form.data = {
         email: data.email,
@@ -27,7 +29,6 @@ app.controller("SettingsController", function (Auth, API, toaster, $scope, $root
     var index = Array.from(Array(100).keys());
     return index;
   };
-
 
   /**
    * @desc Set avatar and update
