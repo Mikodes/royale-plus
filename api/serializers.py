@@ -4,6 +4,7 @@ from account.models import User, Follow
 from activity.models import Activity
 from comment.models import Comment
 from deck.models import Deck
+from tournament.models import Tournament
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -181,6 +182,12 @@ class CommentSerializer(serializers.ModelSerializer):
             'created',
             'created_since'
         )
+
+
+class TournamentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tournament
+        fields = '__all__'
 
 
 def jwt_response_payload_handler(token, user=None, request=None):
