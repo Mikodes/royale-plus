@@ -185,6 +185,9 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class TournamentSerializer(serializers.ModelSerializer):
+    user = UserMinimalSerializer(read_only=True, default=serializers.CurrentUserDefault())
+    users = UserMinimalSerializer(many=True)
+
     class Meta:
         model = Tournament
         fields = '__all__'
