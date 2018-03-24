@@ -1,5 +1,5 @@
 <!-- User image -->
-<img ng-src="{{ user.picture }}" class="user-image" width="48px">
+<img ng-src="{{ static(user.getAvatar()) }}" class="user-image" width="48px">
 <!-- User name -->
 <a ui-sref="app.user({username: user.username, user: user})">{{ user.username }}</a>
 <!-- Follow -->
