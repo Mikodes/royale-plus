@@ -1,14 +1,20 @@
 <div class="container s-mar-y">
   <div class="row justify-content-md-center">
     <div class="col-md-4">
-      <div class="user-picture-wrapper">
-        <div class="user-picture" style="background-image: url('{{ form.data.picture }}')"
-          type="button" data-toggle="collapse"
-          data-target="#avatars"></div>
-      </div>
-      <div class="collapse" id="avatars" style="max-height: 250px; overflow-y: scroll">
-        <img ng-repeat="index in getAvatars()" ng-if="$index !== 0"
-          ng-src="{{static('assets/img/avatars/'+ $index +'.jpg')}}" ng-click="setAvatar($index)">
+      <div class="card">
+        <div class="card-body">
+          <div class="user-picture-wrapper">
+            <div class="user-picture" style="background-image: url('{{ static(userInstance.getAvatar(form.data.picture)) }}')"
+              data-toggle="collapse" data-target="#avatars"></div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-3 my-2" ng-repeat="index in getAvatars()" ng-if="!$first">
+              <img class="rounded-circle" style="max-width: 100%;" ng-src="{{static('assets/img/avatars/'+ $index +'.jpg')}}"
+                ng-click="setAvatar($index)">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-md-8">
