@@ -6,8 +6,9 @@
 
 body {
     font-family: "Righteous", sans-serif;
-    background: ghostwhite url("../img/overlay.jpg");
-    box-shadow: inset 0 0 0 10000px rgba(255, 255, 255, 0.8);
+    background-image: url("../img/overlay.png");
+    background-color: ghostwhite;
+    background-size: 200px 200px;
     padding-top: 56px;
 }
 
@@ -458,8 +459,8 @@ card.no-name cover {
 /* Footer */
 
 .footer {
-    box-shadow: 0 1000px 0 1000px ghostwhite;
-    background: ghostwhite;
+    box-shadow: 0 1000px 0 1000px #eee;
+    background: #eee;
 }
 
 
