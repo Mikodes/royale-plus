@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Account", function (API, Auth, toaster) {
+app.service("Account", function (API, Auth, Common, toaster) {
   return function (data, followedId) {
 
     /**
@@ -30,6 +30,11 @@ app.service("Account", function (API, Auth, toaster) {
     this.username = this.get.username;
 
     /**
+     * @type {string}
+     */
+    this.picture = Common.image("avatars/" + this.get.picture + ".jpg");
+
+    /**
      * @type {function}
      * @returns {boolean}
      *
@@ -37,27 +42,6 @@ app.service("Account", function (API, Auth, toaster) {
      */
     this.isSameUser = function () {
       return this.username === currentUser.username;
-    };
-
-    /**
-     * @type {function}
-     *
-     * @param pictureId number
-     * @returns {string}
-     */
-    this.getAvatar = function (pictureId) {
-      var avatars = [];
-      var numArray = Array.from(Array(100).keys());
-
-      angular.forEach(numArray, function (index) {
-        avatars[index] = `assets/img/avatars/${index}.jpg`;
-      });
-
-      if (pictureId) {
-        return avatars[pictureId];
-      }
-
-      return avatars[self.get.picture];
     };
 
     /**
