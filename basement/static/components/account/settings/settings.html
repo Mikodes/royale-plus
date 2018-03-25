@@ -5,14 +5,13 @@
         <div class="card-body">
           <div class="user-picture-wrapper">
             <div class="user-picture" ng-if="form.data.picture"
-              style="background-image: url('{{ userInstance.picture }}')"
-              data-toggle="collapse" data-target="#avatars"></div>
+              style="background-image: url('{{ userInstance.picture }}')"></div>
           </div>
           <hr>
           <div class="row">
             <div class="col-3 my-2" ng-repeat="avatar in avatars track by $index" ng-if="!$first">
               <img class="rounded-circle" style="max-width: 100%;"
-                ng-src="{{static('assets/img/avatars/'+ $index +'.jpg')}}"
+                ng-src="{{ static('assets/img/avatars/'+ $index +'.jpg') }}"
                 ng-click="setAvatar($index)">
             </div>
           </div>
