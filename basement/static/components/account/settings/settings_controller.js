@@ -25,7 +25,7 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
   }
 
   /**
-   * @param picture number
+   * @param {number} picture
    */
   $scope.setAvatar = function (picture) {
     $scope.form.data.picture = picture;
