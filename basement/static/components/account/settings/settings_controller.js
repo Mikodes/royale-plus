@@ -23,10 +23,10 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
 
   /**
    * @desc Set avatar and update
+   * @param picture number
    */
-  $scope.setAvatar = function (index) {
-    $scope.form.data.picture = index;
-
+  $scope.setAvatar = function (picture) {
+    $scope.form.data.picture = picture;
     $scope.update($scope.form);
   };
 
