@@ -6,6 +6,7 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
 
   function constructor() {
     $scope.userInstance = new Account(Auth.getAuth);
+    $scope.avatars = new Array(100);
 
     API.Users.get({ username: user.username }, function (data) {
       $scope.form.data = {
@@ -19,16 +20,6 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
       };
     });
   }
-
-  /**
-   * @desc Creates an array
-   *
-   * @returns {Array<number>}
-   */
-  $scope.getAvatars = function () {
-    var index = Array.from(Array(100).keys());
-    return index;
-  };
 
   /**
    * @desc Set avatar and update
