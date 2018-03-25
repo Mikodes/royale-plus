@@ -10,8 +10,8 @@
           <hr>
           <div class="row">
             <div class="col-3 my-2" ng-repeat="avatar in avatars track by $index" ng-if="!$first">
-              <img class="rounded-circle" style="max-width: 100%;"
-                ng-src="{{ static('assets/img/avatars/'+ $index +'.jpg') }}"
+              <img class="rounded-circle" style="max-width: 100%"
+                ng-src="{{ static('assets/img/avatars/'+$index+'.jpg') }}"
                 ng-click="setAvatar($index)">
             </div>
           </div>
