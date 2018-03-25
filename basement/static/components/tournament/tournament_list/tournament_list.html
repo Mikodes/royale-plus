@@ -1,5 +1,45 @@
+<!-- Header -->
+<div class="container py-4 mobile-same">
+  <h1 class="text-dark my-2">Custom Tournaments</h1>
+  <hr class="mobile-hide mb-0">
+</div>
+
+<!-- List -->
 <div class="container py-5">
-  <div ng-repeat="tournament in tournaments">
-    <h3>{{ tournament.name }} by {{ tournament.user.username }}</h3>
+
+  <!-- Loading -->
+  <div class="text-center py-5" ng-if="!tournaments.length">
+    <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
+  </div>
+
+  <!-- Tournament -->
+  <div class="row">
+    <div class="col-lg-4" ng-repeat="tournament in tournaments">
+      <div class="card my-3">
+        <!-- Name -->
+        <div class="card-header bg-dark text-white">{{ tournament.name }}</div>
+        <!-- Label -->
+        <div class="card-body">
+          <p>Created by:</p>
+        </div>
+        <!-- User -->
+        <div class="list-group list-group-flush">
+          <div class="list-group-item" ng-include="static('components/account/user_include.html')"
+            ng-init="user = tournament.user; noUserButton = true">
+          </div>
+        </div>
+        <!-- Label -->
+        <div class="card-body">
+          <br>
+          <p>Participants:</p>
+        </div>
+        <!-- Participants -->
+        <div class="list-group list-group-flush">
+          <li class="list-group-item" ng-include="static('components/account/user_include.html')" 
+            ng-repeat="user in tournament.users" ng-init="noUserButton = true">
+          </li>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
