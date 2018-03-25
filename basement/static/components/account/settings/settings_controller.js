@@ -6,7 +6,7 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
 
   function constructor() {
     // Global variable for user instance
-    $scope.userInstance = new Account(Auth.getAuth);
+    $scope.userInstance = new Account(Auth.getAuth());
 
     // 100 length array
     $scope.avatars = new Array(100);
@@ -45,6 +45,7 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
         form.loading = false;
         form.error = null;
         form.data = data;
+        $scope.userInstance = new Account(data);
         toaster.info("Updated", "Your pofile settings are updated.");
 
         // Broadcast user update
