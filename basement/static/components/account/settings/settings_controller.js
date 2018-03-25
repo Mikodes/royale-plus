@@ -5,7 +5,10 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
   var user = Auth.getAuth();
 
   function constructor() {
+    // Global variable for user instance
     $scope.userInstance = new Account(Auth.getAuth);
+
+    // 100 length array
     $scope.avatars = new Array(100);
 
     API.Users.get({ username: user.username }, function (data) {
