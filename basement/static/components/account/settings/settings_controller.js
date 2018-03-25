@@ -7,12 +7,12 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
   function constructor() {
 
     /**
-     * Global variable for user instance
+     * @type {Array<Account>}
      */
     $scope.userInstance = new Account(Auth.getAuth());
 
     /**
-     * 100 length array
+     * @type {Array<null>}
      */
     $scope.avatars = new Array(100);
 
