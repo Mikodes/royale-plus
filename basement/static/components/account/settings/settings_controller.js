@@ -22,7 +22,6 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
   }
 
   /**
-   * @desc Set avatar and update
    * @param picture number
    */
   $scope.setAvatar = function (picture) {
