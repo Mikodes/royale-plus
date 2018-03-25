@@ -29,6 +29,11 @@ app.service("Tournament", function (Account, Main) {
     this.user = data.user ? new Account(data.user) : null;
 
     /**
+     * @type {Array<Account>}
+     */
+    this.users = [];
+
+    /**
      * @type {number}
      */
     this.status = data.status;
@@ -45,5 +50,18 @@ app.service("Tournament", function (Account, Main) {
     this.getStatus = function () {
       return Main.tournament.status[this.status];
     };
+
+    /**
+     * @private
+     * @type {function}
+     */
+    function constructor() {
+      // Instantiate all users
+      for (var i in self.get.users) {
+        self.users.push(new Account(self.get.users[i]));
+      }
+    }
+
+    constructor();
   };
 });
