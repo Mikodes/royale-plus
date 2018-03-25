@@ -22,7 +22,8 @@
 
           <!-- Picture -->
           <div class="user-picture-wrapper">
-            <div class="user-picture" style="background-image: url('{{ user.picture }}')"></div>
+            <div class="user-picture" ng-if="user"
+              style="background-image: url('{{ user.picture }}')"></div>
           </div>
 
           <!-- User name and icon -->

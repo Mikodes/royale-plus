@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Account", function (ENV, API, Auth, toaster) {
+app.service("Account", function (API, Auth, Common, toaster) {
   return function (data, followedId) {
 
     /**
@@ -13,12 +13,6 @@ app.service("Account", function (ENV, API, Auth, toaster) {
      * @type {object}
      */
     var currentUser = Auth.getAuth();
-
-    /**
-     * @private
-     * @type {string}
-     */
-    var defaultImage = "static/assets/img/avatar.png?v=" + ENV.VERSION;
 
     /**
      * @type {object}
@@ -38,7 +32,7 @@ app.service("Account", function (ENV, API, Auth, toaster) {
     /**
      * @type {string}
      */
-    this.picture = this.get.picture || defaultImage;
+    this.picture = Common.image("avatars/" + this.get.picture + ".jpg");
 
     /**
      * @type {function}

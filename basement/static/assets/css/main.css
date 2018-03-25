@@ -383,8 +383,8 @@ card.no-name cover {
     background-position: center;
     background-color: #111;
     max-width: 100%;
-    width: 200px;
-    height: 200px;
+    width: 80px;
+    height: 80px;
     display: inline-block;
     box-sizing: content-box;
     border-radius: 100%;

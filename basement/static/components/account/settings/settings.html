@@ -1,5 +1,23 @@
 <div class="container s-mar-y">
   <div class="row justify-content-md-center">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="user-picture-wrapper">
+            <div class="user-picture" ng-if="form.data.picture"
+              style="background-image: url('{{ userInstance.picture }}')"></div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-3 my-2" ng-repeat="avatar in avatars track by $index" ng-if="!$first">
+              <img class="rounded-circle" style="max-width: 100%"
+                ng-src="{{ static('assets/img/avatars/'+$index+'.jpg') }}"
+                ng-click="setAvatar($index)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="col-md-8">
       <div class="card">
 
@@ -16,13 +34,6 @@
             <label class="text-secondary">About:</label>
             <textarea type="text" class="form-control" ng-model="form.data.about"></textarea>
             <div class="form-control-feedback text-danger" ng-if="form.error.about">{{ form.error.about[0] }}</div>
-          </div>
-
-          <!-- Picture -->
-          <div class="form-group" ng-class="{'has-danger': form.error.picture}">
-            <label class="text-secondary">Picture URL:</label>
-            <input type="text" class="form-control" ng-model="form.data.picture">
-            <div class="form-control-feedback text-danger" ng-if="form.error.picture">{{ form.error.picture[0] }}</div>
           </div>
 
           <!-- Member -->

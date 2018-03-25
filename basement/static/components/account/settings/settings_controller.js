@@ -1,10 +1,21 @@
 "use strict";
 
-app.controller("SettingsController", function (Auth, API, toaster, $scope, $rootScope, $state) {
+app.controller("SettingsController", function (Auth, API, Account, toaster, $scope, $rootScope, $state) {
 
   var user = Auth.getAuth();
 
   function constructor() {
+
+    /**
+     * @type {Array<Account>}
+     */
+    $scope.userInstance = new Account(Auth.getAuth());
+
+    /**
+     * @type {Array<null>}
+     */
+    $scope.avatars = new Array(100);
+
     API.Users.get({ username: user.username }, function (data) {
       $scope.form.data = {
         email: data.email,
@@ -17,6 +28,14 @@ app.controller("SettingsController", function (Auth, API, toaster, $scope, $root
       };
     });
   }
+
+  /**
+   * @param {number} picture
+   */
+  $scope.setAvatar = function (picture) {
+    $scope.form.data.picture = picture;
+    $scope.update($scope.form);
+  };
 
   $scope.update = function (form) {
     form.loading = true;
@@ -31,6 +50,7 @@ app.controller("SettingsController", function (Auth, API, toaster, $scope, $root
         form.loading = false;
         form.error = null;
         form.data = data;
+        $scope.userInstance = new Account(data);
         toaster.info("Updated", "Your pofile settings are updated.");
 
         // Broadcast user update
