@@ -5,9 +5,9 @@ from account.models import User
 
 
 class TournamentStatus:
-    READY = 1
-    START = 2
-    CLOSE = 3
+    READY = 0
+    START = 1
+    CLOSE = 2
 
 
 class Tournament(models.Model):
