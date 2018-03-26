@@ -152,7 +152,7 @@ app.constant("Main", {
     ]
   },
   tournament: {
-    type: [
+    status: [
       "Ready",
       "Start",
       "Close"
