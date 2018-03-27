@@ -186,11 +186,23 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class TournamentSerializer(serializers.ModelSerializer):
     user = UserMinimalSerializer(read_only=True, default=serializers.CurrentUserDefault())
-    users = UserMinimalSerializer(many=True)
+    participants = UserMinimalSerializer(many=True, source='users', read_only=True)
 
     class Meta:
         model = Tournament
-        fields = '__all__'
+        fields = (
+            'id',
+            'name',
+            'user',
+            'users',
+            'participants',
+            'prize',
+            'status',
+            'created',
+        )
+        extra_kwargs = {
+            'users': {'write_only': True},
+        }
 
 
 def jwt_response_payload_handler(token, user=None, request=None):
