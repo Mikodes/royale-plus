@@ -31,7 +31,7 @@ app.service("Tournament", function (Account, Main) {
     /**
      * @type {Array<Account>}
      */
-    this.users = [];
+    this.participants = [];
 
     /**
      * @type {number}
@@ -57,8 +57,8 @@ app.service("Tournament", function (Account, Main) {
      */
     function constructor() {
       // Instantiate all users
-      for (var i in self.get.users) {
-        self.users.push(new Account(self.get.users[i]));
+      for (var i in self.get.participants) {
+        self.participants.push(new Account(self.get.participants[i]));
       }
     }
 
