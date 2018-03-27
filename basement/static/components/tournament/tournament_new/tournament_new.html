@@ -18,7 +18,8 @@
           <!-- Prize -->
           <div class="form-group">
             <label class="text-secondary">Prize:</label>
-            <input type="number" class="form-control form-control-lg" ng-model="form.data.prize" step="10" required>
+            <input type="number" class="form-control form-control-lg"
+              ng-model="form.data.prize" min="10" max="1000" step="10" required>
           </div>
 
           <!-- Participants (label) -->
