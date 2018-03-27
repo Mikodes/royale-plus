@@ -56,7 +56,7 @@ app.controller("TournamentNewController", function (API, Auth, $scope) {
 
     angular.forEach($scope.participants, function (participant) {
       if (participant.add) {
-        payload.users.push({ id: participant.id });
+        payload.users.push(participant.id);
       }
     });
 
