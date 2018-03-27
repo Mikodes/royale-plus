@@ -16,7 +16,8 @@ app.controller("TournamentNewController", function (API, Auth, $scope) {
       errors: [],
       data: {
         name: "My New Tournament",
-        prize: 100
+        prize: 100,
+        users: []
       }
     };
 
@@ -25,11 +26,6 @@ app.controller("TournamentNewController", function (API, Auth, $scope) {
      * @type {Array}
      */
     $scope.participants = [];
-
-    /**
-     * @type {string}
-     */
-    $scope.participantToAdd = "";
 
     /**
      * Add self as available participants
@@ -56,6 +52,17 @@ app.controller("TournamentNewController", function (API, Auth, $scope) {
 
   $scope.create = function () {
     $scope.form.loading = true;
+    var payload = $scope.form.data;
+
+    angular.forEach($scope.participants, function (participant) {
+      if (participant.add) {
+        payload.users.push({ id: participant.id });
+      }
+    });
+
+    API.Tournaments.post(payload, function (data) {
+      console.log(data);
+    });
   };
 
   constructor();
