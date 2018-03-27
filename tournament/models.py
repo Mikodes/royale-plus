@@ -1,3 +1,4 @@
+from django.core import validators
 from django.db import models
 from django.utils.timesince import timesince
 
@@ -20,7 +21,10 @@ class Tournament(models.Model):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.IntegerField(choices=TOURNAMENT_STATUS_CHOICES, default=TournamentStatus.READY)
-    prize = models.IntegerField(default=100)
+    prize = models.IntegerField(default=100, validators=[
+        validators.MinValueValidator(10),
+        validators.MaxValueValidator(1000),
+    ])
     users = models.ManyToManyField(User, related_name='Participants')
     created = models.DateTimeField(auto_now_add=True, editable=False)
 
