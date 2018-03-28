@@ -65,10 +65,7 @@ app.controller("TournamentNewController", function (API, Auth, Common, $scope) {
     });
   };
 
-  /**
-   * Open modal
-   */
-  $scope.info = function () {
+  $scope.showInfo = function () {
     Common.modal("tournament/tournament_info.html");
   };
 
