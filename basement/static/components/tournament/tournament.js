@@ -65,3 +65,33 @@ app.service("Tournament", function (Account, Main) {
     constructor();
   };
 });
+
+app.service("TournamentMatch", function (Account) {
+  return function (data) {
+
+    /**
+     * @private
+     */
+    var self = this;
+
+    /**
+     * @type {object}
+     */
+    this.get = data;
+
+    /**
+     * @type {number}
+     */
+    this.id = data.id;
+
+    /**
+     * @type {Account}
+     */
+    this.player1 = data.player1 ? new Account(data.player1) : null;
+
+    /**
+     * @type {Account}
+     */
+    this.player2 = data.player2 ? new Account(data.player2) : null;
+  };
+});
