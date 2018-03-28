@@ -3,24 +3,25 @@ from django.db import models
 from django.utils.timesince import timesince
 
 from account.models import User
+from basement.utils import grouper
 
 
 class TournamentStatus:
-    READY = 0
-    START = 1
-    CLOSE = 2
+    START = 0
+    FINISH = 1
+    CANCEL = 2
 
 
 class Tournament(models.Model):
     TOURNAMENT_STATUS_CHOICES = (
-        (TournamentStatus.READY, 'Ready'),
         (TournamentStatus.START, 'Start'),
-        (TournamentStatus.CLOSE, 'Close'),
+        (TournamentStatus.FINISH, 'Finish'),
+        (TournamentStatus.CANCEL, 'Cancel'),
     )
 
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    status = models.IntegerField(choices=TOURNAMENT_STATUS_CHOICES, default=TournamentStatus.READY)
+    status = models.IntegerField(choices=TOURNAMENT_STATUS_CHOICES, default=TournamentStatus.START)
     prize = models.IntegerField(default=100, validators=[
         validators.MinValueValidator(10),
         validators.MaxValueValidator(1000),
@@ -31,6 +32,14 @@ class Tournament(models.Model):
     @property
     def get_created_since(self):
         return timesince(self.created)
+
+    def create_tournament_matches(self):
+        for users in grouper(2, self.users.all()):
+            TournamentMatch.objects.create(
+                tournament=self,
+                player_1=users[0],
+                player_2=users[1],
+            )
 
     def __str__(self):
         return f'{self.name} ({self.get_status_display()})'
@@ -43,11 +52,12 @@ class Tournament(models.Model):
 
 class TournamentMatch(models.Model):
     tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE)
-    users = models.ManyToManyField(User, related_name='matches')
+    player_1 = models.ForeignKey(User, related_name='match_player_1', on_delete=models.SET_NULL, null=True, blank=True)
+    player_2 = models.ForeignKey(User, related_name='match_player_2', on_delete=models.SET_NULL, null=True, blank=True)
     winner = models.ForeignKey(User, related_name='won_matches', null=True, blank=True)
 
     def __str__(self):
-        return f'{self.tournament.name} match #{self.id}'
+        return f'{self.tournament}: {self.player_1} vs {self.player_2}'
 
     class Meta:
         verbose_name = 'Tournament Match'

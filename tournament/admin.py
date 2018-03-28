@@ -21,5 +21,7 @@ class TournamentAdmin(admin.ModelAdmin):
 class TournamentAdmin(admin.ModelAdmin):
     list_display = (
         'tournament',
+        'player_1',
+        'player_2',
         'winner',
     )
