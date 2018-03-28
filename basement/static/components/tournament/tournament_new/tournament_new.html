@@ -4,7 +4,14 @@
       <div class="card">
 
         <!-- Title -->
-        <h4 class="card-header bg-white py-4">Create Tournament</h4>
+        <h4 class="card-header bg-white py-4">
+          <span class="align-middle">
+            Create Tournament
+          </span>
+
+          <!-- Info -->
+          <button class="btn btn-light mobile-full float-right" ng-click="info()">Info</button>
+        </h4>
 
         <!-- Tournament Form -->
         <form ng-submit="create(form.data)" class="card-body">
