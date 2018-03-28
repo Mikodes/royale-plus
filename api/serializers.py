@@ -204,6 +204,11 @@ class TournamentSerializer(serializers.ModelSerializer):
             'users': {'write_only': True},
         }
 
+    def create(self, validated_data):
+        instance = super(TournamentSerializer, self).create(validated_data)
+        instance.create_tournament_matches()
+        return instance
+
 
 def jwt_response_payload_handler(token, user=None, request=None):
     return {
