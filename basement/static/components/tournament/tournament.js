@@ -93,5 +93,10 @@ app.service("TournamentMatch", function (Account) {
      * @type {Account}
      */
     this.player2 = data.player2 ? new Account(data.player2) : null;
+
+    /**
+     * @type {Account}
+     */
+    this.winner = data.winner ? new Account(data.winner) : null;
   };
 });
