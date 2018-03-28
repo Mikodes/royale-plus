@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("TournamentNewController", function (API, Auth, $scope) {
+app.controller("TournamentNewController", function (API, Auth, toaster, $scope) {
 
   var user = Auth.getAuth();
 
@@ -59,6 +59,13 @@ app.controller("TournamentNewController", function (API, Auth, $scope) {
         payload.users.push(participant.id);
       }
     });
+
+    // Check user selection
+    if ($scope.form.data.users.length < 3) {
+      toaster.error("Oops!", "You need to select at least 3 users.");
+      $scope.form.loading = false;
+      return;
+    }
 
     API.Tournaments.post(payload, function (data) {
       console.log(data);
