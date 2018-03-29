@@ -1,0 +1,32 @@
+<!-- Header -->
+<div class="container py-4 mobile-same">
+  <h1 class="text-dark my-2">{{ tournament.name }}</h1>
+  <hr class="mobile-hide mb-0">
+</div>
+
+<!-- Tournament -->
+<div class="container py-4">
+
+  <matches>
+
+    <stage>
+
+      <match ng-repeat="match in tournamentMatches">
+
+          <player ng-class="{winner: match.player1.id == match.winner.id">
+            {{ match.player1.username }}
+          </player>
+
+          <line/>
+
+          <player ng-class="{winner: match.player2.id == match.winner.id">
+            {{ match.player2.username }}
+          </player>
+
+      </match>
+
+    </stage>
+
+  </matches>
+
+</div>
