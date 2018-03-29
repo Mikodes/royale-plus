@@ -7,7 +7,7 @@ app.controller("TournamentController", function (API, Tournament, TournamentMatc
     /**
      * @type {Tournament}
      */
-    $scope.tournaments = [];
+    $scope.tournament = null;
 
     /**
      * @type {Array<TournamentMatch>}
@@ -18,7 +18,7 @@ app.controller("TournamentController", function (API, Tournament, TournamentMatc
      * Get tournament
      */
     API.Tournaments.get({ id: $stateParams.id }, function (data) {
-      $scope.tournaments = new Tournament(data);
+      $scope.tournament = new Tournament(data);
     });
 
     /**
@@ -26,7 +26,7 @@ app.controller("TournamentController", function (API, Tournament, TournamentMatc
      */
     API.TournamentMatches.get({ tournament: $stateParams.id }, function (data) {
       angular.forEach(data.results, function (result) {
-        $scope.tournamentMatches = new TournamentMatch(result);
+        $scope.tournamentMatches.unshift(new TournamentMatch(result));
       });
     });
   }
