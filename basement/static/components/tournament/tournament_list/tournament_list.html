@@ -31,7 +31,9 @@
 
         <!-- Header -->
         <div class="card-header bg-dark text-white py-4" ng-if="!deck.isDeleted">
-          <a class="text-white on-dark">{{ tournament.name }}</a>
+          <a ui-sref="app.tournament({id: tournament.id, tournament: tournament})"
+            class="text-white on-dark"> {{ tournament.name }}
+          </a>
         </div>
 
         <!-- Tournament Info -->

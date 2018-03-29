@@ -91,6 +91,15 @@ app.config(function (ENV, $stateProvider, $urlRouterProvider) {
     }
   })
 
+  .state("app.tournament", {
+    url: "/tournament/:id",
+    controller: "TournamentController",
+    templateUrl: comp("tournament/tournament.html"),
+    params: {
+      tournament: null
+    }
+  })
+
   .state("app.tournament-new", {
     url: "/add-tournament",
     controller: "TournamentNewController",
