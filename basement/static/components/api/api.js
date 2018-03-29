@@ -30,7 +30,7 @@ app.service("API", function (ENV, $resource) {
     endpoint: "api/tournaments/" // POST - PUT - GET - DELETE
   }, {
     name: "TournamentMatches",
-    endpoint: "api/tournament-matches/" // POST - PUT - GET - DELETE
+    endpoint: "api/tournament-matches/" // PUT - GET
   }, {
     name: "Clan",
     endpoint: "crapi/clan/" // GET
