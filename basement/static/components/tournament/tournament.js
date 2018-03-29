@@ -87,12 +87,12 @@ app.service("TournamentMatch", function (Account) {
     /**
      * @type {Account}
      */
-    this.player1 = data.player1 ? new Account(data.player1) : null;
+    this.player1 = data.player_1 ? new Account(data.player_1) : null;
 
     /**
      * @type {Account}
      */
-    this.player2 = data.player2 ? new Account(data.player2) : null;
+    this.player2 = data.player_2 ? new Account(data.player_2) : null;
 
     /**
      * @type {Account}
