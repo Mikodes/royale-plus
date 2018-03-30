@@ -66,8 +66,8 @@ app.service("Tournament", function (Account, Main) {
   };
 });
 
-app.service("TournamentMatch", function (Account) {
-  return function (data) {
+app.service("TournamentMatch", function (API, Account) {
+  return function (data, tournament) {
 
     /**
      * @private
@@ -107,6 +107,7 @@ app.service("TournamentMatch", function (Account) {
     /**
      * @type {Account}
      */
-    this.winner = data.winner ? new Account(data.winner) : null;
+    this.winner = data.player_winner ? new Account(data.player_winner) : null;
+
   };
 });
