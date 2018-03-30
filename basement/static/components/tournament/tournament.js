@@ -85,6 +85,11 @@ app.service("TournamentMatch", function (Account) {
     this.id = data.id;
 
     /**
+     * @type {Tournament}
+     */
+    this.tournament = tournament;
+
+    /**
      * @type {Account}
      */
     this.player1 = data.player_1 ? new Account(data.player_1) : null;
