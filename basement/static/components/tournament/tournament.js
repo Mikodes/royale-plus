@@ -109,5 +109,29 @@ app.service("TournamentMatch", function (API, Account) {
      */
     this.winner = data.player_winner ? new Account(data.player_winner) : null;
 
+    /**
+     * @type {function}
+     *
+     * @param {Account} player
+     */
+    this.setWinner = function (player) {
+
+      // Check if tournament host
+      if (!this.tournament.user.isSameUser()) {
+        return;
+      }
+
+      // Check if player is in match
+      if (player.id !== this.player1.id && player.id !== this.player2.id) {
+        return;
+      }
+
+      // Set winner
+      API.TournamentMatches.put({ id: this.id }, { winner: player.id, tournament: this.tournament.id },
+        function (data) {
+          self.winner = new Account(data.player_winner);
+        }
+      );
+    };
   };
 });
