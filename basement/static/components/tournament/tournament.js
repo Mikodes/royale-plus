@@ -90,6 +90,11 @@ app.service("TournamentMatch", function (Account) {
     this.tournament = tournament;
 
     /**
+     * @type {number}
+     */
+    this.stage = data.stage;
+
+    /**
      * @type {Account}
      */
     this.player1 = data.player_1 ? new Account(data.player_1) : null;
