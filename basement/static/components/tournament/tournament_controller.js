@@ -15,6 +15,13 @@ app.controller("TournamentController", function (API, Tournament, TournamentMatc
     $scope.tournamentMatches = [];
 
     /**
+     * Used to group matches by their stage
+     *
+     * @type {Array<number>}
+     */
+    $scope.stages = [];
+
+    /**
      * Get tournament
      */
     API.Tournaments.get({ id: $stateParams.id }, function (data) {
@@ -26,7 +33,9 @@ app.controller("TournamentController", function (API, Tournament, TournamentMatc
      */
     API.TournamentMatches.get({ tournament: $stateParams.id }, function (data) {
       angular.forEach(data.results, function (result) {
-        $scope.tournamentMatches.unshift(new TournamentMatch(result));
+        $scope.tournamentMatches.unshift(new TournamentMatch(result, $scope.tournament));
+        // Store stage
+        $scope.stages[result.stage] = result.stage;
       });
     });
   }
