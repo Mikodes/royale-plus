@@ -39,11 +39,11 @@ app.controller("TournamentNewController", function (API, Auth, Common, toaster, 
     /**
      * Add all followings to participants
      */
-    API.Follow.get({ following: user.id }, function (data) {
+    API.Follow.get({ user: user.id }, function (data) {
       angular.forEach(data.results, function (result) {
         $scope.participants.push({
-          username: result.user.username,
-          id: result.user.id,
+          username: result.following.username,
+          id: result.following.id,
           add: false
         });
       });
