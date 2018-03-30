@@ -7,7 +7,7 @@ app.controller("TournamentController", function (API, Tournament, TournamentMatc
     /**
      * @type {Tournament}
      */
-    $scope.tournament = null;
+    $scope.tournament = $stateParams.tournament;
 
     /**
      * @type {Array<TournamentMatch>}
@@ -24,9 +24,11 @@ app.controller("TournamentController", function (API, Tournament, TournamentMatc
     /**
      * Get tournament
      */
-    API.Tournaments.get({ id: $stateParams.id }, function (data) {
-      $scope.tournament = new Tournament(data);
-    });
+    if (!$scope.tournament) {
+      API.Tournaments.get({ id: $stateParams.id }, function (data) {
+        $scope.tournament = new Tournament(data);
+      });
+    }
 
     /**
      * Get tournament matches
