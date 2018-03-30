@@ -317,6 +317,10 @@ match player {
     text-align: center;
 }
 
+match player.winner {
+    background: chartreuse;
+}
+
 
 /* Modal */
 
