@@ -68,7 +68,8 @@ app.controller("TournamentNewController", function (API, Auth, Common, toaster, 
     }
 
     API.Tournaments.post(payload, function (data) {
-      $state.go("app.tournament", { id: data.id });
+      toaster.success("Awesome", data.name + " created");
+      $state.go("app.tournament", { id: data.id, tournament: data });
     });
   };
 
