@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("TournamentListController", function (API, Tournament, $scope) {
+app.controller("TournamentListController", function (API, Tournament, Common, $scope) {
 
   function constructor() {
 
@@ -18,6 +18,10 @@ app.controller("TournamentListController", function (API, Tournament, $scope) {
       });
     });
   }
+
+  $scope.showInfo = function () {
+    Common.modal("tournament/tournament_info.html");
+  };
 
   constructor();
 });

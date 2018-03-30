@@ -2,15 +2,15 @@
 <div class="container py-4 mobile-same">
 
   <!-- Title -->
-  <h1 class="text-dark my-2 mb-3">Custom Tournaments</h1>
+  <h1 class="text-dark my-2 mb-3">
+    Custom Tournaments
 
-  <!-- Details -->
-  <span class="text-secondary">
-    <p class="mb-1">Custom tournaments on Royale Plus are not connected to Clash Royale tournaments.</p>
-    <p class="mb-1">Custom tournaments rules, decks, match results and winner is set by the host.</p>
-    <p class="mb-1">Custom tournaments are primarily made for friends or clanmates to battle and have fun.</p>
-    <p class="mb-1">You can not join custom tournament, you can only be invited to one.</p>
-  </span>
+    <!-- Buttons -->
+    <span class="float-right mobile-full">
+      <button class="btn btn-light mobile-full" ng-click="showInfo()">Info</button>
+      <button class="btn btn-success mobile-full" ui-sref="app.tournament-new">Create</button>
+    </span>
+  </h1>
 
   <!-- Line -->
   <hr class="mobile-hide mb-0">
