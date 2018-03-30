@@ -62,7 +62,7 @@ app.controller("TournamentNewController", function (API, Auth, toaster, $scope) 
 
     // Check user selection
     if ($scope.form.data.users.length < 3) {
-      toaster.error("Oops!", "You need to select at least 3 users.");
+      toaster.error("Error", "You need to select at least 3 users.");
       $scope.form.loading = false;
       return;
     }
