@@ -4,7 +4,7 @@ from account.models import User, Follow
 from activity.models import Activity
 from comment.models import Comment
 from deck.models import Deck
-from tournament.models import Tournament
+from tournament.models import Tournament, TournamentMatch
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -208,6 +208,27 @@ class TournamentSerializer(serializers.ModelSerializer):
         instance = super(TournamentSerializer, self).create(validated_data)
         instance.create_tournament_matches()
         return instance
+
+
+class TournamentMatchSerializer(serializers.ModelSerializer):
+    player_1 = UserMinimalSerializer(read_only=True)
+    player_2 = UserMinimalSerializer(read_only=True)
+    player_winner = UserMinimalSerializer(read_only=True, source='winner')
+
+    class Meta:
+        model = TournamentMatch
+        fields = (
+            'id',
+            'tournament',
+            'stage',
+            'player_1',
+            'player_2',
+            'player_winner',
+            'winner',
+        )
+        extra_kwargs = {
+            'winner': {'write_only': True},
+        }
 
 
 def jwt_response_payload_handler(token, user=None, request=None):

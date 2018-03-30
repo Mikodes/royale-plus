@@ -52,6 +52,7 @@ class Tournament(models.Model):
 
 class TournamentMatch(models.Model):
     tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE)
+    stage = models.PositiveIntegerField(default=0)
     player_1 = models.ForeignKey(User, related_name='match_player_1', on_delete=models.SET_NULL, null=True, blank=True)
     player_2 = models.ForeignKey(User, related_name='match_player_2', on_delete=models.SET_NULL, null=True, blank=True)
     winner = models.ForeignKey(User, related_name='won_matches', null=True, blank=True)

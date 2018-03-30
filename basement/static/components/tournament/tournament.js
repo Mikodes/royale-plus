@@ -66,8 +66,8 @@ app.service("Tournament", function (Account, Main) {
   };
 });
 
-app.service("TournamentMatch", function (Account) {
-  return function (data) {
+app.service("TournamentMatch", function (API, Account) {
+  return function (data, tournament) {
 
     /**
      * @private
@@ -85,18 +85,53 @@ app.service("TournamentMatch", function (Account) {
     this.id = data.id;
 
     /**
-     * @type {Account}
+     * @type {Tournament}
      */
-    this.player1 = data.player1 ? new Account(data.player1) : null;
+    this.tournament = tournament;
+
+    /**
+     * @type {number}
+     */
+    this.stage = data.stage;
 
     /**
      * @type {Account}
      */
-    this.player2 = data.player2 ? new Account(data.player2) : null;
+    this.player1 = data.player_1 ? new Account(data.player_1) : null;
 
     /**
      * @type {Account}
      */
-    this.winner = data.winner ? new Account(data.winner) : null;
+    this.player2 = data.player_2 ? new Account(data.player_2) : null;
+
+    /**
+     * @type {Account}
+     */
+    this.winner = data.player_winner ? new Account(data.player_winner) : null;
+
+    /**
+     * @type {function}
+     *
+     * @param {Account} player
+     */
+    this.setWinner = function (player) {
+
+      // Check if tournament host
+      if (!this.tournament.user.isSameUser()) {
+        return;
+      }
+
+      // Check if player is in match
+      if (player.id !== this.player1.id && player.id !== this.player2.id) {
+        return;
+      }
+
+      // Set winner
+      API.TournamentMatches.put({ id: this.id }, { winner: player.id, tournament: this.tournament.id },
+        function (data) {
+          self.winner = new Account(data.player_winner);
+        }
+      );
+    };
   };
 });

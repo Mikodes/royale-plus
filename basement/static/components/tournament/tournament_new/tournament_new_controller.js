@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("TournamentNewController", function (API, Auth, toaster, $scope) {
+app.controller("TournamentNewController", function (API, Auth, Common, toaster, $scope) {
 
   var user = Auth.getAuth();
 
@@ -70,6 +70,10 @@ app.controller("TournamentNewController", function (API, Auth, toaster, $scope) 
     API.Tournaments.post(payload, function (data) {
       console.log(data);
     });
+  };
+
+  $scope.showInfo = function () {
+    Common.modal("tournament/tournament_info.html");
   };
 
   constructor();
