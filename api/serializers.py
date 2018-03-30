@@ -213,10 +213,22 @@ class TournamentSerializer(serializers.ModelSerializer):
 class TournamentMatchSerializer(serializers.ModelSerializer):
     player_1 = UserMinimalSerializer(read_only=True)
     player_2 = UserMinimalSerializer(read_only=True)
+    player_winner = UserMinimalSerializer(read_only=True, source='winner')
 
     class Meta:
         model = TournamentMatch
-        fields = '__all__'
+        fields = (
+            'id',
+            'tournament',
+            'stage',
+            'player_1',
+            'player_2',
+            'player_winner',
+            'winner',
+        )
+        extra_kwargs = {
+            'winner': {'write_only': True},
+        }
 
 
 def jwt_response_payload_handler(token, user=None, request=None):
