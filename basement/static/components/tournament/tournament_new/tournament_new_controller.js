@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("TournamentNewController", function (API, Auth, Common, toaster, $scope) {
+app.controller("TournamentNewController", function (API, Auth, Common, toaster, $scope, $state) {
 
   var user = Auth.getAuth();
 
@@ -68,7 +68,7 @@ app.controller("TournamentNewController", function (API, Auth, Common, toaster, 
     }
 
     API.Tournaments.post(payload, function (data) {
-      console.log(data);
+      $state.go("app.tournament", { id: data.id });
     });
   };
 
