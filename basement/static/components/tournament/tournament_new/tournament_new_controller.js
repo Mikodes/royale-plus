@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("TournamentNewController", function (API, Auth, Common, toaster, $scope) {
+app.controller("TournamentNewController", function (API, Auth, Common, Tournament, toaster, $scope, $state) {
 
   var user = Auth.getAuth();
 
@@ -39,11 +39,11 @@ app.controller("TournamentNewController", function (API, Auth, Common, toaster, 
     /**
      * Add all followings to participants
      */
-    API.Follow.get({ following: user.id }, function (data) {
+    API.Follow.get({ user: user.id }, function (data) {
       angular.forEach(data.results, function (result) {
         $scope.participants.push({
-          username: result.user.username,
-          id: result.user.id,
+          username: result.following.username,
+          id: result.following.id,
           add: false
         });
       });
@@ -68,7 +68,8 @@ app.controller("TournamentNewController", function (API, Auth, Common, toaster, 
     }
 
     API.Tournaments.post(payload, function (data) {
-      console.log(data);
+      toaster.success("Awesome", data.name + " created");
+      $state.go("app.tournament", { id: data.id, tournament: new Tournament(data) });
     });
   };
 
