@@ -27,6 +27,11 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
         username: data.username
       };
     });
+
+    /**
+     * @type {boolean}
+     */
+    $scope.showMore = false;
   }
 
   /**
