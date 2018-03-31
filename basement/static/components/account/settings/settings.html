@@ -9,11 +9,16 @@
           </div>
           <hr>
           <div class="row">
-            <div class="col-3 my-2" ng-repeat="avatar in avatars track by $index" ng-if="!$first">
+            <div class="col-3 my-2"
+              ng-repeat="avatar in avatars track by $index" ng-if="!$first && ($index <= 20 || showMore)">
               <img class="rounded-circle" style="max-width: 100%"
                 ng-src="{{ static('assets/img/avatars/'+$index+'.jpg') }}"
                 ng-click="setAvatar($index)">
             </div>
+          </div>
+          <!-- Show more -->
+          <div class="text-center mt-3" ng-hide="showMore">
+            <button class="btn btn-warning" ng-click="showMore = true">Show All</button>
           </div>
         </div>
       </div>
