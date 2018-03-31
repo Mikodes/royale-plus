@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("TournamentNewController", function (API, Auth, Common, toaster, $scope, $state) {
+app.controller("TournamentNewController", function (API, Auth, Common, Tournament, toaster, $scope, $state) {
 
   var user = Auth.getAuth();
 
@@ -69,7 +69,7 @@ app.controller("TournamentNewController", function (API, Auth, Common, toaster, 
 
     API.Tournaments.post(payload, function (data) {
       toaster.success("Awesome", data.name + " created");
-      $state.go("app.tournament", { id: data.id, tournament: data });
+      $state.go("app.tournament", { id: data.id, tournament: new Tournament(data) });
     });
   };
 
