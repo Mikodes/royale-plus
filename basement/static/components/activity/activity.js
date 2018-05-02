@@ -75,7 +75,7 @@ app.service("Activity", function (Main) {
      * @returns {boolean}
      */
     this.hasViewButton = function () {
-      return this.getKind() == "User" || this.getKind() == "Deck"
+      return this.getKind() == "User" || this.getKind() == "Deck";
     };
   };
 });
