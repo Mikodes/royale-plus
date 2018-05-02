@@ -22,7 +22,7 @@
 
         <!-- Decks -->
         <li class="nav-item" ng-class="{active: state.current.name == 'app.deck-list'}">
-          <a class="nav-link" ui-sref="app.deck-list({username: null})">Decks</a>
+          <a class="nav-link" ui-sref="app.deck-list({id: null})">Decks</a>
         </li>
       </ul>
       
@@ -52,7 +52,7 @@
             </a>
             <!-- Decks -->
             <a class="dropdown-item" ui-sref-active="active"
-              ui-sref="app.deck-list({username: user.username})">
+              ui-sref="app.deck-list({id: user.id})">
               <i class="fas fa-fw fa-cube"></i> Decks
             </a>
             <!-- Settings -->

@@ -113,7 +113,7 @@
 
         <!-- Normal options -->
         <div class="list-group list-group-flush">
-          <a class="list-group-item" ui-sref="app.deck-list({username: deck.user.username})">View {{ deck.user.username }}'s Decks</a>
+          <a class="list-group-item" ui-sref="app.deck-list({id: deck.user.id})">View {{ deck.user.username }}'s Decks</a>
           <a class="list-group-item" ui-sref="app.deck-new({deck: deck})">Copy and Edit</a>
           <a class="list-group-item" ng-href="{{ deck.getCopyLink() }}">Copy to Game</a>
         </div>

@@ -83,9 +83,7 @@
           <div class="dropdown-menu">
             <!-- Links -->
             <a class="dropdown-item" ui-sref="app.deck({id: deck.id, deck: deck})">View Deck</a>
-            <a class="dropdown-item" ui-sref="app.deck-list({username: deck.user.username})">
-              View {{ deck.user.username }}'s Decks
-            </a>
+            <a class="dropdown-item" ui-sref="app.deck-list({id: deck.user.id})">View {{ deck.user.username }}'s Decks</a>
             <a class="dropdown-item" ui-sref="app.deck-new({deck: deck})">Copy and Edit</a>
             <a class="dropdown-item text-primary" ng-href="{{ deck.getCopyLink() }}">Copy to Game</a>
             <!-- Owner options -->

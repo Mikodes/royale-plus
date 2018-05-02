@@ -73,7 +73,7 @@
               <i class="fas fa-fw o-fade fa-cube"></i> Decks:
             </span>
             <span class="float-right" title="Click to see {{ user.username }}'s decks">
-              <a ui-sref="app.deck-list({username: user.username})">{{ user.get.decks_count }} decks</a>
+              <a ui-sref="app.deck-list({id: user.id})">{{ user.get.decks_count }} decks</a>
             </span>
           </div>
 
