@@ -45,7 +45,7 @@ class UserSerializer(serializers.ModelSerializer):
             'is_whatsapp',
             'member',
             'about',
-            'picture',
+            'avatar',
             'link',
             'nationality',
         )
@@ -67,7 +67,7 @@ class UserMinimalSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'username',
-            'picture',
+            'avatar',
         )
 
 
@@ -76,7 +76,7 @@ class UserUpdateSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'about',
-            'picture',
+            'avatar',
             'member',
             'email',
             'link',

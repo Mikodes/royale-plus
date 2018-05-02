@@ -32,7 +32,7 @@ app.service("Account", function (API, Auth, Common, toaster) {
     /**
      * @type {string}
      */
-    this.picture = Common.image("avatars/" + this.get.picture + ".jpg");
+    this.avatar = Common.image("avatars/" + this.get.avatar + ".jpg");
 
     /**
      * @type {function}

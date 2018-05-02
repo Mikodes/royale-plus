@@ -44,7 +44,7 @@ class User(AbstractBaseUser):
     is_whatsapp = models.BooleanField(default=False)
 
     about = models.CharField(max_length=500, default=None, null=True, blank=True)
-    picture = 1
+    avatar = models.IntegerField(default=1)
     link = models.URLField(default=None, null=True, blank=True)
     nationality = models.CharField(max_length=50, default=None, null=True, blank=True)
 
@@ -63,7 +63,7 @@ class User(AbstractBaseUser):
 
     @property
     def is_profile_completed(self) -> bool:
-        return all([self.about, self.picture, self.nationality])
+        return all([self.about, self.avatar, self.nationality])
 
     def get_full_name(self):
         return self.username

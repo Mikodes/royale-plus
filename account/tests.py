@@ -16,7 +16,7 @@ class UserTestCase(TestCase):
 
         self.user.nationality = 'IRAN'
         self.user.about = 'The meaning of Pure Awesomeness.'
-        self.user.picture = 'http://picture-url-here.com'
+        self.user.avatar = 3
 
         self.assertTrue(self.user.is_profile_completed)
 

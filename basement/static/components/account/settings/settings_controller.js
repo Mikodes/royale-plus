@@ -23,7 +23,7 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
         member: data.member,
         link: data.link,
         nationality: data.nationality,
-        picture: data.picture,
+        avatar: data.avatar,
         username: data.username
       };
     });
@@ -35,10 +35,10 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
   }
 
   /**
-   * @param {number} picture
+   * @param {number} avatar
    */
-  $scope.setAvatar = function (picture) {
-    $scope.form.data.picture = picture;
+  $scope.setAvatar = function (avatar) {
+    $scope.form.data.avatar = avatar;
     $scope.update($scope.form);
   };
 
