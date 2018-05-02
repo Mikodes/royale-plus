@@ -44,7 +44,7 @@ class User(AbstractBaseUser):
     is_whatsapp = models.BooleanField(default=False)
 
     about = models.CharField(max_length=500, default=None, null=True, blank=True)
-    picture = models.IntegerField(default=1)
+    picture = 1
     link = models.URLField(default=None, null=True, blank=True)
     nationality = models.CharField(max_length=50, default=None, null=True, blank=True)
 
